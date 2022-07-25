@@ -1,0 +1,61 @@
+extends base
+ 
+block content     
+    page-wrapper
+        if user  
+        -var client = user.role == 'user'
+        -var counsellor = user.role == 'counsellor'
+        -var consultant = user.role == 'consultant'
+        -var admin  = user.role == 'admin'
+        -var staff = user.duty == 'staff'
+        .main-content
+            .session-wrapper.grid.grid-2  
+                .call-container.flex 
+                    .video-box-container
+                        .local-video-container
+                            video#local_video.local_video(muted='' autoplay='') 
+                        .main-preview
+                            video#remote_video.remote_video(muted autoplay='') 
+                            .codes-container
+                                .personalCode.flex   
+                                    input#personalCodeParagraph(type="text")
+                                    button#copyPersonalCodeBtn.btn  <i class='bx bx-copy' ></i>
+                         
+                    .cpanel-container
+                        .personalCode-init-container
+                            .chat-init-controls.flex  
+                                input#personalCodeInput
+                                button#personalCodeConnectingBtn Join Meeting
+                        .control-icons.flex
+                            .icon.icon-camera.flex 
+                                <i class='bx bxs-camera'></i>
+                            .icon.icon-screen.flex  
+                                <i class='bx bx-fullscreen'></i>
+                            .icon.icon-audio.flex 
+                                <i class='bx bxs-microphone'></i>
+                            .icon.icon-audio--mute.flex 
+                                <i class='bx bxs-microphone-off'></i>
+                            .icon.icon-video.flex  
+                                <i class='bx bx-video'></i>
+                            .icon.icon-video--cancel.flex  
+                                <i class='bx bxs-video-off'></i>
+                            .icon.icon-chat.flex
+                                <i class='bx bx-chat' ></i>
+                            .icon#icon-record.icon-record.flex 
+                                img(src="./img/icons/rec-button.png", alt="")
+                            .icon#icon-record--stop.icon-record--stop.flex 
+                                img(src="./img/icons/stop.png", alt="")
+                            
+                #messages_container.messanger-container.flex
+                    #messages_box   
+                    .chat-input 
+                        #messangerForm(class='messenger-form') 
+                            input(type="text" id='newMessageInput' placeholder= 'Type a message here')
+                            button#chatBtn <i class='bx bxs-send'></i>
+            #callDialogWrapper
+
+
+
+        
+                
+    

@@ -1,0 +1,53 @@
+doctype html
+html
+  head
+    block head
+      meta(charset='UTF-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      link(rel='stylesheet' href='/css/style.css')
+      link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+      link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+      link(href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet')
+
+      title LoveMeLoud | #{title}
+  
+  body
+  include _headerAdmin
+  main.main  
+    .page-wrapper.page-wrapper--users 
+      .section.section-users.grid 
+        .users-container.users-container--clients
+          h2 All Application Clients
+          each client in clients 
+            .container-user.container-user--client.flex 
+              .user-image.flex  
+                span #{client.firstName.slice(0, 1)}
+                span #{client.lastName.slice(0, 1)}
+              .user-desc.user-desc--client 
+                .name.name-client  
+                  h4 #{client.firstName} #{client.lastName}
+                .phone 
+                  p #{client.phone}
+        .users-container.users-container--staff
+          .users-container--header.flex  
+            h2 All Application Staff
+            button.btn.btn-addStaff Add Staff 
+          each member in staff 
+            .container-user.container-user--staff.flex 
+              .user-image.user-image--staff 
+                img(src=`/img/users/${member.photo}`, alt="")
+              .user-desc.user-desc--staff
+                .name.name-staff
+                  h4 #{member.firstName} #{member.lastName}
+                .mail.mail-staff 
+                  p #{member.email} 
+                .role
+                  p #{member.role} 
+
+
+        
+
+
+
+
+script(src='/js/bundle.js')

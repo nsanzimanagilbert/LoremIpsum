@@ -1,0 +1,85 @@
+extends base
+
+block content
+  main.main
+    .noShow 
+      input(type="text" value=`${user.email}` id="schSender")
+    section.section.section-schedule
+      form.form.form-schedule.form-schedule--counselling.midWd
+        .form-heading 
+          h2 Complete this form to schedule an appointment. One of our experts will contact you a few hours before the selected time and date. 
+        .form-body.center
+         
+          .form-field
+            h3 Date  
+            .schedule-time.flex 
+              .time-field.schedule-time--date.flex   
+                label(for="schDate") Select date 
+                input#schDate(type="date")
+          .form-field
+            h3 Time 
+            .schedule-time.flex 
+              .time-field 
+                label Hour 
+                select#schHour
+                  option(value="00") 00
+                  option(value="01") 01
+                  option(value="02") 02
+                  option(value="03") 03
+                  option(value="04") 04
+                  option(value="05") 05
+                  option(value="06") 06
+                  option(value="07") 07
+                  option(value="08") 08
+                  option(value="09") 09
+                  option(value="10") 10
+                  option(value="11") 11
+                  option(value="12") 12
+              .time-field 
+                label(for="schMins") Minutes 
+                select(name="schMins" id="schMins")
+                  option(value="00") 00
+                  option(value="10") 10
+                  option(value="20") 20
+                  option(value="30") 30
+                  option(value="40") 40
+                  option(value="50") 50
+              .time-field 
+                  label(for="schTiming") AM/PM 
+                  select(name="schTiming" id="schTiming")
+                    option(value="AM") AM
+                    option(value="PM") PM
+          .form-field 
+            h3 Meeting Type 
+            .input-wrapper.flex 
+              input#option-1(type='radio' name='schType' checked='' value="video" class="videoTypeBtn")
+              input#option-2(type='radio' name='schType' value="phone" class="phoneTypeBtn")
+              input#option-3(type="radio" name='schType' value="pysical" class="physicalTypeBtn")
+              label.option.option-1(for='option-1')
+                .dot
+                span  Video
+              label.option.option-2(for='option-2')
+                .dot
+                span Phone Call
+              label.option.option-3(for='option-3')
+                .dot
+                span Pysical
+          .form-field
+            h3 Phone number  
+            .schedule-time.flex 
+              .time-field.schedule-time--date.flex   
+                label(for="schDate") Enter your active phone number 
+                input#schPhone(type="tel")
+          .form-field 
+            button.btn.btn-sch.btn-sch--counselling Confirm Appointment
+      .overlay
+      
+                
+
+
+             
+
+             
+
+
+

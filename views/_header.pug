@@ -1,0 +1,29 @@
+header.header
+  nav
+    .top-nav.flex 
+      .flex
+        p.nav-time
+      if user 
+        .flex 
+          p Welcome #{user.lastName}
+          p.btn.btn-logout  
+            span Log out <i class='bx bx-log-in-circle' ></i>  
+      else  
+        .flex 
+          p.btn.signin-btn 
+            <i class='bx bx-user'></i> Sign in
+          p.btn.signup-btn 
+            span Join us
+    .main-nav.flex  
+      .branding 
+        a(href="/") 
+          img(src="img/lovemeloud.jpg", alt="LoveMELoud")
+      .nav-links 
+        ul.flex  
+          li: a(href="") Services
+          li: a(href="") Discover 
+          li: a(href="") Connect
+          li: a(href="") About us 
+          li: a(href="" class="donate-btn") Donate 
+      .search-btn 
+        <i class='bx bx-search'></i>

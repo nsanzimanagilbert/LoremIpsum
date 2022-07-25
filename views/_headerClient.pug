@@ -1,0 +1,23 @@
+header.header
+  nav
+    .top-nav.flex 
+      .flex
+        p.nav-time
+      if user 
+        .flex 
+          p Welcome #{user.lastName}
+          p.btn.btn-logout  
+            span Log out <i class='bx bx-log-in-circle' ></i>  
+    .main-nav.flex  
+      .branding 
+        a(href="/") 
+          img(src="../img/lovemeloud.jpg", alt="LoveMELoud")
+      .nav-links 
+        ul.flex  
+          li: a(href="") Home  
+          li: a(href="") My records   
+          li: a(href="") Responses  
+          li: a(href="") Services   
+          li: a(href="" class="donate-btn") Donations  
+      .search-btn 
+        <i class='bx bx-search'></i>

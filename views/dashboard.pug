@@ -1,0 +1,63 @@
+
+doctype html
+html
+  head
+    block head
+      meta(charset='UTF-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      link(rel='stylesheet' href='/css/style.css')
+      link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+      link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+      link(href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet')
+
+      title LoveMeLoud | #{title}
+  
+  body
+  include _headerAdmin
+    
+  main.main
+    .dashboard-wrapper
+      .section.section-dash.section-dash--overview
+        .c-box--wrapper.grid   
+          .c-box--dash.c-shadow.flex 
+            .c-box--cover.c-box--cover_1.flex   
+              img(src="/img/users.png", alt="")
+            .c-box--desc
+              h2 #{totalClients.length} 
+              h3 Total Clients
+          .c-box--dash.c-shadow.flex 
+            .c-box--cover.c-box--cover_2.flex   
+              img(src="/img/appoint.png", alt="")
+            .c-box--desc 
+              h2 #{schedules.length}
+              h3 All Appointments 
+          .c-box--dash.c-shadow.flex 
+            .c-box--cover.c-box--cover_3.flex  
+              img(src="/img/staff.png", alt="")
+            .c-box--desc 
+              h2 #{totalStaff.length} 
+              h3 Total Staff 
+          .c-box--dash.c-shadow.flex 
+            .c-box--cover.c-box--cover_4.flex   
+              img(src="/img/dashboard.png", alt="")
+            .c-box--desc 
+              h2 #{completedSchedules.length}
+              h3 Pending appointments 
+      .section.section-dash.section-dash--2 
+        .c-box--wrapper.grid 
+          .c-box--stats.grid.c-shadow.c-radius.c-pad
+            .stats-headers.grid.col-span-4 
+              h3 Clients in different months of 2022
+              h3 Clients by service    
+            .stats-box.stats-box--1 
+              canvas#myChartClientsStats 
+            .stats-box.stats-box--2
+              canvas#myChartClientsSummary  
+          .c-box--analytics.c-shadow.c-radius.c-pad
+            .stats-headers 
+              h3 Clients by Gender
+            canvas#myChartClientsGender    
+
+
+
+script(src='/js/bundle.js')

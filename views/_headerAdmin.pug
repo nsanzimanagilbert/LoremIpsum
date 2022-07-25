@@ -1,0 +1,29 @@
+header.header-admin  
+  nav.nav-dash 
+    .top-nav--dash 
+      .nav-dash--user.flex.fixed 
+        .branding-dash
+          img(src="img/lovemeloud.jpg", alt="") 
+        .user.flex   
+          img(src=`img/users/${user.photo}`, alt="")
+          p 
+            span #{user.lastName} 
+            span #{user.firstName}
+        .profile-viewer.c-shadow.hideViewer  
+          a(href='/me' class="flex profile-viewer--link") 
+            img(src="img/icons/user.png", alt="")
+            span Profile 
+          .btn.btn-logout.flex.profile-viewer--link 
+            img(src="img/icons/logout.png", alt="")
+            span Logout 
+    .main-nav--dash   
+      .nav-links--dash.flex  
+        a(href="" class="nav-link--dash") Overview 
+        a(href="" class="nav-link--dash") Clients 
+        a(href="/schedules" class="nav-link--dash") Appointments 
+        a(href="" class="nav-link--dash") Consultants 
+        a(href="" class="nav-link--dash") Counsellors
+        a(href="" class="nav-link--dash") Services 
+        a(href="/users" class="nav-link--dash") Manage User 
+
+

@@ -1,0 +1,28 @@
+extends base
+
+block content
+  main.main
+    section.section.section--1.section-welcome--1.flex
+      .section-overlay.overlay     
+      .section-content-wrapper 
+        .section-heading 
+          h2 Counselling 
+    section.section.section-services  
+      .section-heading 
+        h3 Professional Consultants 
+      .section-content.flex 
+        .experts 
+          each consultant in consultants
+            .expert 
+              img(src=`../img/users/${consultant.photo}`, alt="")
+              .expert-desc
+                .expert-profile  
+                  h4.expert-name #{consultant.firstName} #{consultant.lastName}
+                  p.title Specialist Counsellor
+                .expert-exp 
+                  p He has 10 years experience in mariage counselling 
+                  p Makerere University  
+             
+
+
+
