@@ -4,7 +4,9 @@ export const updatePersonalCode = personalCode => {
   const personalCodeParagraph = document.getElementById(
     'personalCodeParagraph'
   );
-  personalCodeParagraph.value = personalCode;
+  if (personalCodeParagraph) {
+    personalCodeParagraph.value = personalCode;
+  }
 };
 
 export const updateLocalVideo = stream => {

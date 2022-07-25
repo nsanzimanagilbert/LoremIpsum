@@ -8,6 +8,7 @@ export const createUser = async (
   phone,
   duty,
   role,
+  profile,
   password,
   passwordConfirm
 ) => {
@@ -22,12 +23,16 @@ export const createUser = async (
         phone,
         duty,
         role,
+        profile,
         password,
         passwordConfirm
       }
     });
     if ((res.data.status = 'success'))
       showAlert('success', 'Your account has been created!');
+    window.setTimeout(() => {
+      location.assign('/welcome');
+    }, 1500);
   } catch (err) {
     showAlert('error', err.response.data.message);
   }

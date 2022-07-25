@@ -1,4 +1,5 @@
 import { callType } from './chatConstants';
+import * as webRTCHandler from './webRTCHandler';
 
 export const getIncomingCallDialog = (
   callTypeInfo,
@@ -48,6 +49,7 @@ export const getIncomingCallDialog = (
 
   callAccBtn.addEventListener('click', () => {
     acceptCallHandler();
+    webRTCHandler.getLocalPreview();
   });
   callRejBtn.addEventListener('click', () => {
     rejectCallHandler();

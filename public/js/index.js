@@ -23,12 +23,14 @@ import * as webRTCHandler from './webRTCHandler';
 import * as chatConstants from './chatConstants';
 import * as ui from './ui';
 import * as recordingUtils from './recordingUtils';
+import io from 'socket.io-client';
 const socket = io('/');
 // import { getIncomingCallDialog } from './elements';
 
 wss.registerSocketEvents(socket);
 
 webRTCHandler.getLocalPreview();
+
 const personalCodeCopyBtn = document.getElementById('copyPersonalCodeBtn');
 if (personalCodeCopyBtn) {
   personalCodeCopyBtn.addEventListener('click', () => {
