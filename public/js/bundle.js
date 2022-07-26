@@ -39893,8 +39893,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var socket = (0, _socket.default)('/'); // import { getIncomingCallDialog } from './elements';
 
-wss.registerSocketEvents(socket); // webRTCHandler.getLocalPreview();
-
+wss.registerSocketEvents(socket);
+webRTCHandler.getLocalPreview();
 var personalCodeCopyBtn = document.getElementById('copyPersonalCodeBtn');
 
 if (personalCodeCopyBtn) {
@@ -40414,7 +40414,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56695" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59263" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
