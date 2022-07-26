@@ -30,7 +30,6 @@ const socket = io('/');
 wss.registerSocketEvents(socket);
 
 webRTCHandler.getLocalPreview();
-
 const personalCodeCopyBtn = document.getElementById('copyPersonalCodeBtn');
 if (personalCodeCopyBtn) {
   personalCodeCopyBtn.addEventListener('click', () => {
@@ -138,6 +137,19 @@ if (userNav) {
     document.querySelector('.profile-viewer').classList.toggle('hideViewer');
   });
 }
+const profileViewerBtn = document.querySelectorAll('.profileViewerBtn');
+if (profileViewerBtn) {
+  profileViewerBtn.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const fname = this.dataset.fname;
+      const lname = this.dataset.lname;
+      const profile = this.dataset.profile;
+      const photo = this.dataset.photo;
+      showOverlay();
+      showProfileViewerPopup(fname, lname, profile, photo);
+    });
+  });
+}
 
 // DELEGATION
 const logoutBtn = document.querySelector('.btn-logout');
@@ -185,13 +197,6 @@ if (addStaffBtn) {
   });
 }
 
-const profileViewerBtn = document.querySelector('.profileViewerBtn');
-if (profileViewerBtn) {
-  profileViewerBtn.addEventListener('click', () => {
-    showOverlay();
-    showProfileViewerPopup();
-  });
-}
 // Updating User Data
 ////////////////////
 const userDataForm = document.getElementById('userDateForm');

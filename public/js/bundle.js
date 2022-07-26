@@ -32158,22 +32158,20 @@ exports.showProfileViewerPopup = exports.hideProfileViewerPopup = void 0;
 
 var _overlay = require("./overlay");
 
-var _signupPopup = require("./signupPopup");
-
 var _login = require("./login");
 
 /* eslint-disable */
 var hideProfileViewerPopup = function hideProfileViewerPopup() {
-  var el = document.querySelector('.loginPopup');
+  var el = document.querySelector('#profileViewerPopup');
   if (el) el.parentElement.removeChild(el);
 }; // type is 'success' or 'error'
 
 
 exports.hideProfileViewerPopup = hideProfileViewerPopup;
 
-var showProfileViewerPopup = function showProfileViewerPopup() {
+var showProfileViewerPopup = function showProfileViewerPopup(fname, lname, profile, photo) {
   hideProfileViewerPopup();
-  var markup = "<div class=\"popup loginPopup id=\"profileViewerPopup\" flex\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> Sign in to your account </h2> \n    <form class=\"login-form flex\">\n      <input type=\"email\" id=\"loginEmail\" placeholder=\"Email\"></input>\n      <input type=\"password\" id=\"loginPassword\" placeholder=\"Password\"></input>\n      <button class=\"btn btn-login\">Sign in</button>\n    </form>\n    <div class=\"newAccountLink\"> \n      <span>Have no account?</span> \n      <a class=\"btn btn-showSignUp\">Sign up </a> \n    </div>\n  </div>";
+  var markup = "<div class=\"popup loginPopup flex\" id=\"profileViewerPopup\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> ".concat(fname, " ").concat(lname, "  </h2> \n    <form class=\"login-form flex\">\n      <img src='/img/users/").concat(photo, "'\n      <div> ").concat(profile, " </div>\n    </form>\n  </div>");
   document.querySelector('body').insertAdjacentHTML('afterbegin', markup); // window.setTimeout(hideAlert, 5000);
 
   var closePopupBtn = document.querySelector('.close-popup-btn');
@@ -32187,7 +32185,7 @@ var showProfileViewerPopup = function showProfileViewerPopup() {
 };
 
 exports.showProfileViewerPopup = showProfileViewerPopup;
-},{"./overlay":"overlay.js","./signupPopup":"signupPopup.js","./login":"login.js"}],"store.js":[function(require,module,exports) {
+},{"./overlay":"overlay.js","./login":"login.js"}],"store.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40010,6 +40008,21 @@ if (userNav) {
   userNav.addEventListener('click', function () {
     document.querySelector('.profile-viewer').classList.toggle('hideViewer');
   });
+}
+
+var profileViewerBtn = document.querySelectorAll('.profileViewerBtn');
+
+if (profileViewerBtn) {
+  profileViewerBtn.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      var fname = this.dataset.fname;
+      var lname = this.dataset.lname;
+      var profile = this.dataset.profile;
+      var photo = this.dataset.photo;
+      (0, _overlay.showOverlay)();
+      (0, _profileViewerPopup.showProfileViewerPopup)(fname, lname, profile, photo);
+    });
+  });
 } // DELEGATION
 
 
@@ -40080,15 +40093,6 @@ if (addStaffBtn) {
   addStaffBtn.addEventListener('click', function () {
     (0, _staffSignupPopup.showStaffSignupPopup)();
     (0, _overlay.showOverlay)();
-  });
-}
-
-var profileViewerBtn = document.querySelector('.profileViewerBtn');
-
-if (profileViewerBtn) {
-  profileViewerBtn.addEventListener('click', function () {
-    (0, _overlay.showOverlay)();
-    (0, _profileViewerPopup.showProfileViewerPopup)();
   });
 } // Updating User Data
 ////////////////////
@@ -40414,7 +40418,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59263" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56146" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

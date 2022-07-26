@@ -6,7 +6,7 @@ block content
       .section-overlay.overlay     
       .section-content-wrapper 
         .section-heading.section-heading--service.flex  
-          h2 Guidence and Counselling
+          h2 Guidance and Counselling
           p Sechedule an appointment and one of our experts in guidance and counselling will instantly get in touch with you to help you out.
           a(href="/services/counselling/schedule") 
             button.btn.btn-getstarted Get started <i class='bx bx-chevrons-right'></i>
@@ -23,9 +23,7 @@ block content
                 .expert-profile  
                   h4.expert-name #{counsellor.firstName} #{counsellor.lastName}
                   p.title Specialist Counsellor
-                .expert-exp 
-                  p #{counsellor.profile} 
-              button.btn.profileViewerBtn.profile-btn View Profile
+              button.btn.profileViewerBtn.profile-btn(data-fname=`${counsellor.firstName}` data-lname=`${counsellor.lastName}` data-profile=`${counsellor.profile}` data-photo=`${counsellor.photo}`) View Profile
              
 
 
