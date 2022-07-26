@@ -31591,7 +31591,22 @@ var logout = /*#__PURE__*/function () {
 }();
 
 exports.logout = logout;
-},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"updateSettings.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"refleshPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.refleshPage = void 0;
+
+var refleshPage = function refleshPage() {
+  window.setTimeout(function () {
+    location.reload();
+  }, 2000);
+};
+
+exports.refleshPage = refleshPage;
+},{}],"updateSettings.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31602,6 +31617,8 @@ exports.updateSettings = void 0;
 var _axios = _interopRequireDefault(require("axios"));
 
 var _alerts = require("./alerts");
+
+var _refleshPage = require("./refleshPage");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31635,6 +31652,7 @@ var updateSettings = /*#__PURE__*/function () {
 
             if (res.data.status === 'success') {
               (0, _alerts.showAlert)('success', "".concat(type.toUpperCase(), " updated successfully!"));
+              (0, _refleshPage.refleshPage)();
             }
 
             _context.next = 11;
@@ -31659,7 +31677,7 @@ var updateSettings = /*#__PURE__*/function () {
 }();
 
 exports.updateSettings = updateSettings;
-},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"overlay.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js","./refleshPage":"refleshPage.js"}],"overlay.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32130,22 +32148,7 @@ var completeSchedule = /*#__PURE__*/function () {
 }();
 
 exports.completeSchedule = completeSchedule;
-},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"refleshPage.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.refleshPage = void 0;
-
-var refleshPage = function refleshPage() {
-  window.setTimeout(function () {
-    location.reload();
-  }, 2000);
-};
-
-exports.refleshPage = refleshPage;
-},{}],"profileViewerPopup.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"profileViewerPopup.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39890,8 +39893,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var socket = (0, _socket.default)('/'); // import { getIncomingCallDialog } from './elements';
 
-wss.registerSocketEvents(socket);
-webRTCHandler.getLocalPreview();
+wss.registerSocketEvents(socket); // webRTCHandler.getLocalPreview();
+
 var personalCodeCopyBtn = document.getElementById('copyPersonalCodeBtn');
 
 if (personalCodeCopyBtn) {
@@ -40411,7 +40414,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51321" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56695" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

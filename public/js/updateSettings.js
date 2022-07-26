@@ -1,6 +1,7 @@
 /* eslint-disable */
 import axios from 'axios';
 import { showAlert } from './alerts';
+import { refleshPage } from './refleshPage';
 
 // type is either 'password' or 'data'
 export const updateSettings = async (data, type) => {
@@ -18,6 +19,7 @@ export const updateSettings = async (data, type) => {
 
     if (res.data.status === 'success') {
       showAlert('success', `${type.toUpperCase()} updated successfully!`);
+      refleshPage();
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
