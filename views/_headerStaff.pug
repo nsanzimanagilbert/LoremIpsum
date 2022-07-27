@@ -1,0 +1,25 @@
+header.header
+  nav
+    .top-nav.flex 
+      .flex
+        p.nav-time
+      if user 
+        .flex 
+          p Welcome #{user.lastName}
+          p.btn.btn-logout  
+            span Log out <i class='bx bx-log-in-circle' ></i>  
+    .main-nav.flex  
+      .branding 
+        a(href="/") 
+          h1 Mental Guardians
+
+      .nav-links 
+        ul.flex  
+          li: a(href="/") Home  
+          li: a(href="/appointments") Appointments
+          li: a(href="/sessions") Host Meeting     
+          li: a(href="") Clients  
+          li: a(href="/dashboard") Dashboard   
+          li: a(href="" class="donate-btn") Donations  
+      .search-btn 
+        <i class='bx bx-search'></i>

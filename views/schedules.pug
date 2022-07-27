@@ -4,9 +4,8 @@ block content
   main.main
     section.section.section-schedules
       .schedules-wrapper.c2-shadow 
-        .sch-headers.grid.grid-7  
+        .sch-headers.grid.grid-6  
           h3 Sender 
-          h3 Service 
           h3 Meeting date  
           h3 Meeting time 
           h3 Meeting type 
@@ -14,12 +13,10 @@ block content
           h3 Status 
 
         each schedule in schedules 
-          a(href=`/schedules/${schedule.id}`) 
-            .sch-content.grid.grid-7 
+          a(href=`/appointments/${schedule.id}`) 
+            .sch-content.grid.grid-6 
               .sch-field 
                 p #{schedule.schSender}
-              .sch-field 
-                p #{schedule.service} 
               .sch-field 
                 p #{schedule.schDate}
               .sch-field 
@@ -32,7 +29,7 @@ block content
                 if (!schedule.complete)
                   p.pending Pending 
                 else 
-                  p.completed Finished 
+                  p.completed Completed 
              
 
 

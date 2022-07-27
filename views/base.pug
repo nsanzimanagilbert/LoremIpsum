@@ -26,12 +26,9 @@ html
       include _header
     if client    
       include _headerClient 
-    if counsellor 
-      include _headerCounsellor
-    if consultant 
-      include _headerConsultation 
-    if admin 
-      include _headerAdmin
+    if (!client && user) 
+      include _headerStaff
+      
       
 
         

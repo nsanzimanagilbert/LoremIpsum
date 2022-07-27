@@ -5,7 +5,7 @@ block content
     section.section.section-schedules
       .noShow 
         input(type="text" value=`${schedule.id}` id='schId')
-      .schedule-details.c2-shadow.midWd
+      .schedule-details.c2-shadow.lgWd
         .sch-details.grid.grid-2  
           .sender-info.card-details.flex   
             .sender-info--heading.card-details--header
@@ -48,8 +48,22 @@ block content
               .sch-info--field.grid  
                 h3 <i class='bx bx-download' ></i> Sent 
                 p #{schedule.createdAt}
-              if !schedule.complete 
-                button.btn.btn-sch.btn-sch--complete.flex <i class='bx bx-check-double'></i> Mark As Completed
+              .sch-info--field.grid  
+                h3 <i class='bx bx-loader-circle'></i> Done Sessions
+                if schedule.inProgress 
+                  p #{schedule.doneSessions}
+                else
+                  input(type="number" id="doneSessions")
+              .sch-info--field.grid
+                h3 <i class='bx bx-loader-alt'></i> Remaining Sessions 
+                if schedule.inProgress 
+                    p #{schedule.remainingSessions}
+                else 
+                    input(type="number" id ="remainingSessions")
+              if !schedule.complete
+                .sch-btns.flex  
+                  button.btn.btn-sch.btn-sch--inprogress.flex <i class='bx bx-loader-alt'></i> Mark As Inprogress
+                  button.btn.btn-sch.btn-sch--complete.flex <i class='bx bx-check-double'></i> Mark As Completed
               else 
                 button(class='btn btn-sch' disabled) Completed
 

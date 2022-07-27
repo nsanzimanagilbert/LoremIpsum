@@ -24,6 +24,16 @@ const scheduleSchema = new mongoose.Schema(
     service: {
       type: String
     },
+    inProgress: {
+      type: Boolean,
+      default: false
+    },
+    doneSessions: {
+      type: Number
+    },
+    remainingSessions: {
+      type: Number
+    },
     complete: {
       type: Boolean,
       default: false

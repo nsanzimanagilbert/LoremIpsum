@@ -31,7 +31,7 @@ router.get(
   viewsController.getCounsellingPage
 );
 router.get(
-  '/services/counselling/schedule',
+  '/schedule',
   authController.isLoggedIn,
   authController.protect,
   viewsController.getCounselling
@@ -49,13 +49,13 @@ router.get(
   viewsController.getConsultation
 );
 router.get(
-  '/schedules',
+  '/appointments',
   authController.isLoggedIn,
   authController.protect,
   viewsController.getAllSchedules
 );
 router.get(
-  '/schedules/:id',
+  '/appointments/:id',
   authController.isLoggedIn,
   authController.protect,
   viewsController.getSchedule

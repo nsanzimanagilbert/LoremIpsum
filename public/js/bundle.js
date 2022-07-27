@@ -32041,7 +32041,7 @@ exports.showStaffSignupPopup = showStaffSignupPopup;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createSchedule = exports.completeSchedule = void 0;
+exports.progressSchedule = exports.createSchedule = exports.completeSchedule = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -32148,6 +32148,51 @@ var completeSchedule = /*#__PURE__*/function () {
 }();
 
 exports.completeSchedule = completeSchedule;
+
+var progressSchedule = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(schId, inProgress, doneSessions, remainingSessions) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return (0, _axios.default)({
+              method: 'PATCH',
+              url: "/api/v1/schedules/".concat(schId),
+              data: {
+                inProgress: inProgress,
+                doneSessions: doneSessions,
+                remainingSessions: remainingSessions
+              }
+            });
+
+          case 3:
+            res = _context3.sent;
+            if (res.data.status = 'success') (0, _alerts.showAlert)('success', 'Session set');
+            _context3.next = 10;
+            break;
+
+          case 7:
+            _context3.prev = 7;
+            _context3.t0 = _context3["catch"](0);
+            (0, _alerts.showAlert)('error', _context3.t0.response.data.message);
+
+          case 10:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[0, 7]]);
+  }));
+
+  return function progressSchedule(_x10, _x11, _x12, _x13) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+exports.progressSchedule = progressSchedule;
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"profileViewerPopup.js":[function(require,module,exports) {
 "use strict";
 
@@ -39902,7 +39947,7 @@ if (personalCodeCopyBtn) {
   });
 }
 
-var personalCodeVideoBtn = document.querySelector('.icon-video');
+var personalCodeVideoBtn = document.querySelector('.personalCodeConnectingBtn');
 var personalCodeChatBtn = document.querySelector('.icon-chat');
 
 if (personalCodeChatBtn) {
@@ -40277,6 +40322,40 @@ if (schCompleteBtn) {
       return _ref4.apply(this, arguments);
     };
   }());
+}
+
+var schProgressBtn = document.querySelector('.btn-sch--inprogress');
+
+if (schProgressBtn) {
+  schProgressBtn.addEventListener('click', /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(e) {
+      var schId, doneSessions, remainingSessions, inProgress;
+      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              schId = document.getElementById('schId').value;
+              doneSessions = document.getElementById('doneSessions').value;
+              remainingSessions = document.getElementById('remainingSessions').value;
+              inProgress = true;
+              _context5.next = 6;
+              return (0, _schedule.progressSchedule)(schId, inProgress, doneSessions, remainingSessions);
+
+            case 6:
+              (0, _refleshPage.refleshPage)();
+
+            case 7:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+
+    return function (_x5) {
+      return _ref5.apply(this, arguments);
+    };
+  }());
 } // Complete Schedule END
 /////////////////////
 
@@ -40418,7 +40497,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56146" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56124" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

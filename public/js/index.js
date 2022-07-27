@@ -8,7 +8,7 @@ import { hideLoginPopup, showLoginPopup } from './loginPopup';
 import { showOverlay, hideOverlay } from './overlay';
 import { showSignupPopup, hideSignupPopup } from './signupPopup';
 import { showStaffSignupPopup, hideStaffSignupPopup } from './staffSignupPopup';
-import { createSchedule, completeSchedule } from './schedule';
+import { createSchedule, completeSchedule, progressSchedule } from './schedule';
 import { refleshPage } from './refleshPage';
 import {
   showProfileViewerPopup,
@@ -38,7 +38,9 @@ if (personalCodeCopyBtn) {
   });
 }
 
-const personalCodeVideoBtn = document.querySelector('.icon-video');
+const personalCodeVideoBtn = document.querySelector(
+  '.personalCodeConnectingBtn'
+);
 const personalCodeChatBtn = document.querySelector('.icon-chat');
 
 if (personalCodeChatBtn) {
@@ -281,6 +283,18 @@ if (schCompleteBtn) {
     const schId = document.getElementById('schId').value;
     const complete = true;
     await completeSchedule(schId, complete);
+    refleshPage();
+  });
+}
+const schProgressBtn = document.querySelector('.btn-sch--inprogress');
+if (schProgressBtn) {
+  schProgressBtn.addEventListener('click', async e => {
+    const schId = document.getElementById('schId').value;
+    const doneSessions = document.getElementById('doneSessions').value;
+    const remainingSessions = document.getElementById('remainingSessions')
+      .value;
+    const inProgress = true;
+    await progressSchedule(schId, inProgress, doneSessions, remainingSessions);
     refleshPage();
   });
 }

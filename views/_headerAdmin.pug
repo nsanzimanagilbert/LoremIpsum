@@ -3,7 +3,8 @@ header.header-admin
     .top-nav--dash 
       .nav-dash--user.flex.fixed 
         .branding-dash
-          h1 Mental Guardians
+          a(href="/") 
+            h1 Mental Guardians
 
         .user.flex   
           img(src=`img/users/${user.photo}`, alt="")
@@ -19,9 +20,9 @@ header.header-admin
             span Logout 
     .main-nav--dash   
       .nav-links--dash.flex  
-        a(href="" class="nav-link--dash") Overview 
+        a(href="/" class="nav-link--dash") Home 
         a(href="" class="nav-link--dash") Clients 
-        a(href="/schedules" class="nav-link--dash") Appointments 
+        a(href="/appointments" class="nav-link--dash") Appointments 
         a(href="" class="nav-link--dash") Consultants 
         a(href="" class="nav-link--dash") Counsellors
         a(href="" class="nav-link--dash") Services 

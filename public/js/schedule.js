@@ -45,3 +45,25 @@ export const completeSchedule = async (schId, complete) => {
     showAlert('error', err.response.data.message);
   }
 };
+
+export const progressSchedule = async (
+  schId,
+  inProgress,
+  doneSessions,
+  remainingSessions
+) => {
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: `/api/v1/schedules/${schId}`,
+      data: {
+        inProgress,
+        doneSessions,
+        remainingSessions
+      }
+    });
+    if ((res.data.status = 'success')) showAlert('success', 'Session set');
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};

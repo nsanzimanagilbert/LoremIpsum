@@ -18,31 +18,35 @@ html
   main.main
     .dashboard-wrapper
       .section.section-dash.section-dash--overview
-        .c-box--wrapper.grid   
-          .c-box--dash.c-shadow.flex 
-            .c-box--cover.c-box--cover_1.flex   
-              img(src="/img/users.png", alt="")
-            .c-box--desc
-              h2 #{totalClients.length} 
-              h3 Total Clients
-          .c-box--dash.c-shadow.flex 
-            .c-box--cover.c-box--cover_2.flex   
-              img(src="/img/appoint.png", alt="")
-            .c-box--desc 
-              h2 #{schedules.length}
-              h3 All Appointments 
-          .c-box--dash.c-shadow.flex 
-            .c-box--cover.c-box--cover_3.flex  
-              img(src="/img/staff.png", alt="")
-            .c-box--desc 
-              h2 #{totalStaff.length} 
-              h3 Total Staff 
-          .c-box--dash.c-shadow.flex 
-            .c-box--cover.c-box--cover_4.flex   
-              img(src="/img/dashboard.png", alt="")
-            .c-box--desc 
-              h2 #{completedSchedules.length}
-              h3 Pending appointments 
+        .c-box--wrapper.grid
+          a(href='/users')    
+            .c-box--dash.c-shadow.flex 
+              .c-box--cover.c-box--cover_1.flex   
+                img(src="/img/users.png", alt="")
+              .c-box--desc
+                h2 #{totalClients.length} 
+                h3 Total Clients
+          a(href='/appointments') 
+            .c-box--dash.c-shadow.flex 
+              .c-box--cover.c-box--cover_2.flex   
+                img(src="/img/appoint.png", alt="")
+              .c-box--desc 
+                h2 #{schedules.length}
+                h3 All Appointments 
+          a(href='/users') 
+            .c-box--dash.c-shadow.flex 
+              .c-box--cover.c-box--cover_3.flex  
+                img(src="/img/staff.png", alt="")
+              .c-box--desc 
+                h2 #{totalStaff.length} 
+                h3 Total Staff
+          a(href='/appointments')  
+            .c-box--dash.c-shadow.flex 
+              .c-box--cover.c-box--cover_4.flex   
+                img(src="/img/dashboard.png", alt="")
+              .c-box--desc 
+                h2 #{completedSchedules.length}
+                h3 Pending appointments 
       .section.section-dash.section-dash--2 
         .c-box--wrapper.grid 
           .c-box--stats.grid.c-shadow.c-radius.c-pad
