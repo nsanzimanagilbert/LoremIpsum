@@ -1,11 +1,13 @@
 :root {
   --section-rotate: 9vw;
   --primary-color: #db5588;
+  --bg-color--yellow: #ffb700;
   --primary-color-dark: #932650;
   --secondary-color: #2b3f86;
   --secondary-color-dark: #2b3f86;
   --secondary-color-light: #24b6e2;
   --tartiary-color: #0069d9;
+  --darkblue--bg: #1c284c;
   --bg-color: rgb(229, 230, 237);
   --py-1: 3rem;
   --px-1: 3rem;
@@ -121,6 +123,9 @@ li {
 }
 .grid-6 {
   grid-template-columns: repeat(6, 1fr);
+}
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
 }
 .maxWd {
   width: 100%;
@@ -281,11 +286,6 @@ input:focus {
   background-color: #777;
   color: #fff;
   padding: 10px 0;
-  text-transform: uppercase;
-}
-.profile-card h2 {
-  font-size: 16px;
-  margin-bottom: 15px;
   text-transform: uppercase;
 }
 
@@ -494,9 +494,28 @@ select,
   overflow: hidden;
 }
 .top-nav {
-  background: var(--secondary-color);
+  background: var(--darkblue--bg);
   color: #fff;
   padding: 5px 2rem;
+}
+
+.profile-card h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.welcome-act-btns .btn {
+  height: 100%;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-weight: bold;
+}
+.signup-btn {
+  background: var(--bg-color--yellow);
+}
+.welcome-act-btns .signin-btn {
+  border: 1px var(--bg-color--yellow) solid;
+  box-sizing: border-box;
 }
 .top-nav p {
   margin-left: 10px;
@@ -743,7 +762,10 @@ select,
   background: var(--primary-color);
   color: #fff;
   padding: 1.6rem 2rem;
+  font-weight: bold;
   border-radius: 5px;
+  box-shadow: inset 0 0 0 5px var(--primary-color),
+    inset 0 0 0 6px rgb(255 255 255 / 50%);
 }
 .btn-getstarted {
   background: var(--primary-color);
@@ -871,6 +893,75 @@ select,
 .c-box:nth-child(2) {
   /* border-top: 20px var(--secondary-color) solid; */
 }
+/* TESTIMONIALS SECTION  */
+.testimonials-section {
+  background: url('../img/map.png') no-repeat;
+  background-size: cover;
+}
+.testimonials-section .section-intro {
+}
+.testimonials-section .section-intro h2 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.testimonials-section .section-intro p {
+  font-size: 3rem;
+  word-wrap: break-word;
+  margin: 30px 0;
+}
+.btn-testimonials {
+  background: var(--primary-color-dark);
+  border-radius: 20px;
+  color: #ffff;
+}
+.testimonial {
+  background: #fff;
+  flex-basis: 50%;
+  max-width: 350px;
+  padding: 3rem;
+  margin: 20px;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  position: relative;
+}
+
+.testimonial .cover {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  border: 1px var(--primary-color-dark) dotted;
+  border-radius: 50%;
+  justify-content: center;
+}
+.testimonial .cover img {
+  height: 90%;
+  width: 90%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.testimonial p {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  position: relative;
+}
+.testimonial .review-name {
+  text-align: center;
+  font-size: 1.3rem;
+}
+.testimonial .review-name::before {
+  content: '';
+  background: var(--primary-color-dark);
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  height: 1px;
+  width: 30px;
+}
+/* TESTIMONIALS END  */
+
 .section--3 .c-box:not(:last-child)::after {
   content: '';
   background: url('../img/arrow.svg') no-repeat;
@@ -1334,23 +1425,42 @@ input[type='radio'] {
 
 /* FOOTER */
 footer {
-  background-color: #fff;
+  background: var(--darkblue--bg);
+  color: #f4f4f4;
 }
 .main-footer {
-  padding: 5rem 3rem;
+  padding: 7rem 3rem;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 2rem;
+  align-items: flex-start;
 }
+.footer-top {
+  padding: 3rem;
+  padding-bottom: 2rem;
+}
+
 .footer-logo {
   display: flex;
   align-items: center;
   margin-right: 2rem;
 }
-.footer-logo .brandName {
+.footer-section-heading {
+  margin-bottom: 15px;
+}
+.footer-section--contact {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.footer .brandName {
   font-size: 3rem;
   text-transform: uppercase;
-  color: var(--secondary-color);
   font-weight: 600;
   letter-spacing: normal;
   line-height: normal;
+}
+.footer-top p {
+  font-size: 1.4rem;
 }
 .footer-logo img {
   height: 5rem;
@@ -1364,6 +1474,9 @@ footer {
   border-radius: 50%;
   justify-content: center;
   transition: all 0.2s ease-in-out;
+}
+.footer .svg:first-child {
+  margin-left: 0;
 }
 .footer .svg i {
   font-size: 2rem;
@@ -1380,7 +1493,8 @@ footer {
 .footer-form h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  font-weight: bold;
+  font-weight: 400;
+  color: var(--bg-color--yellow);
 }
 .footer-form p {
   font-size: 1.5rem;
@@ -1396,17 +1510,19 @@ footer {
 .footer .sub-form button {
   border: none;
   height: 3.5rem;
-  outline: 1px #777 solid;
+  outline: 3px var(--bg-color--yellow) solid;
   padding: 0.5rem 1rem;
 }
 .footer .sub-form input {
-  width: 60%;
+  width: 70%;
+  outline: 3px var(--bg-color--yellow) solid;
 }
 .footer .sub-form button {
-  width: 35%;
-  background: var(--secondary-color);
-  color: #fff;
+  width: 25%;
+  background: var(--bg-color--yellow);
+  color: #2b3f86;
   text-transform: uppercase;
+  font-weight: bold;
 }
 .footer-links {
   flex-direction: column;
@@ -1414,13 +1530,14 @@ footer {
 }
 .footer-links li a {
   font-size: 1.6rem;
-  color: var(--secondary-color);
+  color: #f4f4f4;
 }
 .footer-bottom {
   text-align: center;
   background: var(--secondary-color);
   color: #fff;
-  padding: 1rem;
+  padding: 2rem;
+  font-size: 1.4rem;
 }
 canvas {
   width: 100%;

@@ -29,7 +29,7 @@ const socket = io('/');
 
 wss.registerSocketEvents(socket);
 
-webRTCHandler.getLocalPreview();
+// webRTCHandler.getLocalPreview();
 const personalCodeCopyBtn = document.getElementById('copyPersonalCodeBtn');
 if (personalCodeCopyBtn) {
   personalCodeCopyBtn.addEventListener('click', () => {
