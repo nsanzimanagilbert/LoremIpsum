@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const twilio = require('twilio');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -76,6 +77,18 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/schedules', scheduleRouter);
 // app.use('/api/v1/services', servicesRouter);
 
+app.get('/api/v1/get-turn-credentials', (req, res) => {
+  const accountsid = 'AC4648f7f18200c9375a10811540d8318f';
+  const authToken = '1e326386b347b80a763a8fb753620fe9';
+  const client = twilio(accountsid, authToken);
+  client.tokens
+    .create()
+    .then(token => res.send({ token }))
+    .catch(err => {
+      console.log(err);
+      res.send({ message: 'failed to fetch TURN credentials', err });
+    });
+});
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });

@@ -33,6 +33,7 @@ server.listen(port, () => {
 });
 
 let connectedPeers = [];
+let connectedPeersStrangers = [];
 const io = require('socket.io')(server);
 io.on('connection', socket => {
   connectedPeers.push(socket.id);
@@ -81,13 +82,58 @@ io.on('connection', socket => {
     }
   });
 
+  socket.on('stranger-connection-status', data => {
+    const { status } = data;
+    if (status) {
+      connectedPeersStrangers.push(socket.id);
+    } else {
+      const newConnectedPeersStrangers = connectedPeersStrangers.filter(
+        peerSocketId => peerSocketId !== socket.id
+      );
+      connectedPeersStrangers = newConnectedPeersStrangers;
+    }
+    console.log('Allowed stranger calls...', connectedPeersStrangers);
+  });
+
+  socket.on('get-stranger-socket-id', () => {
+    let randomStrangerSocketId;
+    const filteredConnectedPeerStrangers = connectedPeersStrangers.filter(
+      peerSocketId => peerSocketId !== socket.id
+    );
+
+    if (filteredConnectedPeerStrangers.length > 0) {
+      randomStrangerSocketId =
+        filteredConnectedPeerStrangers[
+          Math.floor(Math.random() * filteredConnectedPeerStrangers.length)
+        ];
+    } else {
+      randomStrangerSocketId = null;
+    }
+    const data = {
+      randomStrangerSocketId
+    };
+    io.to(socket.id).emit('stranger-socket-id', data);
+  });
   socket.on('disconnect', () => {
     const newConnectedPeers = connectedPeers.filter(peerSocketId => {
       return peerSocketId !== socket.id;
     });
 
     connectedPeers = newConnectedPeers;
-    console.log(connectedPeers);
+    const newConnectedPeersStrangers = connectedPeersStrangers.filter(
+      peerSocketId => peerSocketId !== socket.id
+    );
+    connectedPeersStrangers = newConnectedPeersStrangers;
+  });
+
+  socket.on('user-hanged-up', data => {
+    const { connectedUserSocketId } = data;
+    const connectedPeer = connectedPeers.find(
+      peerSocketId => peerSocketId === connectedUserSocketId
+    );
+    if (connectedPeer) {
+      io.to(connectedUserSocketId).emit('user-hanged-up');
+    }
   });
 });
 

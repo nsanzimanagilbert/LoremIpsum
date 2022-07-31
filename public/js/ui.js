@@ -1,5 +1,6 @@
 import * as chatConstants from './chatConstants';
 import * as elements from './elements';
+import * as store from './store';
 export const updatePersonalCode = personalCode => {
   const personalCodeParagraph = document.getElementById(
     'personalCodeParagraph'
@@ -25,6 +26,7 @@ export const updateRemoteVideo = stream => {
     remoteVideo.srcObject = stream;
     remoteVideo.addEventListener('loadedmetadata', () => {
       remoteVideo.play();
+      showElement(remoteVideo);
     });
   }
 };
@@ -58,6 +60,20 @@ export const showCallingDialog = rejectCallHandler => {
     dialog.querySelectorAll('*').forEach(dialog => dialog.remove());
 
     dialog.appendChild(callingDialog);
+  }
+};
+export const showNoStrangerAvailable = () => {
+  const infoDialog = elements.getInfoDialog(
+    'No client is available',
+    'Please check the appointment lists'
+  );
+  if (infoDialog) {
+    const dialog = document.getElementById('callDialogWrapper');
+    dialog.appendChild(infoDialog);
+
+    setTimeout(() => {
+      removeCallDialogs();
+    }, [4000]);
   }
 };
 
@@ -100,10 +116,16 @@ export const removeCallDialogs = () => {
 };
 
 export const showCallElements = callType => {
-  if (callType === chatConstants.callType.CHAT_PERSONAL_CODE) {
+  if (
+    callType === chatConstants.callType.CHAT_PERSONAL_CODE ||
+    callType === chatConstants.callType.CHAT_STRANGER
+  ) {
     showChatCallElements();
   }
-  if (callType === chatConstants.callType.VIDEO_PERSONAL_CODE) {
+  if (
+    callType === chatConstants.callType.VIDEO_PERSONAL_CODE ||
+    callType === chatConstants.callType.VIDEO_STRANGER
+  ) {
     showVideoCallElements();
   }
 };
@@ -169,7 +191,7 @@ export const appendMessage = (message, right = false) => {
   messagesContainer.appendChild(messageElement);
 };
 
-export const clearMessager = () => {
+export const clearMessanger = () => {
   const messageContainer = document.getElementById('messages_box');
   messageContainer.querySelectorAll('*').forEach(n => n.remove());
 };
@@ -202,6 +224,57 @@ export const resetRecordingButtons = () => {
     hideElement(recordingButtons);
   }
 };
+export const switchRecordingBtns = (switchForResumeButton = false) => {
+  const resumeBtn = document.getElementById('resume_recording_button');
+  const pauseBtn = document.getElementById('pause_recording_button');
+  if (switchForResumeButton) {
+    hideElement(pauseBtn);
+    showElement(resumeBtn);
+  } else {
+    hideElement(resumeBtn);
+    showElement(pauseBtn);
+  }
+};
+
+//UI after hanging up
+export const updateUIAfterHangUp = callType => {
+  enableDashboard();
+  // hide the call buttons
+  if (
+    callType === chatConstants.callType.VIDEO_PERSONAL_CODE ||
+    callType === chatConstants.callType.VIDEO_STRANGER
+  ) {
+    const callBtns = document.getElementById('call_buttons');
+    if (callBtns) {
+      hideElement(callBtns);
+    }
+  } else {
+    const chatCallButtons = document.getElementById(
+      'finish_chat_button_container'
+    );
+    if (chatCallButtons) {
+      hideElement(chatCallButtons);
+    }
+  }
+
+  clearMessanger();
+  updateMicButton(false);
+  updateCameraButton();
+
+  //Hide remote video and show place holder
+
+  const placeholder = document.getElementById('video_placeholder');
+  if (placeholder) {
+    showElement(placeholder);
+  }
+  const remoteVideo = document.getElementById('remote_video');
+  if (remoteVideo) {
+    hideElement(remoteVideo);
+  }
+
+  removeCallDialogs();
+};
+
 //UI Helper Functions
 const enableDashboard = () => {
   const dashboardBlocker = document.getElementById('dashboardBlur');

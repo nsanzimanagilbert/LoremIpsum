@@ -72,6 +72,10 @@ a {
 li {
   list-style: none;
 }
+.display_none {
+  display: none;
+}
+
 .bx {
   font-size: 1.4rem;
 }
@@ -1629,6 +1633,13 @@ canvas {
   background: #fff;
   justify-content: center;
   cursor: pointer;
+  background: #000;
+}
+.control-icons .icon i {
+  color: #f4f4f4;
+}
+.control-icons .icon-hangup {
+  background: red;
 }
 .messanger-container {
   flex-direction: column;

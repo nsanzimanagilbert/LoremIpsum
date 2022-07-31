@@ -26,19 +26,35 @@ block content
                             .chat-init-controls.flex  
                                 input#personalCodeInput
                                 button.btn#personalCodeConnectingBtn.personalCodeConnectingBtn Start Meeting
+                            .video_recording_buttons 
+                                button#resume_recording_button
+                                    <i class='bx bx-play'></i> Resume recording
+                                button#pause_recording_button 
+                                    <i class='bx bx-pause'></i> Pause recording
+
+
+
                         .control-icons.flex
                             .icon.icon-screen.flex  
-                                <i class='bx bx-fullscreen'></i>
+                                img(src="./img/icons/screen-sharing.png", alt="")
+                            .icon.icon-video#allow_staff_call_btn.flex  
+                                <i class='bx bx-lock-open-alt'></i>
                             .icon.icon-audio--mute.flex 
                                 <i class='bx bxs-microphone-off'></i>
-                            //- .icon.icon-video.flex  
-                            //-     <i class='bx bx-video'></i>
+                            .icon.icon-video#callStranger.flex  
+                                <i class='bx bx-video'></i>
                             .icon.icon-video--cancel.flex  
                                 <i class='bx bxs-video-off'></i>
+                            .icon#icon-hangup.icon-hangup.flex 
+                                img(src="./img/icons/hangUp.png", alt="")
+                        
                             .icon#icon-record.icon-record.flex 
                                 img(src="./img/icons/rec-button.png", alt="")
                             .icon#icon-record--stop.icon-record--stop.flex 
                                 img(src="./img/icons/stop.png", alt="")
+                            
+                        
+
                             
                 #messages_container.messanger-container.flex
                     #messages_box   

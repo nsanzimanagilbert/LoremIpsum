@@ -1,5 +1,6 @@
 /* eslint-disable */
 import Chart from 'chart.js/auto';
+import axios from 'axios';
 import moment from 'moment';
 import '@babel/polyfill';
 import { login, logout } from './login';
@@ -23,11 +24,21 @@ import * as webRTCHandler from './webRTCHandler';
 import * as chatConstants from './chatConstants';
 import * as ui from './ui';
 import * as recordingUtils from './recordingUtils';
+import * as strangerUtils from './strangerUtils';
 import io from 'socket.io-client';
 const socket = io('/');
 // import { getIncomingCallDialog } from './elements';
 
+const getTurnServerCredentials = async () => {
+  const responseData = await axios.get('/api/v1/get-turn-credentials');
+  webRTCHandler.setTURNServers(responseData.data.token.iceServers);
+};
+
 wss.registerSocketEvents(socket);
+
+getTurnServerCredentials().then(() => {
+  webRTCHandler.getLocalPreview();
+});
 
 // webRTCHandler.getLocalPreview();
 const personalCodeCopyBtn = document.getElementById('copyPersonalCodeBtn');
@@ -88,6 +99,20 @@ if (screenSharingBtn) {
   });
 }
 
+const pauseRecordingBtn = document.getElementById('pause_recording_button');
+if (pauseRecordingBtn) {
+  pauseRecordingBtn.addEventListener('click', () => {
+    recordingUtils.pauseRecording();
+    ui.switchRecordingBtns(true);
+  });
+}
+const resumeRecordingBtn = document.getElementById('resume_recording_button');
+if (resumeRecordingBtn) {
+  resumeRecordingBtn.addEventListener('click', () => {
+    recordingUtils.resumeRecording();
+    ui.switchRecordingBtns();
+  });
+}
 //MESSANGER
 const newMessageInput = document.getElementById('newMessageInput');
 if (newMessageInput) {
@@ -127,6 +152,40 @@ if (stopRecordingBtn) {
   stopRecordingBtn.addEventListener('click', () => {
     recordingUtils.stopRecording();
     ui.resetRecordingButtons();
+  });
+}
+
+//Hangup Calls
+const hangUpCallBtn = document.getElementById('icon-hangup');
+if (hangUpCallBtn) {
+  hangUpCallBtn.addEventListener('click', () => {
+    webRTCHandler.handleHungUp();
+  });
+}
+
+const hangUpChatBtn = document.getElementById('hangup-chat-btn');
+if (hangUpChatBtn) {
+  hangUpChatBtn.addEventListener('click', () => {
+    webRTCHandler.handleHungUp();
+  });
+}
+
+// Getting ready for calls
+
+const getReadyForCallsBtn = document.getElementById('allow_staff_call_btn');
+if (getReadyForCallsBtn) {
+  getReadyForCallsBtn.addEventListener('click', () => {
+    const allowState = store.getState().allowConnectionsFromStranger;
+    store.setAllowConnectionsFromStrangers(!allowState);
+    strangerUtils.changeStrangerConnectionStatus(!allowState);
+  });
+}
+const strangerCallerBtn = document.getElementById('callStranger');
+if (strangerCallerBtn) {
+  strangerCallerBtn.addEventListener('click', () => {
+    strangerUtils.getStrangerSocketIdAndConnect(
+      chatConstants.callType.VIDEO_STRANGER
+    );
   });
 }
 // getIncomingCallDialog();

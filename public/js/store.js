@@ -1,10 +1,12 @@
+import * as chatConstants from './chatConstants';
 let state = {
   socketId: null,
   localStream: null,
   remoteStream: null,
   screenSharingStream: null,
   allowConnectionsFromStranger: false,
-  screenSharingActive: false
+  screenSharingActive: false,
+  callState: chatConstants.callState.CALL_AVAILABLE_ONLY_CHAT
 };
 
 export const setSocketId = socketId => {
@@ -49,6 +51,12 @@ export const setRemoteStream = stream => {
   };
 };
 
+export const setCallState = callState => {
+  state = {
+    ...state,
+    callState
+  };
+};
 export const getState = () => {
   return state;
 };
