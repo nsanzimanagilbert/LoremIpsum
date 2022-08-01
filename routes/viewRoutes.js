@@ -18,7 +18,12 @@ router.get(
   authController.protect,
   viewsController.getDashboard
 );
-router.get('/sessions', viewsController.getSessions);
+router.get(
+  '/sessions',
+  authController.isLoggedIn,
+  authController.protect,
+  viewsController.getSessions
+);
 router.get(
   '/services/counselling',
   authController.isLoggedIn,
