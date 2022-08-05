@@ -67,7 +67,12 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     'lastName',
     'phone',
     'email',
-    'profile'
+    'profile',
+    'education',
+    'experience',
+    'languages',
+    'salutation',
+    'location'
   );
   if (req.file) filteredBody.photo = req.file.filename;
 

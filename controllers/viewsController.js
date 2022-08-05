@@ -4,14 +4,19 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.getHome = catchAsync(async (req, res, next) => {
+  const therapists = await User.find({ role: 'counsellor' });
+
   res.status(200).render('overview', {
-    title: 'Home'
+    title: 'Home',
+    therapists
   });
 });
 
 exports.getWelcome = catchAsync(async (req, res, next) => {
-  res.status(200).render('welcome', {
-    title: 'Welcome'
+  const counsellors = await User.find({ role: 'counsellor' });
+  res.status(200).render('counselling', {
+    title: 'Welcome',
+    counsellors
   });
 });
 exports.getConsultationPage = catchAsync(async (req, res, next) => {
@@ -78,6 +83,20 @@ exports.getUsers = catchAsync(async (req, res, next) => {
     title: 'Users',
     users,
     staff,
+    clients
+  });
+});
+exports.getAllStaff = catchAsync(async (req, res, next) => {
+  const staffs = await User.find({ duty: 'staff' });
+  res.status(200).render('staffs', {
+    title: 'Staff',
+    staffs
+  });
+});
+exports.getAllClients = catchAsync(async (req, res, next) => {
+  const clients = await User.find({ role: 'user' });
+  res.status(200).render('clients', {
+    title: 'Clients',
     clients
   });
 });

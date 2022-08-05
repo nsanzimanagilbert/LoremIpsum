@@ -37,7 +37,27 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: 'default.jpg'
   },
+  salutation: {
+    type: String,
+    default: ''
+  },
   profile: {
+    type: String,
+    default: ''
+  },
+  languages: {
+    type: String,
+    default: ''
+  },
+  experience: {
+    type: String,
+    default: ''
+  },
+  education: {
+    type: String,
+    default: ''
+  },
+  location: {
     type: String,
     default: ''
   },

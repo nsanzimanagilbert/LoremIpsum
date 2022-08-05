@@ -14,25 +14,12 @@ html
   body
   include _headerAdmin
   main.main  
-    .page-wrapper.page-wrapper--users 
-      .section.section-users.grid 
-        .users-container.users-container--clients
-          h2 All Application Clients
-          each client in clients 
-            .container-user.container-user--client.flex 
-              .user-image.flex  
-                span #{client.firstName.slice(0, 1)}
-                span #{client.lastName.slice(0, 1)}
-              .user-desc.user-desc--client 
-                .name.name-client  
-                  h4 #{client.firstName} #{client.lastName}
-                .phone 
-                  p #{client.phone} #{client.email}
+    .page-wrapper.page-wrapper--usersStaff 
         .users-container.users-container--staff
           .users-container--header.flex  
             h2 All Staff
             button.btn.btn-addStaff Add Staff 
-          each member in staff 
+          each member in staffs 
             .container-user.container-user--staff.flex 
               .user-image.user-image--staff 
                 img(src=`/img/users/${member.photo}`, alt="")
@@ -43,6 +30,9 @@ html
                   p #{member.email} 
                 .role
                   p #{member.role} 
+              .user-action 
+                button(data-userid=`${member._id}` class='btn profileViewerBtn profileViewerBtn-staff flex')
+                  <i class='bx bxs-user-detail'></i> View
 
 
         

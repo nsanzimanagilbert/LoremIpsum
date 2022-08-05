@@ -11,11 +11,11 @@ import { showSignupPopup, hideSignupPopup } from './signupPopup';
 import { showStaffSignupPopup, hideStaffSignupPopup } from './staffSignupPopup';
 import { createSchedule, completeSchedule, progressSchedule } from './schedule';
 import { refleshPage } from './refleshPage';
+import { getUser } from './user';
 import {
   showProfileViewerPopup,
   hideProfileViewerPopup
 } from './profileViewerPopup';
-
 // Session Handlers
 ////////////////////
 import * as wss from './wss';
@@ -25,6 +25,7 @@ import * as chatConstants from './chatConstants';
 import * as ui from './ui';
 import * as recordingUtils from './recordingUtils';
 import * as strangerUtils from './strangerUtils';
+
 import io from 'socket.io-client';
 const socket = io('/');
 // import { getIncomingCallDialog } from './elements';
@@ -37,10 +38,11 @@ const getTurnServerCredentials = async () => {
 wss.registerSocketEvents(socket);
 
 getTurnServerCredentials().then(() => {
-  webRTCHandler.getLocalPreview();
+  // webRTCHandler.getLocalPreview();
+  console.log('Local preview started...');
 });
 
-webRTCHandler.getLocalPreview();
+// webRTCHandler.getLocalPreview();
 const personalCodeCopyBtn = document.getElementById('copyPersonalCodeBtn');
 if (personalCodeCopyBtn) {
   personalCodeCopyBtn.addEventListener('click', () => {
@@ -201,13 +203,10 @@ if (userNav) {
 const profileViewerBtn = document.querySelectorAll('.profileViewerBtn');
 if (profileViewerBtn) {
   profileViewerBtn.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const fname = this.dataset.fname;
-      const lname = this.dataset.lname;
-      const profile = this.dataset.profile;
-      const photo = this.dataset.photo;
+    btn.addEventListener('click', async function(e) {
+      const userId = this.dataset.userid;
       showOverlay();
-      showProfileViewerPopup(fname, lname, profile, photo);
+      await getUser(userId);
     });
   });
 }
@@ -262,7 +261,7 @@ if (addStaffBtn) {
 ////////////////////
 const userDataForm = document.getElementById('userDateForm');
 if (userDataForm) {
-  userDataForm.addEventListener('submit', e => {
+  userDataForm.addEventListener('submit', async e => {
     e.preventDefault();
 
     const form = new FormData();
@@ -272,8 +271,15 @@ if (userDataForm) {
     form.append('phone', document.getElementById('myPhone').value);
     form.append('profile', document.getElementById('myProfile').value);
     form.append('photo', document.getElementById('myPhoto').files[0]);
+    form.append('salutation', document.getElementById('salutation').value);
+    form.append('education', document.getElementById('myEducation').value);
+    form.append('experience', document.getElementById('myEducation').value);
+    form.append('languages', document.getElementById('myLanguages').value);
+    form.append('location', document.getElementById('myLocation').value);
+
     document.querySelector('.data-change-btn').textContent = 'Updating...';
-    updateSettings(form, 'data');
+    await updateSettings(form, 'data');
+    document.querySelector('.data-change-btn').textContent = 'Update Data';
   });
 }
 

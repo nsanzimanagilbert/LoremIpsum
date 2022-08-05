@@ -15,33 +15,16 @@ block content
         
 
         .experts 
-          .expert 
-            img(src="img/jonathan.jpeg", alt="")
-            .expert-desc
-              .expert-profile  
-                h4.expert-name Rukundo Jonathan 
-                p.title Specialist Counsellor
-              .expert-exp 
-                p He has 10 years experience in mariage counselling 
-                p Makerere University  
-          .expert 
-            img(src="img/jonathan.jpeg", alt="")
-            .expert-desc
-              .expert-profile  
-                h4.expert-name Rukundo Jonathan 
-                p.title Specialist Counsellor
-              .expert-exp 
-                p He has 10 years experience in mariage counselling 
-                p Makerere University   
-          .expert 
-            img(src="img/jonathan.jpeg", alt="")
-            .expert-desc
-              .expert-profile  
-                h4.expert-name Rukundo Jonathan 
-                p.title Specialist Counsellor
-              .expert-exp 
-                p He has 10 years experience in mariage counselling 
-                p Makerere University 
+          each therapist in therapists 
+            .expert 
+              img(src=`img/users/${therapist.photo}`, alt="")
+              .expert-desc
+                .expert-profile  
+                  h4.expert-name #{therapist.salutation} #{therapist.firstName} #{therapist.lastName}
+                  p.title Specialist Counsellor
+                .expert-exp 
+                  p He has 10 years experience in mariage counselling 
+                  p Makerere University   
       
     section.section.section-howto.section--3 
       .section-heading 

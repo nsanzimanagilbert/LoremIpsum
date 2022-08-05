@@ -62,6 +62,17 @@ router.get(
 );
 
 router.get('/users', authController.isLoggedIn, viewsController.getUsers);
+router.get(
+  '/users/staff',
+  authController.isLoggedIn,
+  viewsController.getAllStaff
+);
+router.get(
+  '/users/clients',
+  authController.isLoggedIn,
+  viewsController.getAllClients
+);
+
 router.get('/me', authController.protect, viewsController.getAccount);
 
 router.post(

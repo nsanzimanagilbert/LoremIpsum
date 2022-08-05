@@ -13,19 +13,24 @@ header.header-admin
             span #{user.firstName}
         .profile-viewer.c-shadow.hideViewer  
           a(href='/me' class="flex profile-viewer--link") 
-            img(src="img/icons/user.png", alt="")
+            <i class='bx bxs-user-rectangle'></i> 
             span Profile 
           .btn.btn-logout.flex.profile-viewer--link 
-            img(src="img/icons/logout.png", alt="")
+            <i class='bx bx-log-out-circle' ></i> 
             span Logout 
     .main-nav--dash   
       .nav-links--dash.flex  
-        a(href="/" class="nav-link--dash") Home 
-        a(href="" class="nav-link--dash") Clients 
-        a(href="/appointments" class="nav-link--dash") Appointments 
-        a(href="" class="nav-link--dash") Consultants 
-        a(href="" class="nav-link--dash") Counsellors
-        a(href="" class="nav-link--dash") Services 
-        a(href="/users" class="nav-link--dash") Manage User 
+        a(href="/dashboard" class="nav-link--dash") 
+          <i class='bx bxs-dashboard'></i> Dashboard 
+        a(href="/appointments" class="nav-link--dash") 
+          <i class='bx bxs-calendar'></i> Appointments 
+        a(href="/users/staff" class="nav-link--dash") 
+          <i class='bx bxs-user'></i> Counsellors
+        a(href="/users/clients" class="nav-link--dash") 
+          <i class='bx bxs-group'></i> Clients 
+        a(href="" class="nav-link--dash") 
+          <i class='bx bxs-videos'></i> Meetings 
+        a(href="/users" class="nav-link--dash") 
+          <i class='bx bxs-cog' ></i> Manage User 
 
 

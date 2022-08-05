@@ -22,7 +22,6 @@ export const showStaffSignupPopup = () => {
       <select id="staffRole" required>
         <option>--Select Role--</option>
         <option value="counsellor">Counsellor</option>
-        <option value="consultant">Consultant</option>
         <option value="admin">Admin</option>
 
       </select>

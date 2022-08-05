@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { showAlert } from './alerts';
+import { showProfileViewerPopup } from './profileViewerPopup';
 
 export const createUser = async (
   firstName,
@@ -33,6 +34,22 @@ export const createUser = async (
     window.setTimeout(() => {
       location.assign('/welcome');
     }, 1500);
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};
+
+export const getUser = async userId => {
+  try {
+    const res = await axios({
+      method: 'GET',
+      url: `/api/v1/users/${userId}`
+    });
+    if ((res.data.status = 'success')) {
+      const user = res.data.data.data;
+      console.log(user);
+      showProfileViewerPopup(user);
+    }
   } catch (err) {
     showAlert('error', err.response.data.message);
   }

@@ -8,14 +8,14 @@ block content
         .section-heading.section-heading--service.flex  
           h2 Guidance and Counselling
           p Sechedule an appointment and one of our experts in guidance and counselling will instantly get in touch with you to help you out.
-          a(href="/services/counselling/schedule") 
+          a(href="/schedule") 
             button.btn.btn-getstarted Get started <i class='bx bx-chevrons-right'></i>
 
     section.section.section-services  
       .section-heading 
-        h3 Professional Counsellors
+        h3 Speak to our professional therapists
       .section-content.flex 
-        .experts 
+        .experts.experts-inpage   
           each counsellor in counsellors
             .expert.c3-shadow 
               img(src=`../img/users/${counsellor.photo}`, alt="")
@@ -23,7 +23,8 @@ block content
                 .expert-profile  
                   h4.expert-name #{counsellor.firstName} #{counsellor.lastName}
                   p.title Specialist Counsellor
-              button.btn.profileViewerBtn.profile-btn(data-fname=`${counsellor.firstName}` data-lname=`${counsellor.lastName}` data-profile=`${counsellor.profile}` data-photo=`${counsellor.photo}`) View Profile
+                  input(type="text" value=`${counsellor._id}` id='counselorId' class='display_none')
+              button.btn.profileViewerBtn.profile-btn.flex(data-userid=`${counsellor._id}`) <i class='bx bxs-user-detail'></i> View Profile
              
 
 

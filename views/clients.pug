@@ -15,7 +15,6 @@ html
   include _headerAdmin
   main.main  
     .page-wrapper.page-wrapper--users 
-      .section.section-users.grid 
         .users-container.users-container--clients
           h2 All Application Clients
           each client in clients 
@@ -28,21 +27,6 @@ html
                   h4 #{client.firstName} #{client.lastName}
                 .phone 
                   p #{client.phone} #{client.email}
-        .users-container.users-container--staff
-          .users-container--header.flex  
-            h2 All Staff
-            button.btn.btn-addStaff Add Staff 
-          each member in staff 
-            .container-user.container-user--staff.flex 
-              .user-image.user-image--staff 
-                img(src=`/img/users/${member.photo}`, alt="")
-              .user-desc.user-desc--staff
-                .name.name-staff
-                  h4 #{member.firstName} #{member.lastName}
-                .mail.mail-staff 
-                  p #{member.email} 
-                .role
-                  p #{member.role} 
 
 
         

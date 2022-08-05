@@ -13,28 +13,51 @@ block content
                 form#userDateForm.form.form-user-data   
                     .profile-card--header
                         h2 My Account Details
-                    .profile-card 
-                        
+                    .profile-card
                         .user-photo 
                             img.form-user-photo(src=`/img/users/${user.photo}`, alt="")
                             label(for='myPhoto') Choose Photo 
                             input.form-upload(type="file", accept='image/*', id='myPhoto', name='myPhoto' value=`${user.photo}`)
                         .label.acc-input.flex  
-                            label(for="name") First name 
+                            label(for="salutation") Salutation 
+                            select#salutation(name="salutation")
+                                option() #{user.salutation}  
+                                option(value="Mr.") Mr.
+                                option(value="Ms.") Ms.
+                                option(value="Miss") Miss 
+                                option(value="Mrs.") Mrs.
+                                option(value="Dr.") Dr.
+                                option(value="Prof.") Prof. 
+                        .label.acc-input.flex  
+                            label(for="myFirstName") First name 
                             input#myFirstName(type="text" required value= `${user.firstName}` )
                         .label.acc-input.flex 
-                            label(for="name") Last name 
+                            label(for="myLastName") Last name 
                             input#myLastName(type="text" required value= `${user.lastName}` )
                         .label.acc-input.flex  
-                            label(for="email") Email 
+                            label(for="myEmail") Email 
                             input#myEmail(type="text" required value=`${user.email}`)
                         .label.acc-input.flex  
-                            label(for="email") Phone  
+                            label(for="myPhone") Phone  
                             input#myPhone(type="text" required value=`${user.phone}`)
+                        .label.acc-input.flex  
+                            label(for="myLanguages") Languages spoken 
+                            input#myLanguages(type="text" required value=`${user.languages}`)
+                        .label.acc--input.flex 
+                            label(for="myEducation") Academic awards
+                            .label.label-content 
+                                textarea#myEducation() #{user.education}
+                        .label.acc--input.flex 
+                            label(for="myExperience") Work experience
+                            .label.label-content 
+                                textarea#myExperience() #{user.experience}
                         .label.acc--input.flex 
                             label(for="myProfile") My profile
                             .label.label-content 
                                 textarea#myProfile() #{user.profile}
+                        .label.acc-input.flex  
+                            label(for="myLanguages") Location  
+                            input#myLocation(type="text" required value=`${user.location}`)
                         
                         .btn.profile-btn 
                             button.data-change-btn Update Data
