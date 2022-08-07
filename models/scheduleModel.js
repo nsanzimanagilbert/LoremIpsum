@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 const scheduleSchema = new mongoose.Schema(
   {
-    schSender: {
+    schSenderEmail: {
+      type: String
+    },
+    schSenderName: {
       type: String
     },
     schDate: {

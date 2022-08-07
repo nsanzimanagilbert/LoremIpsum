@@ -1,5 +1,36 @@
+extends base
+
+block content
+  main.main
+    section.section.section-schedules
+      .schedules-wrapper.c2-shadow 
+        .sch-headers.grid.grid-6  
+          h3 Sender 
+          h3 Meeting date  
+          h3 Meeting time 
+          h3 Meeting type 
+          h3 Sent at
+          h3 Status 
+
+        each schedule in schedules 
+          a(href=`/appointments/${schedule.id}`) 
+            .sch-content.grid.grid-6 
+              .sch-field 
+                p #{schedule.schSenderName}
+              .sch-field 
+                p #{schedule.schDate}
+              .sch-field 
+                p #{schedule.schTime}
+              .sch-field 
+                p #{schedule.schType}
+              .sch-field 
+                p #{schedule.createdAt}
+              .sch-field.sch-field--status
+                if (!schedule.complete)
+                  p.pending Pending 
+                else 
+                  p.completed Completed 
+             
 
 
-if(schedule.approved)
-    .alowCallsBtn 
-    button 
+

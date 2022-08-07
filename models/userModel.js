@@ -13,6 +13,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Enter your last name']
   },
+  gender: {
+    type: String,
+    enum: ['Male', 'Female']
+  },
+  age: {
+    type: Number
+  },
   email: {
     type: String,
     required: [true, 'A user must have an email'],
@@ -23,6 +30,7 @@ const userSchema = new mongoose.Schema({
   phone: {
     type: String
   },
+
   duty: {
     type: String,
     default: 'client'

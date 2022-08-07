@@ -308,7 +308,8 @@ const formCounselling = document.querySelector('.form-schedule--counselling');
 if (formCounselling) {
   formCounselling.addEventListener('submit', async e => {
     e.preventDefault();
-    const schSender = document.getElementById('schSender').value;
+    const schSenderEmail = document.getElementById('schSender').value;
+    const schSenderName = document.getElementById('schSenderName').value;
     const schDate = document.getElementById('schDate').value;
     const schHour = document.getElementById('schHour').value;
     const schMins = document.getElementById('schMins').value;
@@ -326,7 +327,8 @@ if (formCounselling) {
       }
     }
     await createSchedule(
-      schSender,
+      schSenderEmail,
+      schSenderName,
       schDate,
       schTime,
       schType,

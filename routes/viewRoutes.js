@@ -55,6 +55,12 @@ router.get(
   viewsController.getAllSchedules
 );
 router.get(
+  '/myappointments',
+  authController.isLoggedIn,
+  authController.protect,
+  viewsController.getAllMySchedules
+);
+router.get(
   '/appointments/:id',
   authController.isLoggedIn,
   authController.protect,
@@ -62,13 +68,9 @@ router.get(
 );
 
 router.get('/users', authController.isLoggedIn, viewsController.getUsers);
+router.get('/staff', authController.isLoggedIn, viewsController.getAllStaff);
 router.get(
-  '/users/staff',
-  authController.isLoggedIn,
-  viewsController.getAllStaff
-);
-router.get(
-  '/users/clients',
+  '/clients',
   authController.isLoggedIn,
   viewsController.getAllClients
 );

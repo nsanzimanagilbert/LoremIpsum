@@ -40,24 +40,25 @@ block content
                         .label.acc-input.flex  
                             label(for="myPhone") Phone  
                             input#myPhone(type="text" required value=`${user.phone}`)
-                        .label.acc-input.flex  
-                            label(for="myLanguages") Languages spoken 
-                            input#myLanguages(type="text" required value=`${user.languages}`)
-                        .label.acc--input.flex 
-                            label(for="myEducation") Academic awards
-                            .label.label-content 
-                                textarea#myEducation() #{user.education}
-                        .label.acc--input.flex 
-                            label(for="myExperience") Work experience
-                            .label.label-content 
-                                textarea#myExperience() #{user.experience}
-                        .label.acc--input.flex 
-                            label(for="myProfile") My profile
-                            .label.label-content 
-                                textarea#myProfile() #{user.profile}
-                        .label.acc-input.flex  
-                            label(for="myLanguages") Location  
-                            input#myLocation(type="text" required value=`${user.location}`)
+                        if !client
+                            .label.acc-input.flex  
+                                label(for="myLanguages") Languages spoken 
+                                input#myLanguages(type="text" required value=`${user.languages}`)
+                            .label.acc--input.flex 
+                                label(for="myEducation") Academic awards
+                                .label.label-content 
+                                    textarea#myEducation() #{user.education}
+                            .label.acc--input.flex 
+                                label(for="myExperience") Work experience
+                                .label.label-content 
+                                    textarea#myExperience() #{user.experience}
+                            .label.acc--input.flex 
+                                label(for="myProfile") My profile
+                                .label.label-content 
+                                    textarea#myProfile() #{user.profile}
+                            .label.acc-input.flex  
+                                label(for="myLanguages") Location  
+                                input#myLocation(type="text" required value=`${user.location}`)
                         
                         .btn.profile-btn 
                             button.data-change-btn Update Data

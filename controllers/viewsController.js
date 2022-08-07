@@ -67,11 +67,21 @@ exports.getAllSchedules = catchAsync(async (req, res, next) => {
 });
 exports.getSchedule = catchAsync(async (req, res, next) => {
   const schedule = await Schedule.findOne({ _id: req.params.id });
-  const sender = await User.findOne({ email: schedule.schSender });
+  const sender = await User.findOne({ email: schedule.schSenderEmail });
   res.status(200).render('singleSchedule', {
     title: 'Schedules',
     schedule,
     sender
+  });
+});
+
+exports.getAllMySchedules = catchAsync(async (req, res, next) => {
+  const schedules = await Schedule.find({
+    schSenderEmail: req.user.email
+  }).sort({ _id: -1 });
+  res.status(200).render('mySchedules', {
+    title: 'My Appointments',
+    schedules
   });
 });
 

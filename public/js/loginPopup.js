@@ -16,8 +16,14 @@ export const showLoginPopup = () => {
     </div>
     <h2> Sign in to your account </h2> 
     <form class="login-form flex">
-      <input type="email" id="loginEmail" placeholder="Email"></input>
-      <input type="password" id="loginPassword" placeholder="Password"></input>
+      <div class="field">
+        <i class='bx bxs-envelope' ></i>
+        <input type="email" id="loginEmail" placeholder="Email"></input>
+      </div>
+      <div class="field">
+        <i class='bx bxs-lock-alt' ></i>
+        <input type="password" id="loginPassword" placeholder="Password"></input>
+      </div>
       <button class="btn btn-login">Sign in</button>
     </form>
     <div class="newAccountLink"> 

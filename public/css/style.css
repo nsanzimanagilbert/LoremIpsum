@@ -431,10 +431,10 @@ input:focus {
 }
 .close-popup-btn {
   position: absolute;
-  right: 5px;
-  top: 5px;
-  background: var(--primary-color);
-  border-radius: 50%;
+  right: 0px;
+  top: 0px;
+  background: var(--primary-color-dark);
+  /* border-radius: 50%; */
 }
 #profileViewerPopup {
   width: 50vw;
@@ -515,19 +515,65 @@ input:focus {
   font-size: 20px;
   color: #fff;
 }
+#signUpForm {
+  width: 100%;
+  flex-basis: 100%;
+  overflow: hidden;
+}
+.btn-signup {
+  width: 100%;
+  background: var(--primary-color-dark);
+  color: #fff;
+  text-transform: uppercase;
+}
 .login-form,
 .signup-form {
   flex-direction: column;
   width: 100%;
   margin: 2rem 0;
 }
+.signup-form .btn {
+  width: 100%;
+  padding: 7px 6px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.signup-form .field,
+.login-form .field {
+  width: 100%;
+  position: relative;
+  height: 32px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+.signup-form .field i,
+.login-form .field i {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(133, 133, 133);
+}
+.formBackBtn {
+  cursor: pointer;
+}
+.signup-form select {
+  padding-left: 30px;
+}
 .login-form input,
 select,
 .signup-form input {
   width: 100%;
   padding: 5px 6px;
-  margin-bottom: 10px;
+  height: 100%;
+  padding-left: 33px;
 }
+
 .login-form button,
 .signup-form button {
   width: 100%;
@@ -535,7 +581,7 @@ select,
   text-transform: uppercase;
   font-weight: bold;
   border-radius: 3px;
-  background: var(--primary-color);
+  background: var(--primary-color-dark);
   color: #fff;
 }
 .newAccountLink {

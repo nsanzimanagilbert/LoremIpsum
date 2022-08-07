@@ -31763,7 +31763,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var createUser = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(firstName, lastName, email, phone, duty, role, profile, password, passwordConfirm) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(firstName, lastName, gender, age, email, phone, duty, role, profile, password, passwordConfirm) {
     var res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
@@ -31777,6 +31777,8 @@ var createUser = /*#__PURE__*/function () {
               data: {
                 firstName: firstName,
                 lastName: lastName,
+                gender: gender,
+                age: age,
                 email: email,
                 phone: phone,
                 duty: duty,
@@ -31809,7 +31811,7 @@ var createUser = /*#__PURE__*/function () {
     }, _callee, null, [[0, 8]]);
   }));
 
-  return function createUser(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8, _x9) {
+  return function createUser(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8, _x9, _x10, _x11) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -31855,7 +31857,7 @@ var getUser = /*#__PURE__*/function () {
     }, _callee2, null, [[0, 7]]);
   }));
 
-  return function getUser(_x10) {
+  return function getUser(_x12) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -31893,7 +31895,7 @@ exports.hideSignupPopup = hideSignupPopup;
 
 var showSignupPopup = function showSignupPopup() {
   hideSignupPopup();
-  var markup = "<div class=\"popup signupPopup flex\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> Create your personal account </h2> \n    <form class=\"signup-form flex\">\n      <input type=\"text\" placeholder=\"First name\" id=\"firstName\" required></input>\n      <input type=\"text\" placeholder=\"Last name\" id=\"lastName\" required></input>\n      <input type=\"email\" placeholder=\"Email\" id=\"email\" required></input>\n      <input type=\"text\" placeholder=\"Phone number\" id=\"phone\" required></input>\n      <input type=\"password\" placeholder=\"Password\" id=\"password\" required></input>\n      <input type=\"password\" placeholder=\"Confirm password\" id=\"passwordConfirm\" required></input>\n\n      <button class=\"btn btn-signup\">Sign up</button>\n    </form>\n    <div class=\"newAccountLink signinLink\"> \n      <span>Have an account already?</span> \n      <a class=\"btn btn-showSignin\">Sign in </a> \n    </div>\n  </div>";
+  var markup = "<div class=\"popup signupPopup flex\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> Create your personal account </h2>\n    <form id=\"signUpForm\">\n      <div class=\"signup-form--container signup-form--1\">\n        <div class=\"signup-form flex flex\">\n          <div class=\"field\">\n            <i class='bx bxs-user' ></i>\n            <input type=\"text\" placeholder=\"Your First Name\" id=\"firstName\" required>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-user' ></i>\n            <input type=\"text\" placeholder=\"Your Last Name\" id=\"lastName\" required>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-user' ></i>\n            <select id=\"gender\">\n              <option>Your Gender</option>\n              <option value=\"Male\">Male</option>\n              <option value=\"Female\">Female</option>\n            </select>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-calendar'></i>\n            <input type=\"number\" placeholder=\"Your Age\" id=\"age\" required>\n          </div>\n          <div class=\"btn btn-signup btn-signup--next\">Continue</div>\n        </div>\n      </div>\n      <div class=\"signup-form--container signup-form--2 display_none\">\n        <div class=\"signup-form flex signup-form--2\">\n          <div class=\"field\">\n            <i class='bx bxs-envelope' ></i>\n            <input type=\"email\" placeholder=\"Your Email\" id=\"email\" required></input>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-phone' ></i>\n            <input type=\"text\" placeholder=\"Your Phone number\" id=\"phone\" required></input>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-lock-alt' ></i>\n            <input type=\"password\" placeholder=\"Your Password\" id=\"password\" required></input>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-lock-alt' ></i>\n            <input type=\"password\" placeholder=\"Repeat Your Password\" id=\"passwordConfirm\" required></input>\n          </div>\n          <div class=\"formBackBtn\" flex>\n            <i class='bx bx-arrow-back'></i> Back\n          </div>\n          <div class=\"btn btn-signup btn-signup--complete\">Complete Sign up</div>\n        </div>\n      </div>\n    </form> \n    \n    <div class=\"newAccountLink signinLink\"> \n      <span>Have an account already?</span> \n      <a class=\"btn btn-showSignin\">Sign in </a> \n    </div>\n  </div>";
   document.querySelector('body').insertAdjacentHTML('afterbegin', markup); // window.setTimeout(hideAlert, 5000);
 
   var closePopupBtn = document.querySelector('.close-popup-btn');
@@ -31915,12 +31917,31 @@ var showSignupPopup = function showSignupPopup() {
     });
   }
 
-  var signUpForm = document.querySelector('.signup-form');
+  var form1 = document.querySelector('.signup-form--1');
+  var form2 = document.querySelector('.signup-form--2');
+  var showNextBtn = document.querySelector('.btn-signup--next');
+  var formBackBtn = document.querySelector('.formBackBtn');
 
-  if (signUpForm) {
-    signUpForm.addEventListener('submit', /*#__PURE__*/function () {
+  if (showNextBtn) {
+    showNextBtn.addEventListener('click', function () {
+      form1.classList.add('display_none');
+      form2.classList.remove('display_none');
+    });
+  }
+
+  if (formBackBtn) {
+    formBackBtn.addEventListener('click', function () {
+      form1.classList.remove('display_none');
+      form2.classList.add('display_none');
+    });
+  }
+
+  var completeSignupBtn = document.querySelector('.btn-signup--complete');
+
+  if (completeSignupBtn) {
+    completeSignupBtn.addEventListener('click', /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-        var firstName, lastName, email, phone, duty, role, profile, password, passwordConfirm;
+        var firstName, lastName, gender, age, email, phone, duty, role, profile, password, passwordConfirm;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -31928,6 +31949,8 @@ var showSignupPopup = function showSignupPopup() {
                 e.preventDefault();
                 firstName = document.getElementById('firstName').value;
                 lastName = document.getElementById('lastName').value;
+                gender = document.getElementById('gender').value;
+                age = document.getElementById('age').value;
                 email = document.getElementById('email').value;
                 phone = document.getElementById('phone').value;
                 duty = 'client';
@@ -31935,10 +31958,10 @@ var showSignupPopup = function showSignupPopup() {
                 profile = '';
                 password = document.getElementById('password').value;
                 passwordConfirm = document.getElementById('passwordConfirm').value;
-                _context.next = 12;
-                return (0, _user.createUser)(firstName, lastName, email, phone, duty, role, profile, password, passwordConfirm);
+                _context.next = 14;
+                return (0, _user.createUser)(firstName, lastName, gender, age, email, phone, duty, role, profile, password, passwordConfirm);
 
-              case 12:
+              case 14:
               case "end":
                 return _context.stop();
             }
@@ -31986,7 +32009,7 @@ exports.hideLoginPopup = hideLoginPopup;
 
 var showLoginPopup = function showLoginPopup() {
   hideLoginPopup();
-  var markup = "<div class=\"popup loginPopup flex\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> Sign in to your account </h2> \n    <form class=\"login-form flex\">\n      <input type=\"email\" id=\"loginEmail\" placeholder=\"Email\"></input>\n      <input type=\"password\" id=\"loginPassword\" placeholder=\"Password\"></input>\n      <button class=\"btn btn-login\">Sign in</button>\n    </form>\n    <div class=\"newAccountLink\"> \n      <span>Have no account?</span> \n      <a class=\"btn btn-showSignUp\">Sign up </a> \n    </div>\n  </div>";
+  var markup = "<div class=\"popup loginPopup flex\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> Sign in to your account </h2> \n    <form class=\"login-form flex\">\n      <div class=\"field\">\n        <i class='bx bxs-envelope' ></i>\n        <input type=\"email\" id=\"loginEmail\" placeholder=\"Email\"></input>\n      </div>\n      <div class=\"field\">\n        <i class='bx bxs-lock-alt' ></i>\n        <input type=\"password\" id=\"loginPassword\" placeholder=\"Password\"></input>\n      </div>\n      <button class=\"btn btn-login\">Sign in</button>\n    </form>\n    <div class=\"newAccountLink\"> \n      <span>Have no account?</span> \n      <a class=\"btn btn-showSignUp\">Sign up </a> \n    </div>\n  </div>";
   document.querySelector('body').insertAdjacentHTML('afterbegin', markup); // window.setTimeout(hideAlert, 5000);
 
   var closePopupBtn = document.querySelector('.close-popup-btn');
@@ -32143,7 +32166,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var createSchedule = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(schSender, schDate, schTime, schType, schPhone, createdAt, service) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(schSenderEmail, schSenderName, schDate, schTime, schType, schPhone, createdAt, service) {
     var res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
@@ -32155,7 +32178,8 @@ var createSchedule = /*#__PURE__*/function () {
               method: 'POST',
               url: "/api/v1/schedules",
               data: {
-                schSender: schSender,
+                schSenderEmail: schSenderEmail,
+                schSenderName: schSenderName,
                 schDate: schDate,
                 schTime: schTime,
                 schType: schType,
@@ -32184,7 +32208,7 @@ var createSchedule = /*#__PURE__*/function () {
     }, _callee, null, [[0, 7]]);
   }));
 
-  return function createSchedule(_x, _x2, _x3, _x4, _x5, _x6, _x7) {
+  return function createSchedule(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -32227,7 +32251,7 @@ var completeSchedule = /*#__PURE__*/function () {
     }, _callee2, null, [[0, 7]]);
   }));
 
-  return function completeSchedule(_x8, _x9) {
+  return function completeSchedule(_x9, _x10) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -32272,7 +32296,7 @@ var progressSchedule = /*#__PURE__*/function () {
     }, _callee3, null, [[0, 7]]);
   }));
 
-  return function progressSchedule(_x10, _x11, _x12, _x13) {
+  return function progressSchedule(_x11, _x12, _x13, _x14) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -40671,14 +40695,15 @@ var formCounselling = document.querySelector('.form-schedule--counselling');
 if (formCounselling) {
   formCounselling.addEventListener('submit', /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(e) {
-      var schSender, schDate, schHour, schMins, schTiming, schTime, schPhone, service, createdAt, schTypes, schType, _iterator, _step, radioButton;
+      var schSenderEmail, schSenderName, schDate, schHour, schMins, schTiming, schTime, schPhone, service, createdAt, schTypes, schType, _iterator, _step, radioButton;
 
       return _regeneratorRuntime().wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
               e.preventDefault();
-              schSender = document.getElementById('schSender').value;
+              schSenderEmail = document.getElementById('schSender').value;
+              schSenderName = document.getElementById('schSenderName').value;
               schDate = document.getElementById('schDate').value;
               schHour = document.getElementById('schHour').value;
               schMins = document.getElementById('schMins').value;
@@ -40689,60 +40714,60 @@ if (formCounselling) {
               createdAt = (0, _moment.default)().format('lll');
               schTypes = document.querySelectorAll('input[name="schType"]');
               _iterator = _createForOfIteratorHelper(schTypes);
-              _context6.prev = 12;
+              _context6.prev = 13;
 
               _iterator.s();
 
-            case 14:
+            case 15:
               if ((_step = _iterator.n()).done) {
-                _context6.next = 21;
+                _context6.next = 22;
                 break;
               }
 
               radioButton = _step.value;
 
               if (!radioButton.checked) {
-                _context6.next = 19;
+                _context6.next = 20;
                 break;
               }
 
               schType = radioButton.value;
-              return _context6.abrupt("break", 21);
+              return _context6.abrupt("break", 22);
 
-            case 19:
-              _context6.next = 14;
+            case 20:
+              _context6.next = 15;
               break;
 
-            case 21:
-              _context6.next = 26;
+            case 22:
+              _context6.next = 27;
               break;
 
-            case 23:
-              _context6.prev = 23;
-              _context6.t0 = _context6["catch"](12);
+            case 24:
+              _context6.prev = 24;
+              _context6.t0 = _context6["catch"](13);
 
               _iterator.e(_context6.t0);
 
-            case 26:
-              _context6.prev = 26;
+            case 27:
+              _context6.prev = 27;
 
               _iterator.f();
 
-              return _context6.finish(26);
+              return _context6.finish(27);
 
-            case 29:
-              _context6.next = 31;
-              return (0, _schedule.createSchedule)(schSender, schDate, schTime, schType, schPhone, createdAt, service);
-
-            case 31:
-              (0, _refleshPage.refleshPage)();
+            case 30:
+              _context6.next = 32;
+              return (0, _schedule.createSchedule)(schSenderEmail, schSenderName, schDate, schTime, schType, schPhone, createdAt, service);
 
             case 32:
+              (0, _refleshPage.refleshPage)();
+
+            case 33:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, null, [[12, 23, 26, 29]]);
+      }, _callee6, null, [[13, 24, 27, 30]]);
     }));
 
     return function (_x5) {
@@ -40960,7 +40985,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62473" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57336" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

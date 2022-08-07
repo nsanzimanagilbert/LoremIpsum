@@ -5,6 +5,8 @@ import { showProfileViewerPopup } from './profileViewerPopup';
 export const createUser = async (
   firstName,
   lastName,
+  gender,
+  age,
   email,
   phone,
   duty,
@@ -20,6 +22,8 @@ export const createUser = async (
       data: {
         firstName,
         lastName,
+        gender,
+        age,
         email,
         phone,
         duty,

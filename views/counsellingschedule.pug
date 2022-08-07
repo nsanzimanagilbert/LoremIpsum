@@ -3,7 +3,11 @@ extends base
 block content
   main.main
     .noShow 
+      -var firstName = user.firstName
+      -var lastName = user.lastName
+      -var username = `${firstName} ${lastName}`
       input(type="text" value=`${user.email}` id="schSender")
+      input(type="text" value=`${username}` id="schSenderName")
     section.section.section-schedule
       form.form.form-schedule.form-schedule--counselling.midWd
         .form-heading 
@@ -72,7 +76,7 @@ block content
                 input#schPhone(type="tel")
           .form-field 
             button.btn.btn-sch.btn-sch--counselling Confirm Appointment
-      .overlay
+
       
                 
 
