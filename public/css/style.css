@@ -626,6 +626,7 @@ select,
 }
 .signup-btn {
   background: var(--bg-color--yellow);
+  color: var(--secondary-color-dark);
 }
 .welcome-act-btns .signin-btn {
   border: 1px var(--bg-color--yellow) solid;
