@@ -2,10 +2,9 @@ extends base
 
 block content
   main.main
-    section.section.section-schedules
+    section.section.section-schedules.section-schedules--client
       .schedules-wrapper.c2-shadow 
-        .sch-headers.grid.grid-6  
-          h3 Sender 
+        .sch-headers.grid.grid-5   
           h3 Meeting date  
           h3 Meeting time 
           h3 Meeting type 
@@ -13,10 +12,8 @@ block content
           h3 Status 
 
         each schedule in schedules 
-          a(href=`/appointments/${schedule.id}`) 
-            .sch-content.grid.grid-6 
-              .sch-field 
-                p #{schedule.schSenderName}
+          a(href=`/myappointments/${schedule.id}`) 
+            .sch-content.grid.grid-5 
               .sch-field 
                 p #{schedule.schDate}
               .sch-field 

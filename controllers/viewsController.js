@@ -85,6 +85,15 @@ exports.getAllMySchedules = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getMySchedule = catchAsync(async (req, res, next) => {
+  const schedule = await Schedule.findOne({
+    _id: req.params.id
+  });
+  res.status(200).render('mySchedule', {
+    title: 'My Appointments',
+    schedule
+  });
+});
 exports.getUsers = catchAsync(async (req, res, next) => {
   const users = await User.find();
   const clients = users.filter(user => user.role == 'user');

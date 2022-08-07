@@ -18,12 +18,7 @@ router.get(
   authController.protect,
   viewsController.getDashboard
 );
-router.get(
-  '/sessions',
-  authController.isLoggedIn,
-  authController.protect,
-  viewsController.getSessions
-);
+router.get('/sessions', viewsController.getSessions);
 router.get(
   '/services/counselling',
   authController.isLoggedIn,
@@ -59,6 +54,12 @@ router.get(
   authController.isLoggedIn,
   authController.protect,
   viewsController.getAllMySchedules
+);
+router.get(
+  '/myappointments/:id',
+  authController.isLoggedIn,
+  authController.protect,
+  viewsController.getMySchedule
 );
 router.get(
   '/appointments/:id',
