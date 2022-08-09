@@ -12,8 +12,6 @@ block content
         .section-cover
     section.section.section--2.section-experts 
       .section-content.flex  
-        
-
         .experts 
           each therapist in therapists 
             .expert 
@@ -21,10 +19,14 @@ block content
               .expert-desc
                 .expert-profile  
                   h4.expert-name #{therapist.salutation} #{therapist.firstName} #{therapist.lastName}
-                  p.title Specialist Counsellor
+                  p.title Counsellor
                 .expert-exp 
                   p He has 10 years experience in mariage counselling 
                   p Makerere University   
+        //- aside 
+        //-   h2 Speak to our caring thrapists today
+        //-   p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat similique eum perferendis dolor fugit amet.
+        //-   button.btn Make Appointment
       
     section.section.section-howto.section--3 
       .section-heading 
