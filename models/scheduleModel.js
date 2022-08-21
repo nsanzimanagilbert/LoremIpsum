@@ -27,6 +27,26 @@ const scheduleSchema = new mongoose.Schema(
     service: {
       type: String
     },
+    approved: {
+      type: Boolean,
+      default: false
+    },
+    approvedBy: {
+      type: String
+    },
+    approvedAt: {
+      type: String
+    },
+    meetingDate: {
+      type: String
+    },
+    meetingTime: {
+      type: String
+    },
+    meetingStarted: {
+      type: Boolean,
+      default: false
+    },
     inProgress: {
       type: Boolean,
       default: false

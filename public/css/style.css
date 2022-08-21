@@ -103,9 +103,11 @@ li {
   align-items: center;
 }
 .grid-2 {
+  display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 20px;
   align-items: flex-start;
+  justify-content: flex-start;
 }
 .card-details {
   flex-direction: column;
@@ -117,10 +119,12 @@ li {
   text-align: center;
   background: var(--secondary-color);
   color: #fff;
+  padding: 5px 0;
 }
 .card-details--header h2 {
   font-weight: 400;
   font-size: 1.6rem;
+  text-transform: uppercase;
 }
 .grid-7 {
   grid-template-columns: repeat(7, 1fr);
@@ -1460,6 +1464,7 @@ input[type='radio'] {
   text-transform: uppercase;
   font-size: 1rem;
   border-radius: 3px;
+  justify-content: center;
 }
 .btn-sch--complete {
   justify-content: center;
@@ -1522,7 +1527,7 @@ input[type='radio'] {
   border: none;
   height: 100%;
 }
-.sch-btns button:first-child {
+.sch-btns button:not[last-child] {
   margin-right: 10px;
 }
 .sch-btns .btn-sch--inprogress {
@@ -1547,8 +1552,14 @@ input[type='radio'] {
   flex-direction: column;
 }
 .sender-info--field {
-  text-align: center;
+  text-align: left;
   margin-bottom: 5px;
+  width: 100%;
+}
+.sender-img {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
 }
 .sender-info--field h3 {
   font-weight: 400;

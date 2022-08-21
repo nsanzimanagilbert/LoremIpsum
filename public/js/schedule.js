@@ -69,3 +69,48 @@ export const progressSchedule = async (
     showAlert('error', err.response.data.message);
   }
 };
+
+export const setMeeting = async (
+  schId,
+  approved,
+  approvedBy,
+  approvedAt,
+  meetingDate,
+  meetingTime
+) => {
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: `/api/v1/schedules/${schId}`,
+      data: {
+        approved,
+        approvedBy,
+        approvedAt,
+        meetingDate,
+        meetingTime
+      }
+    });
+    if ((res.data.status = 'success'))
+      showAlert('success', 'Meeting has been set');
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};
+
+export const startMeeting = async (schId, meetingStarted) => {
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: `/api/v1/schedules/${schId}`,
+      data: {
+        meetingStarted
+      }
+    });
+    if ((res.data.status = 'success'))
+      window.setTimeout(() => {
+        location.assign('/sessions');
+      }, 1500);
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};

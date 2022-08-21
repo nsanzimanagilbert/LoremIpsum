@@ -9,7 +9,13 @@ import { hideLoginPopup, showLoginPopup } from './loginPopup';
 import { showOverlay, hideOverlay } from './overlay';
 import { showSignupPopup, hideSignupPopup } from './signupPopup';
 import { showStaffSignupPopup, hideStaffSignupPopup } from './staffSignupPopup';
-import { createSchedule, completeSchedule, progressSchedule } from './schedule';
+import {
+  createSchedule,
+  completeSchedule,
+  progressSchedule,
+  setMeeting,
+  startMeeting
+} from './schedule';
 import { refleshPage } from './refleshPage';
 import { getUser } from './user';
 import {
@@ -38,7 +44,7 @@ const getTurnServerCredentials = async () => {
 wss.registerSocketEvents(socket);
 
 getTurnServerCredentials().then(() => {
-  webRTCHandler.getLocalPreview();
+  // webRTCHandler.getLocalPreview();
   console.log('Local preview started...');
 });
 
@@ -366,6 +372,44 @@ if (schProgressBtn) {
   });
 }
 // Complete Schedule END
+
+//Set meeting
+const setMeetingBtn = document.querySelector('.btn-sch--setMeeting');
+if (setMeetingBtn) {
+  setMeetingBtn.addEventListener('click', async () => {
+    const schId = document.getElementById('schId').value;
+    const approved = true;
+    const approvedBy = document.getElementById('schApprover').value;
+    const approvedAt = moment().format('lll');
+    const meetingDate = document.getElementById('meetingDate').value;
+    const meetingTime = document.getElementById('meetingTime').value;
+    setMeetingBtn.textContent = 'Setting meeting...';
+    await setMeeting(
+      schId,
+      approved,
+      approvedBy,
+      approvedAt,
+      meetingDate,
+      meetingTime
+    );
+
+    refleshPage();
+  });
+}
+// Set meeting ends here
+
+//Set meeting
+const startMeetingBtn = document.querySelector('.btn-sch--startMeeting');
+if (startMeetingBtn) {
+  startMeetingBtn.addEventListener('click', async () => {
+    const schId = document.getElementById('schId').value;
+    const meetingStarted = true;
+    startMeetingBtn.textContent = 'Opening meeting room...';
+    await startMeeting(schId, meetingStarted);
+  });
+}
+// Start Meeting Ends
+
 /////////////////////
 
 const ctx = document.getElementById('myChartClientsStats');

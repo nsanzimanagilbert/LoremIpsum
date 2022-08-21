@@ -32149,7 +32149,7 @@ exports.showStaffSignupPopup = showStaffSignupPopup;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.progressSchedule = exports.createSchedule = exports.completeSchedule = void 0;
+exports.startMeeting = exports.setMeeting = exports.progressSchedule = exports.createSchedule = exports.completeSchedule = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -32302,6 +32302,98 @@ var progressSchedule = /*#__PURE__*/function () {
 }();
 
 exports.progressSchedule = progressSchedule;
+
+var setMeeting = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(schId, approved, approvedBy, approvedAt, meetingDate, meetingTime) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.prev = 0;
+            _context4.next = 3;
+            return (0, _axios.default)({
+              method: 'PATCH',
+              url: "/api/v1/schedules/".concat(schId),
+              data: {
+                approved: approved,
+                approvedBy: approvedBy,
+                approvedAt: approvedAt,
+                meetingDate: meetingDate,
+                meetingTime: meetingTime
+              }
+            });
+
+          case 3:
+            res = _context4.sent;
+            if (res.data.status = 'success') (0, _alerts.showAlert)('success', 'Meeting has been set');
+            _context4.next = 10;
+            break;
+
+          case 7:
+            _context4.prev = 7;
+            _context4.t0 = _context4["catch"](0);
+            (0, _alerts.showAlert)('error', _context4.t0.response.data.message);
+
+          case 10:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4, null, [[0, 7]]);
+  }));
+
+  return function setMeeting(_x15, _x16, _x17, _x18, _x19, _x20) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
+exports.setMeeting = setMeeting;
+
+var startMeeting = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(schId, meetingStarted) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.prev = 0;
+            _context5.next = 3;
+            return (0, _axios.default)({
+              method: 'PATCH',
+              url: "/api/v1/schedules/".concat(schId),
+              data: {
+                meetingStarted: meetingStarted
+              }
+            });
+
+          case 3:
+            res = _context5.sent;
+            if (res.data.status = 'success') window.setTimeout(function () {
+              location.assign('/sessions');
+            }, 1500);
+            _context5.next = 10;
+            break;
+
+          case 7:
+            _context5.prev = 7;
+            _context5.t0 = _context5["catch"](0);
+            (0, _alerts.showAlert)('error', _context5.t0.response.data.message);
+
+          case 10:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5, null, [[0, 7]]);
+  }));
+
+  return function startMeeting(_x21, _x22) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
+exports.startMeeting = startMeeting;
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"chatConstants.js":[function(require,module,exports) {
 "use strict";
 
@@ -40324,7 +40416,7 @@ var getTurnServerCredentials = /*#__PURE__*/function () {
 
 wss.registerSocketEvents(socket);
 getTurnServerCredentials().then(function () {
-  webRTCHandler.getLocalPreview();
+  // webRTCHandler.getLocalPreview();
   console.log('Local preview started...');
 }); // webRTCHandler.getLocalPreview();
 
@@ -40845,6 +40937,65 @@ if (schProgressBtn) {
     };
   }());
 } // Complete Schedule END
+//Set meeting
+
+
+var setMeetingBtn = document.querySelector('.btn-sch--setMeeting');
+
+if (setMeetingBtn) {
+  setMeetingBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
+    var schId, approved, approvedBy, approvedAt, meetingDate, meetingTime;
+    return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+      while (1) {
+        switch (_context9.prev = _context9.next) {
+          case 0:
+            schId = document.getElementById('schId').value;
+            approved = true;
+            approvedBy = document.getElementById('schApprover').value;
+            approvedAt = (0, _moment.default)().format('lll');
+            meetingDate = document.getElementById('meetingDate').value;
+            meetingTime = document.getElementById('meetingTime').value;
+            setMeetingBtn.textContent = 'Setting meeting...';
+            _context9.next = 9;
+            return (0, _schedule.setMeeting)(schId, approved, approvedBy, approvedAt, meetingDate, meetingTime);
+
+          case 9:
+            (0, _refleshPage.refleshPage)();
+
+          case 10:
+          case "end":
+            return _context9.stop();
+        }
+      }
+    }, _callee9);
+  })));
+} // Set meeting ends here
+//Set meeting
+
+
+var startMeetingBtn = document.querySelector('.btn-sch--startMeeting');
+
+if (startMeetingBtn) {
+  startMeetingBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
+    var schId, meetingStarted;
+    return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+      while (1) {
+        switch (_context10.prev = _context10.next) {
+          case 0:
+            schId = document.getElementById('schId').value;
+            meetingStarted = true;
+            startMeetingBtn.textContent = 'Opening meeting room...';
+            _context10.next = 5;
+            return (0, _schedule.startMeeting)(schId, meetingStarted);
+
+          case 5:
+          case "end":
+            return _context10.stop();
+        }
+      }
+    }, _callee10);
+  })));
+} // Start Meeting Ends
 /////////////////////
 
 
@@ -40985,7 +41136,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59966" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52126" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

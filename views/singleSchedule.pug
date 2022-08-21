@@ -4,32 +4,36 @@ block content
   main.main
     section.section.section-schedules
       .noShow 
+        -var firstName = user.firstName
+        -var lastName = user.lastName
+        -var username = `${firstName} ${lastName}`
         input(type="text" value=`${schedule.id}` id='schId')
+        input(type="text" value=`${username}` id='schApprover')
       .schedule-details.c2-shadow.lgWd
         .sch-details.grid.grid-2  
           .sender-info.card-details.flex   
             .sender-info--heading.card-details--header
-              h2 Sender info
+              h2 Sender Bio Data
             .sender-info--content.card-content.card-content--sender.flex   
-              .sender-info--field 
+              .sender-info--field.sender-img 
                 .userImg
                   img(src=`../img/users/${sender.photo}`, alt="")
-              .sender-info--field 
+              .sender-info--field.grid-2 
                 h3 Full name 
                 p 
                   span #{sender.firstName} 
                   span 
                   span #{sender.lastName}
-              .sender-info--field 
+              .sender-info--field.grid-2 
                 h3 Gender 
                 p #{sender.gender}
-              .sender-info--field 
+              .sender-info--field.grid-2 
                 h3 Age 
                 p #{sender.age}
-              .sender-info--field 
+              .sender-info--field.grid-2 
                 h3 Email 
                 p #{sender.email}
-              .sender-info--field 
+              .sender-info--field.grid-2 
                 h3 Phone number 
                 p #{sender.phone}
           .sch-info.card-details.flex 
@@ -40,10 +44,10 @@ block content
                 h3 <i class='bx bx-check-circle' ></i> Service 
                 p #{schedule.service}
               .sch-info--field.grid  
-                h3 <i class='bx bx-calendar' ></i> Date 
+                h3 <i class='bx bx-calendar' ></i> Requested Date 
                 p #{schedule.schDate}
               .sch-info--field.grid  
-                h3 <i class='bx bx-time-five' ></i> Time 
+                h3 <i class='bx bx-time-five' ></i> Requested Time 
                 p #{schedule.schTime}
               .sch-info--field.grid  
                 h3 <i class='bx bxs-badge-check'></i> Meeting type  
@@ -54,23 +58,41 @@ block content
               .sch-info--field.grid  
                 h3 <i class='bx bx-download' ></i> Sent 
                 p #{schedule.createdAt}
-              .sch-info--field.grid  
-                h3 <i class='bx bx-loader-circle'></i> Done Sessions
-                if schedule.inProgress 
-                  p #{schedule.doneSessions}
-                else
-                  input(type="number" id="doneSessions")
-              .sch-info--field.grid
-                h3 <i class='bx bx-loader-alt'></i> Remaining Sessions 
-                if schedule.inProgress 
-                    p #{schedule.remainingSessions}
-                else 
-                    input(type="number" id ="remainingSessions")
-              if !schedule.complete
+              if !schedule.approved 
+                .sch-info--field.grid
+                  h3 <i class='bx bx-calendar' ></i> Set meeting date  
+                  input(type="date" id="meetingDate" required)
+                .sch-info--field.grid
+                  h3 <i class='bx bx-time-five' ></i> Set meeting time 
+                  input(type="time" id="meetingTime" required)
+              if schedule.approved 
+                .sch-info--field.grid
+                  h3 <i class='bx bx-calendar' ></i> Meeting Date  
+                  p #{schedule.meetingDate}
+                .sch-info--field.grid
+                  h3 <i class='bx bx-time-five' ></i> Meeting Time 
+                  p #{schedule.meetingTime}
+              if schedule.approved 
+                .sch-info--field.grid  
+                  h3 <i class='bx bx-loader-circle'></i> Done Sessions
+                  if schedule.inProgress 
+                    p #{schedule.doneSessions}
+                  else
+                    input(type="number" id="doneSessions")
+                .sch-info--field.grid
+                  h3 <i class='bx bx-loader-alt'></i> Remaining Sessions 
+                  if schedule.inProgress 
+                      p #{schedule.remainingSessions}
+                  else 
+                      input(type="number" id ="remainingSessions")
+              if !schedule.approved 
                 .sch-btns.flex  
-                  button.btn.btn-sch.btn-sch--inprogress.flex <i class='bx bx-loader-alt'></i> Mark As Inprogress
-                  button.btn.btn-sch.btn-sch--complete.flex <i class='bx bx-check-double'></i> Mark As Completed
-              else 
+                  //- button.btn.btn-sch.btn-sch--inprogress.flex <i class='bx bx-loader-alt'></i> Mark As Inprogress
+                  button.btn.btn-sch.btn-sch--setMeeting.flex <i class='bx bx-check-double'></i> Set meeting
+              if schedule.approved 
+                .sch-btns.flex  
+                  button.btn.btn-sch.btn-sch--startMeeting.flex <i class='bx bx-video'></i> Open Meeting Room 
+              else if schedule.completed  
                 button(class='btn btn-sch' disabled) Completed
 
 
