@@ -33,28 +33,19 @@ block content
                             .control-icons.flex
                                 #screen-sharing-buttons.flex
                                     .icon#screen-sharing-start.icon-screen.flex  
-                                        img(src="./img/icons/screen-sharing.png", alt="")
-                                    .icon#screen-sharing-end.icon-screen.flex  
-                                        img(src="./img/icons/screen-sharing.png", alt="")
-                                #call-buttons--initiate
-                                    .icon#icon-startcall.icon-startcall.flex 
-                                        img(src="./img/icons/hangUp.png", alt="")
-                                #call-buttons--end
-                                    .icon#icon-hangup.icon-hangup.flex 
-                                        img(src="./img/icons/hangUp.png", alt="") 
+                                        img(src="./img/icons/screen-sharing.png", alt="") 
                                 #mic-buttons.flex 
-                                    .icon.icon-audio--mute.flex 
+                                    .icon.icon-audio--mute#icon-audio--mute.flex 
                                         <i class='bx bxs-microphone' ></i>
-                                    .icon.icon-audio--unmute.flex 
+                                    .icon.icon-audio--unmute#icon-audio--unmute.noShow.flex 
                                         <i class='bx bxs-microphone-off'></i> 
                                 #video-buttons.flex 
                                     .icon.icon-video#callStranger.flex  
+                                        img(src="./img/icons/hangUp.png", alt="") 
+                                    .icon#icon-hangup.icon-hangup.noShow.flex 
+                                        img(src="./img/icons/hangUp.png", alt="") 
+                                    .icon.icon-video--cancel#camera_button_image.flex  
                                         <i class='bx bx-video'></i>
-                                    .icon.icon-video--cancel.flex  
-                                        <i class='bx bxs-video-off'></i> 
-
-                                .icon.icon-video#allow_staff_call_btn.flex  
-                                    <i class='bx bx-lock-open-alt'></i>
                                 .icon#icon-record.icon-record.flex 
                                     img(src="./img/icons/rec-button.png", alt="")
                                 .icon#icon-record--stop.icon-record--stop.flex 
@@ -62,11 +53,18 @@ block content
                     if client 
                         .cpanel-container.client-cpanel 
                             .control-icons.flex
+                                .icon.icon-video--cancel#camera_button_image.flex  
+                                    <i class='bx bx-video'></i>
                                 .icon.icon-video#allow_staff_call_btn.flex  
                                     img(src="./img/icons/hangUp.png", alt="")
-                            .control-icons.control-icons--client.flex
-                                .icon#icon-showChat.icon-showChat.flex 
-                                    <i class='bx bxs-chat'></i>
+                                #mic-buttons.flex 
+                                    .icon.icon-audio--mute#icon-audio--mute.flex 
+                                        <i class='bx bxs-microphone' ></i>
+                                    .icon.icon-audio--unmute#icon-audio--unmute.noShow.flex 
+                                        <i class='bx bxs-microphone-off'></i> 
+                            //- .control-icons.control-icons--client.flex
+                            //-     .icon#icon-showChat.icon-showChat.flex 
+                            //-         <i class='bx bxs-chat'></i>
                             
                         
 

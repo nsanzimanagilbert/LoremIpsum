@@ -1711,6 +1711,7 @@ canvas {
 }
 .call-container {
   background: #fff;
+  width: 100%;
   height: 100%;
   flex-direction: column;
   position: relative;
@@ -1798,13 +1799,19 @@ canvas {
   color: #f4f4f4;
 }
 .control-icons .icon-hangup {
-  background: red;
+  background: #ea4335;
 }
 .control-icons .icon-startcall {
   background: #2c7cfc;
 }
 .control-icons #screen-sharing-start {
   background: #20bf6b;
+}
+.control-icons .icon-audio--unmute {
+  background: #ea4335;
+}
+.control-icons .activeCallBtn {
+  background: #ea4335;
 }
 .messanger-container {
   flex-direction: column;
@@ -1822,8 +1829,8 @@ canvas {
   justify-content: flex-end;
   position: relative;
   width: 100%;
-  height: 80%;
-  overflow-y: hidden;
+  height: 100%;
+  overflow-y: scroll;
 }
 .message_right_container {
   display: flex;

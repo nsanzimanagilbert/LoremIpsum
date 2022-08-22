@@ -163,21 +163,28 @@ const showVideoCallElements = () => {
 };
 
 //UI call buttons
-const micOnImgSrc = './utils/images/mic.png';
-const micOffImgSrc = './utils/images/micOff.png';
 export const updateMicButton = micActive => {
-  const micBtnImage = document.getElementById('mic_button_image');
-  if (micBtnImage) {
-    micBtnImage.src = micActive ? micOffImgSrc : micOnImgSrc;
+  const micBtnMute = document.getElementById('icon-audio--mute');
+  const micBtnUnmute = document.getElementById('icon-audio--unmute');
+
+  if (micActive) {
+    showElement(micBtnUnmute);
+    hideElement(micBtnMute);
+  } else {
+    showElement(micBtnMute);
+    hideElement(micBtnUnmute);
   }
 };
 
-const cameraOnImgSrc = './utils/images/camera.png';
-const cameraOffImgSrc = './utils/images/cameraOff.png';
+const cameraOnImgSrc = "<i class='bx bx-video'></i>";
+const cameraOffImgSrc = "<i class='bx bxs-video-off'></i>";
 export const updateCameraButton = cameraActive => {
   const cameraButtonImage = document.getElementById('camera_button_image');
   if (cameraButtonImage) {
-    cameraButtonImage.src = cameraActive ? cameraOffImgSrc : cameraOnImgSrc;
+    cameraButtonImage.classList.toggle('activeCallBtn');
+    cameraButtonImage.innerHTML = cameraActive
+      ? cameraOffImgSrc
+      : cameraOnImgSrc;
   }
 };
 
@@ -294,13 +301,13 @@ const disableDashboard = () => {
 };
 
 const hideElement = element => {
-  if (!element.classList.contains('display_none')) {
-    element.classList.add('display_none');
+  if (!element.classList.contains('noShow')) {
+    element.classList.add('noShow');
   }
 };
 
 const showElement = element => {
-  if (element.classList.contains('display_none')) {
-    element.classList.remove('display_none');
+  if (element.classList.contains('noShow')) {
+    element.classList.remove('noShow');
   }
 };

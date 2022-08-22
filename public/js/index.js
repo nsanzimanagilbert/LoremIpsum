@@ -45,7 +45,7 @@ const getTurnServerCredentials = async () => {
 wss.registerSocketEvents(socket);
 
 getTurnServerCredentials().then(() => {
-  // webRTCHandler.getLocalPreview();
+  webRTCHandler.getLocalPreview();
   console.log('Local preview started...');
 });
 
@@ -82,8 +82,20 @@ if (personalCodeVideoBtn) {
 
 //event Listeneers for Video call buttons
 const micBtn = document.querySelector('.icon-audio--mute');
+const micBtnUnmute = document.querySelector('.icon-audio--unmute');
+
 if (micBtn) {
   micBtn.addEventListener('click', () => {
+    const localStream = store.getState().localStream;
+    const micEnabled = localStream.getAudioTracks()[0].enabled;
+    localStream.getAudioTracks()[0].enabled = !micEnabled;
+    ui.updateMicButton(micEnabled);
+  });
+}
+
+//Microphone logic
+if (micBtnUnmute) {
+  micBtnUnmute.addEventListener('click', () => {
     const localStream = store.getState().localStream;
     const micEnabled = localStream.getAudioTracks()[0].enabled;
     localStream.getAudioTracks()[0].enabled = !micEnabled;
@@ -100,6 +112,7 @@ if (cameraBtn) {
   });
 }
 
+//Microphone logic END
 const screenSharingBtn = document.querySelector('.icon-screen');
 if (screenSharingBtn) {
   screenSharingBtn.addEventListener('click', () => {
@@ -177,6 +190,8 @@ const hangUpCallBtn = document.getElementById('icon-hangup');
 if (hangUpCallBtn) {
   hangUpCallBtn.addEventListener('click', () => {
     webRTCHandler.handleHungUp();
+    hangUpCallBtn.classList.add('noShow');
+    document.getElementById('callStranger').classList.remove('noShow');
   });
 }
 
@@ -203,6 +218,8 @@ if (strangerCallerBtn) {
     strangerUtils.getStrangerSocketIdAndConnect(
       chatConstants.callType.VIDEO_STRANGER
     );
+    strangerCallerBtn.classList.add('noShow');
+    hangUpCallBtn.classList.remove('noShow');
   });
 }
 // getIncomingCallDialog();

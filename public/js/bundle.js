@@ -33387,26 +33387,29 @@ var showVideoCallElements = function showVideoCallElements() {
 }; //UI call buttons
 
 
-var micOnImgSrc = './utils/images/mic.png';
-var micOffImgSrc = './utils/images/micOff.png';
-
 var updateMicButton = function updateMicButton(micActive) {
-  var micBtnImage = document.getElementById('mic_button_image');
+  var micBtnMute = document.getElementById('icon-audio--mute');
+  var micBtnUnmute = document.getElementById('icon-audio--unmute');
 
-  if (micBtnImage) {
-    micBtnImage.src = micActive ? micOffImgSrc : micOnImgSrc;
+  if (micActive) {
+    showElement(micBtnUnmute);
+    hideElement(micBtnMute);
+  } else {
+    showElement(micBtnMute);
+    hideElement(micBtnUnmute);
   }
 };
 
 exports.updateMicButton = updateMicButton;
-var cameraOnImgSrc = './utils/images/camera.png';
-var cameraOffImgSrc = './utils/images/cameraOff.png';
+var cameraOnImgSrc = "<i class='bx bx-video'></i>";
+var cameraOffImgSrc = "<i class='bx bxs-video-off'></i>";
 
 var updateCameraButton = function updateCameraButton(cameraActive) {
   var cameraButtonImage = document.getElementById('camera_button_image');
 
   if (cameraButtonImage) {
-    cameraButtonImage.src = cameraActive ? cameraOffImgSrc : cameraOnImgSrc;
+    cameraButtonImage.classList.toggle('activeCallBtn');
+    cameraButtonImage.innerHTML = cameraActive ? cameraOffImgSrc : cameraOnImgSrc;
   }
 }; //UI messages
 
@@ -33542,14 +33545,14 @@ var disableDashboard = function disableDashboard() {
 };
 
 var hideElement = function hideElement(element) {
-  if (!element.classList.contains('display_none')) {
-    element.classList.add('display_none');
+  if (!element.classList.contains('noShow')) {
+    element.classList.add('noShow');
   }
 };
 
 var showElement = function showElement(element) {
-  if (element.classList.contains('display_none')) {
-    element.classList.remove('display_none');
+  if (element.classList.contains('noShow')) {
+    element.classList.remove('noShow');
   }
 };
 },{"./chatConstants":"chatConstants.js","./elements":"elements.js","./store":"store.js"}],"strangerUtils.js":[function(require,module,exports) {
@@ -63523,7 +63526,7 @@ var getTurnServerCredentials = /*#__PURE__*/function () {
 
 wss.registerSocketEvents(socket);
 getTurnServerCredentials().then(function () {
-  // webRTCHandler.getLocalPreview();
+  webRTCHandler.getLocalPreview();
   console.log('Local preview started...');
 }); // webRTCHandler.getLocalPreview();
 
@@ -63557,9 +63560,20 @@ if (personalCodeVideoBtn) {
 
 
 var micBtn = document.querySelector('.icon-audio--mute');
+var micBtnUnmute = document.querySelector('.icon-audio--unmute');
 
 if (micBtn) {
   micBtn.addEventListener('click', function () {
+    var localStream = store.getState().localStream;
+    var micEnabled = localStream.getAudioTracks()[0].enabled;
+    localStream.getAudioTracks()[0].enabled = !micEnabled;
+    ui.updateMicButton(micEnabled);
+  });
+} //Microphone logic
+
+
+if (micBtnUnmute) {
+  micBtnUnmute.addEventListener('click', function () {
     var localStream = store.getState().localStream;
     var micEnabled = localStream.getAudioTracks()[0].enabled;
     localStream.getAudioTracks()[0].enabled = !micEnabled;
@@ -63576,7 +63590,8 @@ if (cameraBtn) {
     localStream.getVideoTracks()[0].enabled = !cameraEnabled;
     ui.updateCameraButton(cameraEnabled);
   });
-}
+} //Microphone logic END
+
 
 var screenSharingBtn = document.querySelector('.icon-screen');
 
@@ -63667,6 +63682,8 @@ var hangUpCallBtn = document.getElementById('icon-hangup');
 if (hangUpCallBtn) {
   hangUpCallBtn.addEventListener('click', function () {
     webRTCHandler.handleHungUp();
+    hangUpCallBtn.classList.add('noShow');
+    document.getElementById('callStranger').classList.remove('noShow');
   });
 }
 
@@ -63694,6 +63711,8 @@ var strangerCallerBtn = document.getElementById('callStranger');
 if (strangerCallerBtn) {
   strangerCallerBtn.addEventListener('click', function () {
     strangerUtils.getStrangerSocketIdAndConnect(chatConstants.callType.VIDEO_STRANGER);
+    strangerCallerBtn.classList.add('noShow');
+    hangUpCallBtn.classList.remove('noShow');
   });
 } // getIncomingCallDialog();
 // Session End
@@ -64268,7 +64287,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63531" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53690" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
