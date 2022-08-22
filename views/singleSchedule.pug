@@ -92,6 +92,8 @@ block content
               if schedule.approved 
                 .sch-btns.flex  
                   button.btn.btn-sch.btn-sch--startMeeting.flex <i class='bx bx-video'></i> Open Meeting Room 
+                  button.btn.btn-sch.btn-sch--startingMeeting.flex.noShow(disabled) <i class='bx bx-video'></i> Opening meeting... 
+
               else if schedule.completed  
                 button(class='btn btn-sch' disabled) Completed
 

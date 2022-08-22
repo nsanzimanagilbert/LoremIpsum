@@ -33,6 +33,7 @@ import * as recordingUtils from './recordingUtils';
 import * as strangerUtils from './strangerUtils';
 
 import io from 'socket.io-client';
+import { DocumentContext } from 'twilio/lib/rest/preview/sync/service/document';
 const socket = io('/');
 // import { getIncomingCallDialog } from './elements';
 
@@ -146,6 +147,14 @@ if (sendMessageBtn) {
   });
 }
 
+//Show and Hiding ChatBox
+const showChatContainerBtn = document.getElementById('icon-showChat');
+if (showChatContainerBtn) {
+  showChatContainerBtn.addEventListener('click', () => {
+    const chatContainer = document.querySelector('.messanger-container');
+    chatContainer.classList.toggle('noShow');
+  });
+}
 //Recording;
 
 const startRecordingBtn = document.getElementById('icon-record');
@@ -398,17 +407,35 @@ if (setMeetingBtn) {
 }
 // Set meeting ends here
 
-//Set meeting
+//Start Meeting room
 const startMeetingBtn = document.querySelector('.btn-sch--startMeeting');
 if (startMeetingBtn) {
   startMeetingBtn.addEventListener('click', async () => {
     const schId = document.getElementById('schId').value;
     const meetingStarted = true;
-    startMeetingBtn.textContent = 'Opening meeting room...';
+    startMeetingBtn.classList.add('noShow');
+    document
+      .querySelector('.btn-sch--startingMeeting')
+      .classList.remove('noShow');
     await startMeeting(schId, meetingStarted);
   });
 }
-// Start Meeting Ends
+// Start Meeting Room Ends here
+
+//Start Meeting room
+const joinMeetingRoomBtn = document.querySelector('.btn-sch--joinMeetingRoom');
+if (joinMeetingRoomBtn) {
+  joinMeetingRoomBtn.addEventListener('click', () => {
+    joinMeetingRoomBtn.classList.add('noShow');
+    document
+      .querySelector('.btn-sch--joiningMeetingRoom')
+      .classList.remove('noShow');
+    window.setTimeout(() => {
+      location.assign('/sessions');
+    }, 1500);
+  });
+}
+// Start Meeting Room Ends here
 
 /////////////////////
 
