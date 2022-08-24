@@ -1,19 +1,5 @@
 header.header
   nav
-    .top-nav.flex 
-      .flex
-        p.nav-time
-      if user 
-        .flex 
-          p Welcome #{user.lastName}
-          p.btn.btn-logout  
-            span Log out <i class='bx bx-log-in-circle' ></i>  
-      else  
-        .welcome-act-btns.flex 
-          p.btn.signin-btn.flex  
-            <i class='bx bx-user'></i> Sign in
-          p.btn.signup-btn.getstarted-btn 
-            span Get Started
     .main-nav.flex  
       .branding 
         a(href="/") 
@@ -21,9 +7,21 @@ header.header
       .nav-links 
         ul.flex  
           li: a(href="") Services
-          li: a(href="") Discover 
-          li: a(href="") Connect
+          li: a(href="") Find Therapists 
+          li: a(href="") Resources 
           li: a(href="") About us 
           li: a(href="" class="donate-btn") Donate 
       .search-btn 
-        <i class='bx bx-search'></i>
+        .flex
+          //- p.nav-time
+          if user 
+            .flex 
+              p Welcome #{user.lastName}
+              p.btn.btn-logout  
+                span Log out <i class='bx bx-log-in-circle' ></i>  
+          else  
+            .welcome-act-btns.flex 
+              p.btn.signin-btn.flex  
+                <i class='bx bx-user'></i> Sign in
+              p.btn.signup-btn.getstarted-btn 
+                span Get started

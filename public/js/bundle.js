@@ -63526,7 +63526,7 @@ var getTurnServerCredentials = /*#__PURE__*/function () {
 
 wss.registerSocketEvents(socket);
 getTurnServerCredentials().then(function () {
-  webRTCHandler.getLocalPreview();
+  // webRTCHandler.getLocalPreview();
   console.log('Local preview started...');
 }); // webRTCHandler.getLocalPreview();
 
@@ -64287,7 +64287,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53690" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51811" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

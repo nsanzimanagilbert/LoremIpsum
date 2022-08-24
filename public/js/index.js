@@ -45,7 +45,7 @@ const getTurnServerCredentials = async () => {
 wss.registerSocketEvents(socket);
 
 getTurnServerCredentials().then(() => {
-  webRTCHandler.getLocalPreview();
+  // webRTCHandler.getLocalPreview();
   console.log('Local preview started...');
 });
 
