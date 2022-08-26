@@ -1,13 +1,5 @@
 header.header
-  nav
-    .top-nav.flex 
-      .flex
-        p.nav-time
-      if user 
-        .flex 
-          p Welcome #{user.lastName}
-          p.btn.btn-logout  
-            span Log out <i class='bx bx-log-in-circle' ></i>  
+  nav 
     .main-nav.flex  
       .branding 
         a(href="/") 
@@ -21,5 +13,8 @@ header.header
           li: a(href="/clients") Clients  
           li: a(href="/dashboard") Dashboard   
           li: a(href="" class="donate-btn") Donations  
-      .search-btn 
-        <i class='bx bx-search'></i>
+      if user 
+        .flex 
+          p Welcome #{user.lastName}
+          p.btn.btn-logout  
+            span Log out <i class='bx bx-log-in-circle' ></i>  
