@@ -86,6 +86,7 @@ li {
   border-radius: 4px;
   font-weight: 500;
   font-size: 1.5rem;
+  transition: all 0.1s;
 }
 
 .main {
@@ -987,9 +988,25 @@ select,
 }
 .section--2 {
   background: #fff;
-  padding: 10rem 6rem;
+  padding: 13rem 6rem;
   background-image: url('../img/grid-bg.svg');
 }
+.section--page::before {
+  background-color: inherit;
+  border-top-left-radius: 64px;
+  border-top-right-radius: 64px;
+  content: '';
+  display: block;
+  height: 64px;
+  position: absolute;
+  background-image: url('../img/grid-bg.svg');
+
+  top: -64px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 .front-app-section {
   align-items: flex-start;
   margin: auto 0;
@@ -1012,6 +1029,12 @@ select,
   background: #fff;
   color: var(--primary-color-dark);
   outline: 1px var(--primary-color-dark) solid;
+}
+.front-app-section .std-btn--bl:hover {
+  background: var(--tartiary-color);
+}
+.std-btn--wht:hover {
+  outline: 2px var(--primary-color-dark) solid;
 }
 .front-app-section button:first-child {
   margin-right: 10px;
