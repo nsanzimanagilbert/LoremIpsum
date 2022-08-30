@@ -53,6 +53,7 @@ body {
   font-family: Gilroy, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
+  font-family: Epilogue, sans-serif;
   color: #777;
   color: var(--secondary-color);
   min-height: 100vh;
@@ -80,6 +81,13 @@ li {
 .bx {
   font-size: 1.4rem;
 }
+.std-btn {
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
 .main {
   background: rgba(243, 246, 251, 255);
   -webkit-box-flex: 1;
@@ -98,6 +106,12 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.flex-c {
+  flex-direction: column;
+}
+.flex-ctr {
+  justify-content: center;
 }
 .grid {
   display: grid;
@@ -888,6 +902,8 @@ select,
 }
 .section-content {
   font-size: var(--font-3);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .section-content p {
   margin: 1rem 0;
@@ -971,6 +987,34 @@ select,
 }
 .section--2 {
   background: #fff;
+  padding: 10rem 6rem;
+  background-image: url('../img/grid-bg.svg');
+}
+.front-app-section {
+  align-items: flex-start;
+  margin: auto 0;
+}
+.front-app-section h2 {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 60px;
+  letter-spacing: -2px;
+}
+.front-app-section p {
+  margin: 20px 0;
+}
+.front-app-section button {
+  background: var(--primary-color-dark);
+  color: #fff;
+  padding: 15px 20px;
+}
+.front-app-section .std-btn--wht {
+  background: #fff;
+  color: var(--primary-color-dark);
+  outline: 1px var(--primary-color-dark) solid;
+}
+.front-app-section button:first-child {
+  margin-right: 10px;
 }
 .section--4 {
   background-color: #fff;
@@ -1035,6 +1079,7 @@ select,
 .testimonials-section {
   background: url('../img/map.png') no-repeat;
   background-size: cover;
+  margin-bottom: 8rem;
 }
 .testimonials-section .section-intro {
 }
@@ -1129,7 +1174,7 @@ select,
 }
 .experts {
   display: flex;
-  width: 70%;
+  width: 100%;
 }
 .experts-inpage {
   width: 100%;
@@ -1143,6 +1188,7 @@ select,
   min-height: 332px;
   justify-content: space-between;
   margin: 1rem;
+  background: #f4ede4 !important;
   background: #fff;
   padding: 3rem 1rem;
   border: 1px var(--bg-color) solid;
@@ -1201,9 +1247,29 @@ select,
 }
 .expert-exp {
   font-size: var(--font-4);
-  margin-top: 24px;
+  margin-top: 30px;
+  margin-bottom: 24px;
 }
-
+.home-profileBtn {
+  font-size: 1.4rem;
+  color: var(--primary-color-dark);
+  display: inline;
+  position: relative;
+}
+.home-profileBtn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 0;
+  background: var(--primary-color-dark);
+  transition: all 0.2s;
+}
+.home-profileBtn:hover,
+.home-profileBtn:hover:after {
+  width: 100%;
+}
 /* SERVICES PAGE */
 
 .services-container {
