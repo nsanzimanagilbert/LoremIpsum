@@ -96,9 +96,13 @@ li {
   flex: 1;
   position: relative;
   top: 90px;
+  margin-bottom: 90px;
 }
 .main-content {
+  position: relative;
   padding: 3rem;
+  top: 90px;
+  margin-bottom: 90px;
 }
 
 .flex {
@@ -237,6 +241,12 @@ input:focus {
 }
 .section-heading {
   font-size: var(--font-1);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.section-heading p {
+  font-size: 20px;
+  margin-bottom: 2rem;
 }
 .span-all-rows {
   grid-row: 1 / -1;
@@ -889,6 +899,7 @@ select,
 
 .section-heading {
   margin: 3rem 0;
+  margin-bottom: 6rem;
 }
 .section-heading h2 {
   font-weight: 700;
@@ -985,6 +996,7 @@ select,
 }
 .section--3 {
   background: rgb(247, 250, 255);
+  background: rgba(200, 223, 255, 0.6);
 }
 .section--2 {
   background: #fff;
@@ -1058,6 +1070,7 @@ select,
   text-align: center;
   font-size: var(--font-1);
   font-size: 4rem;
+  /* line-height: 4rem; */
 }
 .c-box {
   flex-basis: 27%;
@@ -1072,25 +1085,33 @@ select,
   flex-basis: 22%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   border: 1px var(--bg-color) solid;
   border-radius: 8px;
+  position: relative;
+  text-align: left;
+  background: #fff;
+  box-shadow: rgba(1, 14, 40, 0.201) 0px 0px 4px;
 }
 .section--4 .c-box--img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: var(--primary-color-dark);
+  background: rgb(0, 106, 255);
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('../img/grid-bg.svg');
 }
 .section--4 .c-box img {
-  filter: invert(1);
+  filter: invert(0%);
   color: #db5588;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+}
+.section--4 .c-box h3 {
+  font-weight: 600;
+  font-size: 24px;
 }
 .c-box:first-child {
   /* border-top: 20px #db5588 solid; */
@@ -1102,7 +1123,6 @@ select,
 .testimonials-section {
   background: url('../img/map.png') no-repeat;
   background-size: cover;
-  margin-bottom: 8rem;
 }
 .testimonials-section .section-intro {
 }
@@ -1788,7 +1808,7 @@ footer {
   font-weight: bold;
 }
 .section-before-footer {
-  background: var(--secondary-color-dark);
+  background: var(--tartiary-color);
   color: #fff;
   clip-path: ellipse(75% 100% at center top);
   padding: 10rem 6rem;
