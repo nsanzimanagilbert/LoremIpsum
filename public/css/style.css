@@ -798,6 +798,9 @@ select,
   padding: 2rem 3rem;
   box-shadow: 0 11px 30px rgb(154 161 177 / 30%);
 }
+.profile-viewer--client {
+  top: 88px;
+}
 .profile-viewer--link {
   padding: 10px 0;
 }
@@ -952,32 +955,21 @@ select,
 }
 .section-welcome--1 {
   height: 400px;
-  background-image: url('../img/Slideshow-1.jpg');
   position: relative;
   overflow: hidden;
   justify-content: center;
   align-items: flex-end;
+  background: #1c284c;
 }
 .section-welcome--1::after {
   content: '';
-  background: var(--bg-color);
+  background: hsl(217deg 50% 97%);
   position: absolute;
-  transform: skewY(2deg);
-  width: 50%;
+  width: 100%;
   height: 50px;
   bottom: -20px;
   left: 0;
-}
-.section-welcome--1::before {
-  content: '';
-  background: var(--bg-color);
-  position: absolute;
-  transform: skewY(-2deg);
-  width: 50%;
-  height: 50px;
-  bottom: -20px;
-  right: 0;
-  z-index: 100;
+  clip-path: ellipse(75% 100% at center bottom);
 }
 
 .section--1 .section-heading {
@@ -1317,6 +1309,9 @@ select,
 
 .services-container {
 }
+.section-services--1 {
+  padding-top: 3rem;
+}
 .service-container {
   flex-direction: column;
   width: 100%;
@@ -1411,6 +1406,19 @@ select,
   color: #fff;
   justify-content: center;
 }
+.user {
+  cursor: pointer;
+}
+.user-image--client {
+  width: 3.2rem;
+  height: 3.2rem;
+  background: var(--darkblue--bg);
+  color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
 .container-user {
   border-bottom: 0.5px rgba(119, 119, 119, 0.297) solid;
   padding: 1rem 0;
@@ -1426,7 +1434,6 @@ select,
 
 /* SCHEDULE Pages */
 .section-schedule {
-  background-image: url('./../img/schedule.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1434,12 +1441,14 @@ select,
   background: #fff;
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
   position: relative;
-  z-index: 1000;
-  max-width: 550px;
+  /* z-index: 1000; */
+  max-width: 900px;
+  padding-bottom: 20px;
 }
 .form-schedule .form-heading {
   padding: 2rem;
-  background: #000000;
+  background: var(--darkblue--bg);
+  text-align: center;
 }
 .form-schedule .form-heading h2 {
   font-weight: 300;
@@ -1447,12 +1456,30 @@ select,
   font-size: 2rem;
   line-height: 1.2;
 }
+.form-stage-items {
+  margin: 10px auto;
+  justify-content: center;
+}
+.form-stage {
+  margin-right: 3px;
+  width: 50px;
+  height: 3px;
+  background: #fff;
+}
+.active-stage {
+  background: #20bf6b;
+}
 .form-body {
   padding: 2rem;
   margin: 0 auto;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .form-field {
   max-width: 500px;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -1463,9 +1490,15 @@ select,
 .schedule-time {
   max-width: 500px;
   margin: 0 auto;
+  margin-bottom: 10px;
 }
+.form-section {
+}
+
 .input-wrapper {
   background: #fff;
+  flex-direction: column;
+  width: 100%;
 }
 .input-wrapper .option {
   background: #fff;
@@ -1476,15 +1509,14 @@ select,
   justify-content: flex-start;
   margin-right: 10px;
   border-radius: 3px;
+  margin-bottom: 6px;
   cursor: pointer;
   padding: 5px 5px;
   border: 1px solid var(--secondary-color-dark);
   transition: all 0.3s ease;
   font-size: 1.6rem;
 }
-.input-wrapper .option:last-child {
-  margin-right: 0;
-}
+
 .input-wrapper .option .dot {
   height: 20px;
   width: 20px;
@@ -1499,7 +1531,7 @@ select,
   left: 4px;
   width: 12px;
   height: 12px;
-  background: #0069d9;
+  background: var(--darkblue--bg);
   border-radius: 50%;
   opacity: 0;
   transform: scale(1.5);
@@ -1510,18 +1542,54 @@ input[type='radio'] {
 }
 #option-1:checked:checked ~ .option-1,
 #option-2:checked:checked ~ .option-2,
-#option-3:checked:checked ~ .option-3 {
-  border-color: #0069d9;
-  background: #0069d9;
+#option-3:checked:checked ~ .option-3,
+#service-1:checked:checked ~ .service-1,
+#service-2:checked:checked ~ .service-2,
+#service-3:checked:checked ~ .service-3,
+#service-4:checked:checked ~ .service-4,
+#service-5:checked:checked ~ .service-5,
+#service-6:checked:checked ~ .service-6,
+#service-7:checked:checked ~ .service-7,
+#service-8:checked:checked ~ .service-8,
+#service-9:checked:checked ~ .service-9,
+#service-10:checked:checked ~ .service-10,
+#service-11:checked:checked ~ .service-11,
+#service-12:checked:checked ~ .service-12 {
+  border-color: var(--darkblue--bg);
+  background: var(--darkblue--bg);
 }
 #option-1:checked:checked ~ .option-1 .dot,
 #option-2:checked:checked ~ .option-2 .dot,
-#option-3:checked:checked ~ .option-3 .dot {
+#option-3:checked:checked ~ .option-3 .dot,
+#service-1:checked:checked ~ .service-1 .dot,
+#service-2:checked:checked ~ .service-2 .dot,
+#service-3:checked:checked ~ .service-3 .dot,
+#service-4:checked:checked ~ .service-4 .dot,
+#service-5:checked:checked ~ .service-5 .dot,
+#service-6:checked:checked ~ .service-6 .dot,
+#service-7:checked:checked ~ .service-7 .dot,
+#service-8:checked:checked ~ .service-8 .dot,
+#service-9:checked:checked ~ .service-9 .dot,
+#service-10:checked:checked ~ .service-10 .dot,
+#service-11:checked:checked ~ .service-11 .dot,
+#service-12:checked:checked ~ .service-12 .dot {
   background: #fff;
 }
 #option-1:checked:checked ~ .option-1 .dot::before,
 #option-2:checked:checked ~ .option-2 .dot::before,
-#option-3:checked:checked ~ .option-3 .dot::before {
+#option-3:checked:checked ~ .option-3 .dot::before,
+#service-1:checked:checked ~ .service-1 .dot::before,
+#service-2:checked:checked ~ .service-2 .dot::before,
+#service-3:checked:checked ~ .service-3 .dot::before,
+#service-4:checked:checked ~ .service-4 .dot::before,
+#service-5:checked:checked ~ .service-5 .dot::before,
+#service-6:checked:checked ~ .service-6 .dot::before,
+#service-7:checked:checked ~ .service-7 .dot::before,
+#service-8:checked:checked ~ .service-8 .dot::before,
+#service-9:checked:checked ~ .service-9 .dot::before,
+#service-10:checked:checked ~ .service-10 .dot::before,
+#service-11:checked:checked ~ .service-11 .dot::before,
+#service-12:checked:checked ~ .service-12 .dot::before {
   opacity: 1;
   transform: scale(1);
 }
@@ -1532,7 +1600,19 @@ input[type='radio'] {
 }
 #option-1:checked:checked ~ .option-1 span,
 #option-2:checked:checked ~ .option-2 span,
-#option-3:checked:checked ~ .option-3 span {
+#option-3:checked:checked ~ .option-3 span,
+#service-1:checked:checked ~ .service-1 span,
+#service-2:checked:checked ~ .service-2 span,
+#service-3:checked:checked ~ .service-3 span,
+#service-4:checked:checked ~ .service-4 span,
+#service-5:checked:checked ~ .service-5 span,
+#service-6:checked:checked ~ .service-6 span,
+#service-7:checked:checked ~ .service-7 span,
+#service-8:checked:checked ~ .service-8 span,
+#service-9:checked:checked ~ .service-9 span,
+#service-10:checked:checked ~ .service-10 span,
+#service-11:checked:checked ~ .service-11 span,
+#service-12:checked:checked ~ .service-12 span {
   color: #fff;
 }
 
@@ -1592,9 +1672,10 @@ input[type='radio'] {
   background: var(--tartiary-color);
   color: #fff;
   text-transform: uppercase;
-  font-size: 1rem;
-  border-radius: 3px;
+  font-size: 1.4rem;
   justify-content: center;
+  border: none;
+  padding: 1rem 2rem;
 }
 .btn-sch--complete {
   justify-content: center;
@@ -1699,6 +1780,18 @@ input[type='radio'] {
   border: 0.5px rgb(192, 192, 192) solid;
   padding: 4px;
   font-size: 1.4rem;
+}
+
+.form-schedule .btn {
+  background: var(--darkblue--bg);
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+}
+.form-schedule .next-btn {
+  display: inline-block;
+  float: right;
+  text-transform: uppercase;
 }
 
 /* //////////////////// */

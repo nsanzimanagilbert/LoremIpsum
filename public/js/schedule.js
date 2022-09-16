@@ -2,8 +2,7 @@ import axios from 'axios';
 import { showAlert } from './alerts';
 
 export const createSchedule = async (
-  schSenderEmail,
-  schSenderName,
+  sender,
   schDate,
   schTime,
   schType,
@@ -16,8 +15,7 @@ export const createSchedule = async (
       method: 'POST',
       url: `/api/v1/schedules`,
       data: {
-        schSenderEmail,
-        schSenderName,
+        sender,
         schDate,
         schTime,
         schType,
@@ -26,8 +24,11 @@ export const createSchedule = async (
         service
       }
     });
-    if ((res.data.status = 'success'))
-      showAlert('success', 'Schedule Confirmed!');
+    if ((res.data.status = 'success')) showAlert('success', 'Schedule sent!');
+
+    window.setTimeout(() => {
+      location.assign('/myappointments');
+    }, 1500);
   } catch (err) {
     showAlert('error', err.response.data.message);
   }

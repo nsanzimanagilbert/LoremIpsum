@@ -340,27 +340,38 @@ const formCounselling = document.querySelector('.form-schedule--counselling');
 if (formCounselling) {
   formCounselling.addEventListener('submit', async e => {
     e.preventDefault();
-    const schSenderEmail = document.getElementById('schSender').value;
-    const schSenderName = document.getElementById('schSenderName').value;
+
+    const sender = document.getElementById('schSender').value;
     const schDate = document.getElementById('schDate').value;
     const schHour = document.getElementById('schHour').value;
     const schMins = document.getElementById('schMins').value;
     const schTiming = document.getElementById('schTiming').value;
     const schTime = `${schHour}:${schMins} ${schTiming}`;
     const schPhone = document.getElementById('schPhone').value;
-    const service = 'counselling';
     const createdAt = moment().format('lll');
     const schTypes = document.querySelectorAll('input[name="schType"]');
+    const schServices = document.querySelectorAll('input[name="schService"]');
     var schType;
+    var service;
+
+    console.log(sender);
+    console.log('sending....');
+
     for (const radioButton of schTypes) {
       if (radioButton.checked) {
         schType = radioButton.value;
         break;
       }
     }
+    for (const radioButton of schServices) {
+      if (radioButton.checked) {
+        service = radioButton.value;
+        break;
+      }
+    }
+
     await createSchedule(
-      schSenderEmail,
-      schSenderName,
+      sender,
       schDate,
       schTime,
       schType,
@@ -368,9 +379,52 @@ if (formCounselling) {
       createdAt,
       service
     );
-    refleshPage();
   });
 }
+
+//Form revealers
+const nextBtn1 = document.querySelector('.next-btn--1');
+const nextBtn2 = document.querySelector('.next-btn--2');
+const nextBtn3 = document.querySelector('.next-btn--3');
+const formSections = document.querySelectorAll('.form-section');
+const formSection1 = document.querySelector('.form-section--1');
+const formSection2 = document.querySelector('.form-section--2');
+const formSection3 = document.querySelector('.form-section--3');
+const formSection4 = document.querySelector('.form-section--4');
+//form stages
+const formStage1 = document.querySelector('.form-stage--1');
+const formStage2 = document.querySelector('.form-stage--2');
+const formStage3 = document.querySelector('.form-stage--3');
+const formStage4 = document.querySelector('.form-stage--4');
+
+if (nextBtn1) {
+  nextBtn1.addEventListener('click', () => {
+    formSections.forEach(f => {
+      f.classList.add('noShow');
+    });
+    formSection2.classList.remove('noShow');
+    formStage2.classList.add('active-stage');
+  });
+}
+if (nextBtn2) {
+  nextBtn2.addEventListener('click', () => {
+    formSections.forEach(f => {
+      f.classList.add('noShow');
+    });
+    formSection3.classList.remove('noShow');
+    formStage3.classList.add('active-stage');
+  });
+}
+if (nextBtn3) {
+  nextBtn3.addEventListener('click', () => {
+    formSections.forEach(f => {
+      f.classList.add('noShow');
+    });
+    formSection4.classList.remove('noShow');
+    formStage4.classList.add('active-stage');
+  });
+}
+
 // Schedule Counselling session END
 ///////////////////////////////
 

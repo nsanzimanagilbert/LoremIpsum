@@ -29,14 +29,15 @@ export const showSignupPopup = () => {
           <div class="field">
             <i class='bx bxs-user' ></i>
             <select id="gender">
-              <option>Your Gender</option>
+              <option>--Your gender--</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div class="field">
             <i class='bx bxs-calendar'></i>
-            <input type="number" placeholder="Your Age" id="age" required>
+            <input type="date" placeholder="Date of birth" id="age" required>
           </div>
           <div class="btn btn-signup btn-signup--next">Continue</div>
         </div>

@@ -9,7 +9,7 @@ router.use(authController.protect);
 router
   .route('/')
   .get(scheduleController.getAllSchedule)
-  .post(scheduleController.createSchedule);
+  .post(authController.protect, scheduleController.createSchedule);
 
 router
   .route('/:id')

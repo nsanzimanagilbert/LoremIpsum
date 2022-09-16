@@ -11,71 +11,140 @@ block content
     section.section.section-schedule
       form.form.form-schedule.form-schedule--counselling.midWd
         .form-heading 
-          h2 Complete this form to schedule an appointment. One of our experts will contact you a few hours before the selected time and date. 
+          h2 Complete this form to make an appointment
+          .form-stage-items.flex 
+            span.form-stage.form-stage--1.active-stage 
+            span.form-stage.form-stage--2
+            span.form-stage.form-stage--3 
+            span.form-stage.form-stage--4 
+
+
         .form-body.center
-         
-          .form-field
-            h3 Date  
-            .schedule-time.flex 
-              .time-field.schedule-time--date.flex   
-                label(for="schDate") Select date 
-                input#schDate(type="date")
-          .form-field
-            h3 Time 
-            .schedule-time.flex 
-              .time-field 
-                label Hour 
-                select#schHour
-                  option(value="00") 00
-                  option(value="01") 01
-                  option(value="02") 02
-                  option(value="03") 03
-                  option(value="04") 04
-                  option(value="05") 05
-                  option(value="06") 06
-                  option(value="07") 07
-                  option(value="08") 08
-                  option(value="09") 09
-                  option(value="10") 10
-                  option(value="11") 11
-                  option(value="12") 12
-              .time-field 
-                label(for="schMins") Minutes 
-                select(name="schMins" id="schMins")
-                  option(value="00") 00
-                  option(value="10") 10
-                  option(value="20") 20
-                  option(value="30") 30
-                  option(value="40") 40
-                  option(value="50") 50
-              .time-field 
-                  label(for="schTiming") AM/PM 
-                  select(name="schTiming" id="schTiming")
-                    option(value="AM") AM
-                    option(value="PM") PM
-          .form-field 
-            h3 Meeting Type 
-            .input-wrapper.flex 
-              input#option-1(type='radio' name='schType' checked='' value="video" class="videoTypeBtn")
-              input#option-2(type='radio' name='schType' value="phone" class="phoneTypeBtn")
-              input#option-3(type="radio" name='schType' value="pysical" class="physicalTypeBtn")
-              label.option.option-1(for='option-1')
-                .dot
-                span  Video
-              label.option.option-2(for='option-2')
-                .dot
-                span Phone Call
-              label.option.option-3(for='option-3')
-                .dot
-                span In person
-          .form-field
-            h3 Phone number  
-            .schedule-time.flex 
-              .time-field.schedule-time--date.flex   
-                label(for="schDate") Enter your active phone number 
-                input#schPhone(type="tel")
-          .form-field 
-            button.btn.btn-sch.btn-sch--counselling Confirm Appointment
+          .form-section.form-section--1
+            .form-field 
+              h3 Choose service
+              .input-wrapper 
+                  input#service-1(type='radio' name='schService' value="service-1" class="service1Btn")
+                  input#service-2(type='radio' name='schService' value="service-2" class="service2Btn")
+                  input#service-3(type="radio" name='schService' value="service-3" class="service3Btn")
+                  input#service-4(type="radio" name='schService' value="service-4" class="service4Btn")
+                  input#service-5(type='radio' name='schService' value="service-5" class="service5Btn")
+                  input#service-6(type='radio' name='schService' value="service-6" class="service6Btn")
+                  input#service-7(type="radio" name='schService' value="service-7" class="service7Btn")
+                  input#service-8(type="radio" name='schService' value="service-8" class="service8Btn")
+                  input#service-9(type='radio' name='schService' value="service-9" class="service9Btn")
+                  input#service-10(type='radio' name='schService' value="service-10" class="service10Btn")
+                  input#service-11(type="radio" name='schService' value="service-11" class="service11Btn")
+                  input#service-12(type="radio" name='schService' value="service-12" class="service12Btn")
+                  
+                  label.option.service-1(for='service-1')
+                    .dot
+                    span  Stress management 
+                  label.option.service-2(for='service-2')
+                    .dot
+                    span Grief and trauma management
+                  label.option.service-3(for='service-3')
+                    .dot
+                    span HIV management
+                  label.option.service-4(for='service-4')
+                    .dot
+                    span Fear, anxiety and depression
+                  label.option.service-5(for='service-5')
+                    .dot
+                    span Alcohol and drug addiction
+                  label.option.service-6(for='service-6')
+                    .dot
+                    span Mental health issues 
+                  //- label.option.service-7(for='service-7')
+                  //-   .dot
+                  //-   span Parenting issues 
+                  //- label.option.service-8(for='service-8')
+                  //-   .dot
+                  //-   span Pre-marital/marital counselling 
+                  //- label.option.service-9(for='service-9')
+                  //-   .dot
+                  //-   span Crisis management 
+                  //- label.option.service-10(for='service-10')
+                  //-   .dot
+                  //-   span Work related problems
+                  //- label.option.service-11(for='service-11')
+                  //-   .dot
+                  //-   span Ex-prisoner 
+                  label.option.service-12(for='service-12')
+                    .dot
+                    span Other 
+              .btn.next-btn.next-btn--1.flex  Next <i class='bx bx-right-arrow-alt'></i>
+          .form-section.form-section--2.noShow
+            .form-field
+              h3 Date  
+              .schedule-time.flex 
+                .time-field.schedule-time--date.flex   
+                  label(for="schDate") Select date 
+                  input#schDate(type="date")
+            .form-field
+              h3 Time 
+              .schedule-time.flex 
+                .time-field 
+                  label Hour 
+                  select#schHour
+                    option(value="00") 00
+                    option(value="01") 01
+                    option(value="02") 02
+                    option(value="03") 03
+                    option(value="04") 04
+                    option(value="05") 05
+                    option(value="06") 06
+                    option(value="07") 07
+                    option(value="08") 08
+                    option(value="09") 09
+                    option(value="10") 10
+                    option(value="11") 11
+                    option(value="12") 12
+                .time-field 
+                  label(for="schMins") Minutes 
+                  select(name="schMins" id="schMins")
+                    option(value="00") 00
+                    option(value="10") 10
+                    option(value="20") 20
+                    option(value="30") 30
+                    option(value="40") 40
+                    option(value="50") 50
+                .time-field 
+                    label(for="schTiming") AM/PM 
+                    select(name="schTiming" id="schTiming")
+                      option(value="AM") AM
+                      option(value="PM") PM
+              .btn.next-btn.next-btn--2 Next <i class='bx bx-right-arrow-alt'></i>
+              
+          .form-section.form-section--3.noShow.flex 
+            .form-field 
+              h3 Meeting Type 
+              .input-wrapper.flex 
+                input#option-1(type='radio' name='schType' value="video" class="videoTypeBtn")
+                input#option-2(type='radio' name='schType' value="phone" class="phoneTypeBtn")
+                input#option-3(type="radio" name='schType' value="pysical" class="physicalTypeBtn")
+                label.option.option-1(for='option-1')
+                  .dot
+                  span  Video Call
+                label.option.option-2(for='option-2')
+                  .dot
+                  span Phone Call
+                label.option.option-3(for='option-3')
+                  .dot
+                  span In-Person
+              .btn.next-btn.next-btn--3 Next <i class='bx bx-right-arrow-alt'></i>
+              
+          .form-section.form-section--4.noShow
+            .form-field
+              h3 Phone number  
+              .schedule-time.flex 
+                .time-field.schedule-time--date.flex   
+                  label(for="schDate") Enter your active phone number 
+                  input#schPhone(type="tel")
+            .form-field 
+              button.btn.btn-sch.btn-sch--counselling Send Appointment
+          
+          
 
       
                 

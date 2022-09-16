@@ -13,10 +13,11 @@ block content
           h3 Status 
 
         each schedule in schedules 
+          
           a(href=`/appointments/${schedule.id}`) 
             .sch-content.grid.grid-6 
               .sch-field 
-                p #{schedule.schSenderName}
+                p #{schedule.sender}
               .sch-field 
                 p #{schedule.schDate}
               .sch-field 

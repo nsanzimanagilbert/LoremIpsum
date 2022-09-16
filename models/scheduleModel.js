@@ -2,11 +2,9 @@ const mongoose = require('mongoose');
 
 const scheduleSchema = new mongoose.Schema(
   {
-    schSenderEmail: {
-      type: String
-    },
-    schSenderName: {
-      type: String
+    sender: {
+      type: String,
+      required: [true, 'Schedule must have a sender!']
     },
     schDate: {
       type: String,
@@ -68,11 +66,12 @@ const scheduleSchema = new mongoose.Schema(
   }
 );
 
-scheduleSchema.pre(/^findOneAnd/, async function(next) {
-  this.r = await this.findOne();
-  // console.log(this.r);
-  next();
-});
+// scheduleSchema.pre(/^find/, function(next) {
+//   this.populate({
+//     path: 'sender'
+//   });
+//   next();
+// });
 
 const Schedule = mongoose.model('Schedule', scheduleSchema);
 

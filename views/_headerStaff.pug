@@ -3,7 +3,7 @@ header.header
     .main-nav.flex  
       .branding 
         a(href="/") 
-          h1 MindDose
+          h1 MindAnchor
 
       .nav-links 
         ul.flex  
@@ -14,7 +14,14 @@ header.header
           li: a(href="/dashboard") Dashboard   
           li: a(href="" class="donate-btn") Donations  
       if user 
-        .flex 
-          p Welcome #{user.lastName}
-          p.btn.btn-logout  
-            span Log out <i class='bx bx-log-in-circle' ></i>  
+        .user 
+          .user-image--client.flex  
+            span #{user.firstName.slice(0, 1)}
+            span #{user.lastName.slice(0, 1)} 
+          .profile-viewer.profile-viewer--client.c-shadow.hideViewer  
+            a(href='/me' class="flex profile-viewer--link") 
+              <i class='bx bxs-user-rectangle'></i> 
+              span Profile 
+            .btn.btn-logout.flex.profile-viewer--link 
+              <i class='bx bx-log-out-circle' ></i> 
+              span Logout  

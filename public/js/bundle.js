@@ -31895,7 +31895,7 @@ exports.hideSignupPopup = hideSignupPopup;
 
 var showSignupPopup = function showSignupPopup() {
   hideSignupPopup();
-  var markup = "<div class=\"popup signupPopup flex\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> Create your personal account </h2>\n    <form id=\"signUpForm\">\n      <div class=\"signup-form--container signup-form--1\">\n        <div class=\"signup-form flex flex\">\n          <div class=\"field\">\n            <i class='bx bxs-user' ></i>\n            <input type=\"text\" placeholder=\"Your First Name\" id=\"firstName\" required>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-user' ></i>\n            <input type=\"text\" placeholder=\"Your Last Name\" id=\"lastName\" required>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-user' ></i>\n            <select id=\"gender\">\n              <option>Your Gender</option>\n              <option value=\"Male\">Male</option>\n              <option value=\"Female\">Female</option>\n            </select>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-calendar'></i>\n            <input type=\"number\" placeholder=\"Your Age\" id=\"age\" required>\n          </div>\n          <div class=\"btn btn-signup btn-signup--next\">Continue</div>\n        </div>\n      </div>\n      <div class=\"signup-form--container signup-form--2 display_none\">\n        <div class=\"signup-form flex signup-form--2\">\n          <div class=\"field\">\n            <i class='bx bxs-envelope' ></i>\n            <input type=\"email\" placeholder=\"Your Email\" id=\"email\" required></input>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-phone' ></i>\n            <input type=\"text\" placeholder=\"Your Phone number\" id=\"phone\" required></input>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-lock-alt' ></i>\n            <input type=\"password\" placeholder=\"Your Password\" id=\"password\" required></input>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-lock-alt' ></i>\n            <input type=\"password\" placeholder=\"Repeat Your Password\" id=\"passwordConfirm\" required></input>\n          </div>\n          <div class=\"formBackBtn\" flex>\n            <i class='bx bx-arrow-back'></i> Back\n          </div>\n          <div class=\"btn btn-signup btn-signup--complete\">Complete Sign up</div>\n        </div>\n      </div>\n    </form> \n    \n    <div class=\"newAccountLink signinLink\"> \n      <span>Have an account already?</span> \n      <a class=\"btn btn-showSignin\">Sign in </a> \n    </div>\n  </div>";
+  var markup = "<div class=\"popup signupPopup flex\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> Create your personal account </h2>\n    <form id=\"signUpForm\">\n      <div class=\"signup-form--container signup-form--1\">\n        <div class=\"signup-form flex flex\">\n          <div class=\"field\">\n            <i class='bx bxs-user' ></i>\n            <input type=\"text\" placeholder=\"Your First Name\" id=\"firstName\" required>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-user' ></i>\n            <input type=\"text\" placeholder=\"Your Last Name\" id=\"lastName\" required>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-user' ></i>\n            <select id=\"gender\">\n              <option>--Your gender--</option>\n              <option value=\"Male\">Male</option>\n              <option value=\"Female\">Female</option>\n              <option value=\"Other\">Other</option>\n            </select>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-calendar'></i>\n            <input type=\"date\" placeholder=\"Date of birth\" id=\"age\" required>\n          </div>\n          <div class=\"btn btn-signup btn-signup--next\">Continue</div>\n        </div>\n      </div>\n      <div class=\"signup-form--container signup-form--2 display_none\">\n        <div class=\"signup-form flex signup-form--2\">\n          <div class=\"field\">\n            <i class='bx bxs-envelope' ></i>\n            <input type=\"email\" placeholder=\"Your Email\" id=\"email\" required></input>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-phone' ></i>\n            <input type=\"text\" placeholder=\"Your Phone number\" id=\"phone\" required></input>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-lock-alt' ></i>\n            <input type=\"password\" placeholder=\"Your Password\" id=\"password\" required></input>\n          </div>\n          <div class=\"field\">\n            <i class='bx bxs-lock-alt' ></i>\n            <input type=\"password\" placeholder=\"Repeat Your Password\" id=\"passwordConfirm\" required></input>\n          </div>\n          <div class=\"formBackBtn\" flex>\n            <i class='bx bx-arrow-back'></i> Back\n          </div>\n          <div class=\"btn btn-signup btn-signup--complete\">Complete Sign up</div>\n        </div>\n      </div>\n    </form> \n    \n    <div class=\"newAccountLink signinLink\"> \n      <span>Have an account already?</span> \n      <a class=\"btn btn-showSignin\">Sign in </a> \n    </div>\n  </div>";
   document.querySelector('body').insertAdjacentHTML('afterbegin', markup); // window.setTimeout(hideAlert, 5000);
 
   var closePopupBtn = document.querySelector('.close-popup-btn');
@@ -32166,7 +32166,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var createSchedule = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(schSenderEmail, schSenderName, schDate, schTime, schType, schPhone, createdAt, service) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(sender, schDate, schTime, schType, schPhone, createdAt, service) {
     var res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
@@ -32178,8 +32178,7 @@ var createSchedule = /*#__PURE__*/function () {
               method: 'POST',
               url: "/api/v1/schedules",
               data: {
-                schSenderEmail: schSenderEmail,
-                schSenderName: schSenderName,
+                sender: sender,
                 schDate: schDate,
                 schTime: schTime,
                 schType: schType,
@@ -32191,24 +32190,27 @@ var createSchedule = /*#__PURE__*/function () {
 
           case 3:
             res = _context.sent;
-            if (res.data.status = 'success') (0, _alerts.showAlert)('success', 'Schedule Confirmed!');
-            _context.next = 10;
+            if (res.data.status = 'success') (0, _alerts.showAlert)('success', 'Schedule sent!');
+            window.setTimeout(function () {
+              location.assign('/myappointments');
+            }, 1500);
+            _context.next = 11;
             break;
 
-          case 7:
-            _context.prev = 7;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
             (0, _alerts.showAlert)('error', _context.t0.response.data.message);
 
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
-  return function createSchedule(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8) {
+  return function createSchedule(_x, _x2, _x3, _x4, _x5, _x6, _x7) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -32251,7 +32253,7 @@ var completeSchedule = /*#__PURE__*/function () {
     }, _callee2, null, [[0, 7]]);
   }));
 
-  return function completeSchedule(_x9, _x10) {
+  return function completeSchedule(_x8, _x9) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -32296,7 +32298,7 @@ var progressSchedule = /*#__PURE__*/function () {
     }, _callee3, null, [[0, 7]]);
   }));
 
-  return function progressSchedule(_x11, _x12, _x13, _x14) {
+  return function progressSchedule(_x10, _x11, _x12, _x13) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -32343,7 +32345,7 @@ var setMeeting = /*#__PURE__*/function () {
     }, _callee4, null, [[0, 7]]);
   }));
 
-  return function setMeeting(_x15, _x16, _x17, _x18, _x19, _x20) {
+  return function setMeeting(_x14, _x15, _x16, _x17, _x18, _x19) {
     return _ref4.apply(this, arguments);
   };
 }();
@@ -32388,7 +32390,7 @@ var startMeeting = /*#__PURE__*/function () {
     }, _callee5, null, [[0, 7]]);
   }));
 
-  return function startMeeting(_x21, _x22) {
+  return function startMeeting(_x20, _x21) {
     return _ref5.apply(this, arguments);
   };
 }();
@@ -63923,85 +63925,171 @@ var formCounselling = document.querySelector('.form-schedule--counselling');
 if (formCounselling) {
   formCounselling.addEventListener('submit', /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(e) {
-      var schSenderEmail, schSenderName, schDate, schHour, schMins, schTiming, schTime, schPhone, service, createdAt, schTypes, schType, _iterator, _step, radioButton;
+      var sender, schDate, schHour, schMins, schTiming, schTime, schPhone, createdAt, schTypes, schServices, schType, service, _iterator, _step, radioButton, _iterator2, _step2, _radioButton;
 
       return _regeneratorRuntime().wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
               e.preventDefault();
-              schSenderEmail = document.getElementById('schSender').value;
-              schSenderName = document.getElementById('schSenderName').value;
+              sender = document.getElementById('schSender').value;
               schDate = document.getElementById('schDate').value;
               schHour = document.getElementById('schHour').value;
               schMins = document.getElementById('schMins').value;
               schTiming = document.getElementById('schTiming').value;
               schTime = "".concat(schHour, ":").concat(schMins, " ").concat(schTiming);
               schPhone = document.getElementById('schPhone').value;
-              service = 'counselling';
               createdAt = (0, _moment.default)().format('lll');
               schTypes = document.querySelectorAll('input[name="schType"]');
+              schServices = document.querySelectorAll('input[name="schService"]');
+              console.log(sender);
+              console.log('sending....');
               _iterator = _createForOfIteratorHelper(schTypes);
-              _context6.prev = 13;
+              _context6.prev = 14;
 
               _iterator.s();
 
-            case 15:
+            case 16:
               if ((_step = _iterator.n()).done) {
-                _context6.next = 22;
+                _context6.next = 23;
                 break;
               }
 
               radioButton = _step.value;
 
               if (!radioButton.checked) {
-                _context6.next = 20;
+                _context6.next = 21;
                 break;
               }
 
               schType = radioButton.value;
-              return _context6.abrupt("break", 22);
+              return _context6.abrupt("break", 23);
 
-            case 20:
-              _context6.next = 15;
+            case 21:
+              _context6.next = 16;
               break;
 
-            case 22:
-              _context6.next = 27;
+            case 23:
+              _context6.next = 28;
               break;
 
-            case 24:
-              _context6.prev = 24;
-              _context6.t0 = _context6["catch"](13);
+            case 25:
+              _context6.prev = 25;
+              _context6.t0 = _context6["catch"](14);
 
               _iterator.e(_context6.t0);
 
-            case 27:
-              _context6.prev = 27;
+            case 28:
+              _context6.prev = 28;
 
               _iterator.f();
 
-              return _context6.finish(27);
+              return _context6.finish(28);
 
-            case 30:
-              _context6.next = 32;
-              return (0, _schedule.createSchedule)(schSenderEmail, schSenderName, schDate, schTime, schType, schPhone, createdAt, service);
+            case 31:
+              _iterator2 = _createForOfIteratorHelper(schServices);
+              _context6.prev = 32;
 
-            case 32:
-              (0, _refleshPage.refleshPage)();
+              _iterator2.s();
 
-            case 33:
+            case 34:
+              if ((_step2 = _iterator2.n()).done) {
+                _context6.next = 41;
+                break;
+              }
+
+              _radioButton = _step2.value;
+
+              if (!_radioButton.checked) {
+                _context6.next = 39;
+                break;
+              }
+
+              service = _radioButton.value;
+              return _context6.abrupt("break", 41);
+
+            case 39:
+              _context6.next = 34;
+              break;
+
+            case 41:
+              _context6.next = 46;
+              break;
+
+            case 43:
+              _context6.prev = 43;
+              _context6.t1 = _context6["catch"](32);
+
+              _iterator2.e(_context6.t1);
+
+            case 46:
+              _context6.prev = 46;
+
+              _iterator2.f();
+
+              return _context6.finish(46);
+
+            case 49:
+              _context6.next = 51;
+              return (0, _schedule.createSchedule)(sender, schDate, schTime, schType, schPhone, createdAt, service);
+
+            case 51:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, null, [[13, 24, 27, 30]]);
+      }, _callee6, null, [[14, 25, 28, 31], [32, 43, 46, 49]]);
     }));
 
     return function (_x5) {
       return _ref6.apply(this, arguments);
     };
   }());
+} //Form revealers
+
+
+var nextBtn1 = document.querySelector('.next-btn--1');
+var nextBtn2 = document.querySelector('.next-btn--2');
+var nextBtn3 = document.querySelector('.next-btn--3');
+var formSections = document.querySelectorAll('.form-section');
+var formSection1 = document.querySelector('.form-section--1');
+var formSection2 = document.querySelector('.form-section--2');
+var formSection3 = document.querySelector('.form-section--3');
+var formSection4 = document.querySelector('.form-section--4'); //form stages
+
+var formStage1 = document.querySelector('.form-stage--1');
+var formStage2 = document.querySelector('.form-stage--2');
+var formStage3 = document.querySelector('.form-stage--3');
+var formStage4 = document.querySelector('.form-stage--4');
+
+if (nextBtn1) {
+  nextBtn1.addEventListener('click', function () {
+    formSections.forEach(function (f) {
+      f.classList.add('noShow');
+    });
+    formSection2.classList.remove('noShow');
+    formStage2.classList.add('active-stage');
+  });
+}
+
+if (nextBtn2) {
+  nextBtn2.addEventListener('click', function () {
+    formSections.forEach(function (f) {
+      f.classList.add('noShow');
+    });
+    formSection3.classList.remove('noShow');
+    formStage3.classList.add('active-stage');
+  });
+}
+
+if (nextBtn3) {
+  nextBtn3.addEventListener('click', function () {
+    formSections.forEach(function (f) {
+      f.classList.add('noShow');
+    });
+    formSection4.classList.remove('noShow');
+    formStage4.classList.add('active-stage');
+  });
 } // Schedule Counselling session END
 ///////////////////////////////
 // Complete Schedule
@@ -64287,7 +64375,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52846" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51153" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
