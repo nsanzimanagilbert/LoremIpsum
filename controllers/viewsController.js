@@ -78,7 +78,7 @@ exports.getSchedule = catchAsync(async (req, res, next) => {
 
 exports.getAllMySchedules = catchAsync(async (req, res, next) => {
   const schedules = await Schedule.find({
-    schSenderEmail: req.user.email
+    sender: req.user.email
   }).sort({ _id: -1 });
   res.status(200).render('mySchedules', {
     title: 'My Appointments',

@@ -19,7 +19,21 @@ block content
             .sch-info--content.card-content.card-content--sch 
               .sch-info--field.grid  
                 h3 <i class='bx bx-check-circle' ></i> Service 
-                p #{schedule.service}
+                if (schedule.service == 'service-1')
+                  p Stress management 
+                else if (schedule.service == 'service-2')
+                  p Grief and trauma management 
+                else if (schedule.service == 'service-3')
+                  p HIV management 
+                else if (schedule.service == 'service-4')
+                  p Fear, anxiety and depression 
+                else if (schedule.service == 'service-5')
+                  p Alcohol and drug addiction 
+                else if (schedule.service == 'service-6')
+                  p Mental health issues 
+                else if (schedule.service == 'service-12')
+                  p Other 
+                  
               .sch-info--field.grid  
                 h3 <i class='bx bx-calendar' ></i> Requested Date 
                 p #{schedule.schDate}
