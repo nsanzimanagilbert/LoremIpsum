@@ -2,7 +2,6 @@ import axios from 'axios';
 import { showAlert } from './alerts';
 
 export const createSchedule = async (
-  sender,
   schDate,
   schTime,
   schType,
@@ -15,7 +14,6 @@ export const createSchedule = async (
       method: 'POST',
       url: `/api/v1/schedules`,
       data: {
-        sender,
         schDate,
         schTime,
         schType,

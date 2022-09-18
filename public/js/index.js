@@ -340,8 +340,6 @@ const formCounselling = document.querySelector('.form-schedule--counselling');
 if (formCounselling) {
   formCounselling.addEventListener('submit', async e => {
     e.preventDefault();
-
-    const sender = document.getElementById('schSender').value;
     const schDate = document.getElementById('schDate').value;
     const schHour = document.getElementById('schHour').value;
     const schMins = document.getElementById('schMins').value;
@@ -349,14 +347,11 @@ if (formCounselling) {
     const schTime = `${schHour}:${schMins} ${schTiming}`;
     const schPhone = document.getElementById('schPhone').value;
     const createdAt = moment().format('lll');
+
     const schTypes = document.querySelectorAll('input[name="schType"]');
     const schServices = document.querySelectorAll('input[name="schService"]');
     var schType;
     var service;
-
-    console.log(sender);
-    console.log('sending....');
-
     for (const radioButton of schTypes) {
       if (radioButton.checked) {
         schType = radioButton.value;
@@ -371,7 +366,6 @@ if (formCounselling) {
     }
 
     await createSchedule(
-      sender,
       schDate,
       schTime,
       schType,

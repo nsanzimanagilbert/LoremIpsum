@@ -3,9 +3,15 @@ const mongoose = require('mongoose');
 const scheduleSchema = new mongoose.Schema(
   {
     sender: {
-      type: String,
-      required: [true, 'Schedule must have a sender!']
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: [true, 'Schedule must belong to someone']
     },
+    assignee: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User'
+    },
+
     schDate: {
       type: String,
       required: [true, 'Specify the date!']
@@ -66,12 +72,20 @@ const scheduleSchema = new mongoose.Schema(
   }
 );
 
-// scheduleSchema.pre(/^find/, function(next) {
-//   this.populate({
-//     path: 'sender'
-//   });
-//   next();
-// });
+scheduleSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'sender',
+    select: '-_v'
+  });
+  next();
+});
+scheduleSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'assignee',
+    select: 'email firstName lastName'
+  });
+  next();
+});
 
 const Schedule = mongoose.model('Schedule', scheduleSchema);
 

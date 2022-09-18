@@ -22,6 +22,13 @@ exports.updateOne = Model =>
       new: true,
       runValidators: true
     });
+    // const newDoc = {
+    //   assignee: req.user.id
+    // };
+
+    // const schedule = Object.assign(doc, newDoc);
+
+    console.log(doc);
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));

@@ -32166,7 +32166,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var createSchedule = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(sender, schDate, schTime, schType, schPhone, createdAt, service) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(schDate, schTime, schType, schPhone, createdAt, service) {
     var res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
@@ -32178,7 +32178,6 @@ var createSchedule = /*#__PURE__*/function () {
               method: 'POST',
               url: "/api/v1/schedules",
               data: {
-                sender: sender,
                 schDate: schDate,
                 schTime: schTime,
                 schType: schType,
@@ -32210,7 +32209,7 @@ var createSchedule = /*#__PURE__*/function () {
     }, _callee, null, [[0, 8]]);
   }));
 
-  return function createSchedule(_x, _x2, _x3, _x4, _x5, _x6, _x7) {
+  return function createSchedule(_x, _x2, _x3, _x4, _x5, _x6) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -32253,7 +32252,7 @@ var completeSchedule = /*#__PURE__*/function () {
     }, _callee2, null, [[0, 7]]);
   }));
 
-  return function completeSchedule(_x8, _x9) {
+  return function completeSchedule(_x7, _x8) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -32298,7 +32297,7 @@ var progressSchedule = /*#__PURE__*/function () {
     }, _callee3, null, [[0, 7]]);
   }));
 
-  return function progressSchedule(_x10, _x11, _x12, _x13) {
+  return function progressSchedule(_x9, _x10, _x11, _x12) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -32345,7 +32344,7 @@ var setMeeting = /*#__PURE__*/function () {
     }, _callee4, null, [[0, 7]]);
   }));
 
-  return function setMeeting(_x14, _x15, _x16, _x17, _x18, _x19) {
+  return function setMeeting(_x13, _x14, _x15, _x16, _x17, _x18) {
     return _ref4.apply(this, arguments);
   };
 }();
@@ -32390,7 +32389,7 @@ var startMeeting = /*#__PURE__*/function () {
     }, _callee5, null, [[0, 7]]);
   }));
 
-  return function startMeeting(_x20, _x21) {
+  return function startMeeting(_x19, _x20) {
     return _ref5.apply(this, arguments);
   };
 }();
@@ -63925,14 +63924,13 @@ var formCounselling = document.querySelector('.form-schedule--counselling');
 if (formCounselling) {
   formCounselling.addEventListener('submit', /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(e) {
-      var sender, schDate, schHour, schMins, schTiming, schTime, schPhone, createdAt, schTypes, schServices, schType, service, _iterator, _step, radioButton, _iterator2, _step2, _radioButton;
+      var schDate, schHour, schMins, schTiming, schTime, schPhone, createdAt, schTypes, schServices, schType, service, _iterator, _step, radioButton, _iterator2, _step2, _radioButton;
 
       return _regeneratorRuntime().wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
               e.preventDefault();
-              sender = document.getElementById('schSender').value;
               schDate = document.getElementById('schDate').value;
               schHour = document.getElementById('schHour').value;
               schMins = document.getElementById('schMins').value;
@@ -63942,103 +63940,101 @@ if (formCounselling) {
               createdAt = (0, _moment.default)().format('lll');
               schTypes = document.querySelectorAll('input[name="schType"]');
               schServices = document.querySelectorAll('input[name="schService"]');
-              console.log(sender);
-              console.log('sending....');
               _iterator = _createForOfIteratorHelper(schTypes);
-              _context6.prev = 14;
+              _context6.prev = 11;
 
               _iterator.s();
 
-            case 16:
+            case 13:
               if ((_step = _iterator.n()).done) {
-                _context6.next = 23;
+                _context6.next = 20;
                 break;
               }
 
               radioButton = _step.value;
 
               if (!radioButton.checked) {
-                _context6.next = 21;
+                _context6.next = 18;
                 break;
               }
 
               schType = radioButton.value;
-              return _context6.abrupt("break", 23);
+              return _context6.abrupt("break", 20);
 
-            case 21:
-              _context6.next = 16;
+            case 18:
+              _context6.next = 13;
               break;
 
-            case 23:
-              _context6.next = 28;
+            case 20:
+              _context6.next = 25;
               break;
 
-            case 25:
-              _context6.prev = 25;
-              _context6.t0 = _context6["catch"](14);
+            case 22:
+              _context6.prev = 22;
+              _context6.t0 = _context6["catch"](11);
 
               _iterator.e(_context6.t0);
 
-            case 28:
-              _context6.prev = 28;
+            case 25:
+              _context6.prev = 25;
 
               _iterator.f();
 
-              return _context6.finish(28);
+              return _context6.finish(25);
 
-            case 31:
+            case 28:
               _iterator2 = _createForOfIteratorHelper(schServices);
-              _context6.prev = 32;
+              _context6.prev = 29;
 
               _iterator2.s();
 
-            case 34:
+            case 31:
               if ((_step2 = _iterator2.n()).done) {
-                _context6.next = 41;
+                _context6.next = 38;
                 break;
               }
 
               _radioButton = _step2.value;
 
               if (!_radioButton.checked) {
-                _context6.next = 39;
+                _context6.next = 36;
                 break;
               }
 
               service = _radioButton.value;
-              return _context6.abrupt("break", 41);
+              return _context6.abrupt("break", 38);
 
-            case 39:
-              _context6.next = 34;
+            case 36:
+              _context6.next = 31;
               break;
 
-            case 41:
-              _context6.next = 46;
+            case 38:
+              _context6.next = 43;
               break;
 
-            case 43:
-              _context6.prev = 43;
-              _context6.t1 = _context6["catch"](32);
+            case 40:
+              _context6.prev = 40;
+              _context6.t1 = _context6["catch"](29);
 
               _iterator2.e(_context6.t1);
 
-            case 46:
-              _context6.prev = 46;
+            case 43:
+              _context6.prev = 43;
 
               _iterator2.f();
 
-              return _context6.finish(46);
+              return _context6.finish(43);
 
-            case 49:
-              _context6.next = 51;
-              return (0, _schedule.createSchedule)(sender, schDate, schTime, schType, schPhone, createdAt, service);
+            case 46:
+              _context6.next = 48;
+              return (0, _schedule.createSchedule)(schDate, schTime, schType, schPhone, createdAt, service);
 
-            case 51:
+            case 48:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, null, [[14, 25, 28, 31], [32, 43, 46, 49]]);
+      }, _callee6, null, [[11, 22, 25, 28], [29, 40, 43, 46]]);
     }));
 
     return function (_x5) {
@@ -64375,7 +64371,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54337" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61171" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

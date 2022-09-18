@@ -3,15 +3,12 @@ extends base
 block content
   main.main
     section.section.section-schedules
-      .noShow 
-        -var firstName = user.firstName
-        -var lastName = user.lastName
-        -var username = `${firstName} ${lastName}`
+      .noShow         
+        input(type="text" value=`${schedule.id}` id='schId')
+        input(type="text" value=`${user.email}` id='schApprover')
 
         
-        input(type="text" value=`${schedule.id}` id='schId')
-        input(type="text" value=`${username}` id='schApprover')
-      .schedule-details.c2-shadow.lgWd
+      .schedule-details.maxWd
         .sch-details.grid.grid-2  
           .sender-info.card-details.flex   
             .sender-info--heading.card-details--header
@@ -19,25 +16,31 @@ block content
             .sender-info--content.card-content.card-content--sender.flex   
               .sender-info--field.sender-img 
                 .userImg
-                  img(src=`../img/users/${sender.photo}`, alt="")
+                  img(src=`../img/users/${schedule.sender.photo}`, alt="")
               .sender-info--field.grid-2 
                 h3 Full name 
                 p 
-                  span #{sender.firstName} 
+                  span #{schedule.sender.firstName} 
                   span 
-                  span #{sender.lastName}
+                  span #{schedule.sender.lastName}
               .sender-info--field.grid-2 
                 h3 Gender 
-                p #{sender.gender}
+                if (schedule.sender.gender == 'Male')
+                  p.gender.gender-male 
+                    <i class='bx bx-male'></i> Male
+                else if (schedule.sender.gender == 'Female')
+                  p.gender.gender-female
+                    <i class='bx bx-female'></i> Female
+          
               .sender-info--field.grid-2 
                 h3 Age 
-                p #{sender.age}
+                p #{schedule.sender.age}
               .sender-info--field.grid-2 
                 h3 Email 
-                p #{sender.email}
+                p #{schedule.sender.email}
               .sender-info--field.grid-2 
-                h3 Phone number 
-                p #{sender.phone}
+                h3 Phone
+                p #{schedule.sender.phone}
           .sch-info.card-details.flex 
             .sch-info--heading.card-details--header 
               h2 Appointment details 
@@ -104,7 +107,7 @@ block content
                       input(type="number" id ="remainingSessions")
               if !schedule.approved 
                 .sch-btns.flex  
-                  //- button.btn.btn-sch.btn-sch--inprogress.flex <i class='bx bx-loader-alt'></i> Mark As Inprogress
+                  button.btn.btn-sch.btn-sch--assign.flex <i class='bx bxs-like'></i> Assign Me
                   button.btn.btn-sch.btn-sch--setMeeting.flex <i class='bx bx-check-double'></i> Set meeting
               if schedule.approved 
                 .sch-btns.flex  

@@ -4,20 +4,24 @@ block content
   main.main
     section.section.section-schedules
       .schedules-wrapper.c2-shadow 
-        .sch-headers.grid.grid-6  
+        .sch-headers.grid.grid-5  
           h3 Sender 
           h3 Meeting date  
           h3 Meeting time 
           h3 Meeting type 
           h3 Sent at
-          h3 Status 
+
 
         each schedule in schedules 
           
-          a(href=`/appointments/${schedule.id}`) 
-            .sch-content.grid.grid-6 
+          a(href=`/appointments/${schedule.id}` class='sch-details-link') 
+            .sch-content.grid.grid-5 
               .sch-field 
-                p #{schedule.sender}
+                p 
+                  span #{schedule.sender.firstName}
+                  span 
+                  span #{schedule.sender.lastName}
+
               .sch-field 
                 p #{schedule.schDate}
               .sch-field 
@@ -26,11 +30,11 @@ block content
                 p #{schedule.schType}
               .sch-field 
                 p #{schedule.createdAt}
-              .sch-field.sch-field--status
-                if (!schedule.complete)
-                  p.pending Pending 
-                else 
-                  p.completed Completed 
+              //- .sch-field.sch-field--status
+              //-   if (!schedule.complete)
+              //-     p.pending Pending 
+              //-   else 
+              //-     p.completed Completed 
              
 
 
