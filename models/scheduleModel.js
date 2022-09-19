@@ -7,10 +7,6 @@ const scheduleSchema = new mongoose.Schema(
       ref: 'User',
       required: [true, 'Schedule must belong to someone']
     },
-    assignee: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'User'
-    },
 
     schDate: {
       type: String,
@@ -64,6 +60,14 @@ const scheduleSchema = new mongoose.Schema(
     complete: {
       type: Boolean,
       default: false
+    },
+    assigned: {
+      type: Boolean,
+      default: false
+    },
+    assignee: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User'
     }
   },
   {

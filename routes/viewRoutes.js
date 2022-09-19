@@ -66,6 +66,20 @@ router.get(
   authController.protect,
   viewsController.getMySchedule
 );
+
+router.get(
+  '/myassignments',
+  authController.isLoggedIn,
+  authController.protect,
+  viewsController.getAllMyAssigned
+);
+
+router.get(
+  '/myassignments/:id',
+  authController.isLoggedIn,
+  authController.protect,
+  viewsController.getMyAssigned
+);
 router.get(
   '/appointments/:id',
   authController.isLoggedIn,

@@ -18,28 +18,35 @@ exports.deleteOne = Model =>
 
 exports.updateOne = Model =>
   catchAsync(async (req, res, next) => {
+    req.body.assignee = req.user.id;
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true
     });
-    // const newDoc = {
-    //   assignee: req.user.id
-    // };
-
-    // const schedule = Object.assign(doc, newDoc);
-
-    console.log(doc);
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));
     }
+    const newDoc = {
+      assignee: req.user.id
+    };
+    const schedule = Object.assign(doc, newDoc);
 
-    res.status(200).json({
-      status: 'success',
-      data: {
-        data: doc
-      }
-    });
+    if (doc.assigned) {
+      res.status(200).json({
+        status: 'success',
+        data: {
+          data: doc
+        }
+      });
+    } else {
+      res.status(200).json({
+        status: 'success',
+        data: {
+          data: schedule
+        }
+      });
+    }
   });
 
 exports.createOne = Model =>

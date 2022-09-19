@@ -59,7 +59,7 @@ exports.getDashboard = catchAsync(async (req, res, next) => {
   });
 });
 exports.getAllSchedules = catchAsync(async (req, res, next) => {
-  const schedules = await Schedule.find().sort({ _id: -1 });
+  const schedules = await Schedule.find({ assigned: false }).sort({ _id: -1 });
   res.status(200).render('schedules', {
     title: 'Schedules',
     schedules
@@ -70,6 +70,26 @@ exports.getSchedule = catchAsync(async (req, res, next) => {
   res.status(200).render('singleSchedule', {
     title: 'Schedules',
     schedule
+  });
+});
+
+exports.getAllMyAssigned = catchAsync(async (req, res, next) => {
+  const schedules = await Schedule.find({
+    assignee: req.user.id
+  }).sort({ _id: -1 });
+  res.status(200).render('mySchedules', {
+    title: 'My Assignments',
+    schedules
+  });
+});
+
+exports.getMyAssigned = catchAsync(async (req, res, next) => {
+  const schedules = await Schedule.findOne({
+    _id: req.params.id
+  });
+  res.status(200).render('mySchedule', {
+    title: 'My Assignment',
+    schedules
   });
 });
 

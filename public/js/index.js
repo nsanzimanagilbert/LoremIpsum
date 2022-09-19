@@ -14,7 +14,8 @@ import {
   completeSchedule,
   progressSchedule,
   setMeeting,
-  startMeeting
+  startMeeting,
+  assignSchedule
 } from './schedule';
 import { refleshPage } from './refleshPage';
 import { getUser } from './user';
@@ -467,6 +468,18 @@ if (setMeetingBtn) {
       meetingTime
     );
 
+    refleshPage();
+  });
+}
+const assignScheduleBtn = document.querySelector('.btn-sch--assign');
+if (assignScheduleBtn) {
+  assignScheduleBtn.addEventListener('click', async e => {
+    e.preventDefault();
+    const schId = document.getElementById('schId').value;
+    const assigned = true;
+    assignScheduleBtn.classList.add('noShow');
+    document.querySelector('.btn-sch--assigning').classList.remove('noShow');
+    await assignSchedule(schId, assigned);
     refleshPage();
   });
 }

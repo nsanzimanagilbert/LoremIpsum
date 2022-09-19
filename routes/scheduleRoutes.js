@@ -14,7 +14,7 @@ router
 router
   .route('/:id')
   .get(scheduleController.getSchedule)
-  .patch(scheduleController.updateSchedule)
+  .patch(scheduleController.updateSchedule, scheduleController.assignSchedule)
   .delete(scheduleController.deleteSchedule);
 
 module.exports = router;

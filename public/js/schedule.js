@@ -47,6 +47,22 @@ export const completeSchedule = async (schId, complete) => {
   }
 };
 
+export const assignSchedule = async (schId, assigned) => {
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: `/api/v1/schedules/${schId}`,
+      data: {
+        assigned
+      }
+    });
+    if ((res.data.status = 'success'))
+      showAlert('success', 'Schedule assigned!');
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};
+
 export const progressSchedule = async (
   schId,
   inProgress,

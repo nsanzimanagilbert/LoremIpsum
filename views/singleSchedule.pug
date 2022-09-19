@@ -78,7 +78,7 @@ block content
               .sch-info--field.grid  
                 h3 <i class='bx bx-download' ></i> Sent 
                 p #{schedule.createdAt}
-              if !schedule.approved 
+              if (!schedule.approved && schedule.assigned)
                 .sch-info--field.grid
                   h3 <i class='bx bx-calendar' ></i> Set meeting date  
                   input(type="date" id="meetingDate" required)
@@ -106,9 +106,12 @@ block content
                   else 
                       input(type="number" id ="remainingSessions")
               if !schedule.approved 
-                .sch-btns.flex  
-                  button.btn.btn-sch.btn-sch--assign.flex <i class='bx bxs-like'></i> Assign Me
-                  button.btn.btn-sch.btn-sch--setMeeting.flex <i class='bx bx-check-double'></i> Set meeting
+                .sch-btns.flex
+                  if !schedule.assigned   
+                    button.btn.btn-sch.btn-sch--assign.flex <i class='bx bxs-like'></i> Assign Me
+                  button.btn.btn-sch.btn-sch--assigning.flex.noShow(disabled) <i class='bx bxs-like'></i> Assigning...
+                  if(schedule.assigned && !schedule.approved)
+                    button.btn.btn-sch.btn-sch--setMeeting.flex <i class='bx bx-check-double'></i> Set meeting
               if schedule.approved 
                 .sch-btns.flex  
                   button.btn.btn-sch.btn-sch--startMeeting.flex <i class='bx bx-video'></i> Open Meeting Room 

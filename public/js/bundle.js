@@ -32149,7 +32149,7 @@ exports.showStaffSignupPopup = showStaffSignupPopup;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.startMeeting = exports.setMeeting = exports.progressSchedule = exports.createSchedule = exports.completeSchedule = void 0;
+exports.startMeeting = exports.setMeeting = exports.progressSchedule = exports.createSchedule = exports.completeSchedule = exports.assignSchedule = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -32259,8 +32259,8 @@ var completeSchedule = /*#__PURE__*/function () {
 
 exports.completeSchedule = completeSchedule;
 
-var progressSchedule = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(schId, inProgress, doneSessions, remainingSessions) {
+var assignSchedule = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(schId, assigned) {
     var res;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) {
@@ -32272,15 +32272,13 @@ var progressSchedule = /*#__PURE__*/function () {
               method: 'PATCH',
               url: "/api/v1/schedules/".concat(schId),
               data: {
-                inProgress: inProgress,
-                doneSessions: doneSessions,
-                remainingSessions: remainingSessions
+                assigned: assigned
               }
             });
 
           case 3:
             res = _context3.sent;
-            if (res.data.status = 'success') (0, _alerts.showAlert)('success', 'Session set');
+            if (res.data.status = 'success') (0, _alerts.showAlert)('success', 'Schedule assigned!');
             _context3.next = 10;
             break;
 
@@ -32297,15 +32295,15 @@ var progressSchedule = /*#__PURE__*/function () {
     }, _callee3, null, [[0, 7]]);
   }));
 
-  return function progressSchedule(_x9, _x10, _x11, _x12) {
+  return function assignSchedule(_x9, _x10) {
     return _ref3.apply(this, arguments);
   };
 }();
 
-exports.progressSchedule = progressSchedule;
+exports.assignSchedule = assignSchedule;
 
-var setMeeting = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(schId, approved, approvedBy, approvedAt, meetingDate, meetingTime) {
+var progressSchedule = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(schId, inProgress, doneSessions, remainingSessions) {
     var res;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) {
@@ -32317,17 +32315,15 @@ var setMeeting = /*#__PURE__*/function () {
               method: 'PATCH',
               url: "/api/v1/schedules/".concat(schId),
               data: {
-                approved: approved,
-                approvedBy: approvedBy,
-                approvedAt: approvedAt,
-                meetingDate: meetingDate,
-                meetingTime: meetingTime
+                inProgress: inProgress,
+                doneSessions: doneSessions,
+                remainingSessions: remainingSessions
               }
             });
 
           case 3:
             res = _context4.sent;
-            if (res.data.status = 'success') (0, _alerts.showAlert)('success', 'Meeting has been set');
+            if (res.data.status = 'success') (0, _alerts.showAlert)('success', 'Session set');
             _context4.next = 10;
             break;
 
@@ -32344,15 +32340,15 @@ var setMeeting = /*#__PURE__*/function () {
     }, _callee4, null, [[0, 7]]);
   }));
 
-  return function setMeeting(_x13, _x14, _x15, _x16, _x17, _x18) {
+  return function progressSchedule(_x11, _x12, _x13, _x14) {
     return _ref4.apply(this, arguments);
   };
 }();
 
-exports.setMeeting = setMeeting;
+exports.progressSchedule = progressSchedule;
 
-var startMeeting = /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(schId, meetingStarted) {
+var setMeeting = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(schId, approved, approvedBy, approvedAt, meetingDate, meetingTime) {
     var res;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) {
@@ -32364,15 +32360,17 @@ var startMeeting = /*#__PURE__*/function () {
               method: 'PATCH',
               url: "/api/v1/schedules/".concat(schId),
               data: {
-                meetingStarted: meetingStarted
+                approved: approved,
+                approvedBy: approvedBy,
+                approvedAt: approvedAt,
+                meetingDate: meetingDate,
+                meetingTime: meetingTime
               }
             });
 
           case 3:
             res = _context5.sent;
-            if (res.data.status = 'success') window.setTimeout(function () {
-              location.assign('/sessions');
-            }, 1500);
+            if (res.data.status = 'success') (0, _alerts.showAlert)('success', 'Meeting has been set');
             _context5.next = 10;
             break;
 
@@ -32389,8 +32387,53 @@ var startMeeting = /*#__PURE__*/function () {
     }, _callee5, null, [[0, 7]]);
   }));
 
-  return function startMeeting(_x19, _x20) {
+  return function setMeeting(_x15, _x16, _x17, _x18, _x19, _x20) {
     return _ref5.apply(this, arguments);
+  };
+}();
+
+exports.setMeeting = setMeeting;
+
+var startMeeting = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(schId, meetingStarted) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.prev = 0;
+            _context6.next = 3;
+            return (0, _axios.default)({
+              method: 'PATCH',
+              url: "/api/v1/schedules/".concat(schId),
+              data: {
+                meetingStarted: meetingStarted
+              }
+            });
+
+          case 3:
+            res = _context6.sent;
+            if (res.data.status = 'success') window.setTimeout(function () {
+              location.assign('/sessions');
+            }, 1500);
+            _context6.next = 10;
+            break;
+
+          case 7:
+            _context6.prev = 7;
+            _context6.t0 = _context6["catch"](0);
+            (0, _alerts.showAlert)('error', _context6.t0.response.data.message);
+
+          case 10:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6, null, [[0, 7]]);
+  }));
+
+  return function startMeeting(_x21, _x22) {
+    return _ref6.apply(this, arguments);
   };
 }();
 
@@ -64189,6 +64232,41 @@ if (setMeetingBtn) {
       }
     }, _callee9);
   })));
+}
+
+var assignScheduleBtn = document.querySelector('.btn-sch--assign');
+
+if (assignScheduleBtn) {
+  assignScheduleBtn.addEventListener('click', /*#__PURE__*/function () {
+    var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(e) {
+      var schId, assigned;
+      return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+        while (1) {
+          switch (_context10.prev = _context10.next) {
+            case 0:
+              e.preventDefault();
+              schId = document.getElementById('schId').value;
+              assigned = true;
+              assignScheduleBtn.classList.add('noShow');
+              document.querySelector('.btn-sch--assigning').classList.remove('noShow');
+              _context10.next = 7;
+              return (0, _schedule.assignSchedule)(schId, assigned);
+
+            case 7:
+              (0, _refleshPage.refleshPage)();
+
+            case 8:
+            case "end":
+              return _context10.stop();
+          }
+        }
+      }, _callee10);
+    }));
+
+    return function (_x8) {
+      return _ref10.apply(this, arguments);
+    };
+  }());
 } // Set meeting ends here
 //Start Meeting room
 
@@ -64196,25 +64274,25 @@ if (setMeetingBtn) {
 var startMeetingBtn = document.querySelector('.btn-sch--startMeeting');
 
 if (startMeetingBtn) {
-  startMeetingBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
+  startMeetingBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11() {
     var schId, meetingStarted;
-    return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+    return _regeneratorRuntime().wrap(function _callee11$(_context11) {
       while (1) {
-        switch (_context10.prev = _context10.next) {
+        switch (_context11.prev = _context11.next) {
           case 0:
             schId = document.getElementById('schId').value;
             meetingStarted = true;
             startMeetingBtn.classList.add('noShow');
             document.querySelector('.btn-sch--startingMeeting').classList.remove('noShow');
-            _context10.next = 6;
+            _context11.next = 6;
             return (0, _schedule.startMeeting)(schId, meetingStarted);
 
           case 6:
           case "end":
-            return _context10.stop();
+            return _context11.stop();
         }
       }
-    }, _callee10);
+    }, _callee11);
   })));
 } // Start Meeting Room Ends here
 //Start Meeting room
@@ -64371,7 +64449,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61171" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50531" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
