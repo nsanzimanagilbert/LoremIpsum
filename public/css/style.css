@@ -115,6 +115,7 @@ li {
 .flex-c {
   flex-direction: column;
 }
+
 .flex-ctr {
   justify-content: center;
 }
@@ -135,6 +136,12 @@ li {
   justify-content: flex-start;
   border-radius: 4px 4px 0 0;
   background: #fff;
+}
+.card-image {
+  width: 100%;
+}
+.card-image img {
+  width: 100%;
 }
 .card-details--header {
   width: 100%;
@@ -194,6 +201,16 @@ li {
 
 .btn {
   cursor: pointer;
+}
+.empty-note {
+  padding: 20px 0;
+}
+.empty-note p {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.empty-note .bx {
+  font-size: 4rem;
 }
 .noShow {
   display: none;
@@ -959,7 +976,6 @@ select,
   position: relative;
   overflow: hidden;
   justify-content: center;
-  align-items: flex-end;
   background: #1c284c;
 }
 .section-welcome--1::after {
@@ -1707,7 +1723,7 @@ input[type='radio'] {
 .sch-headers {
   padding: 4px 4px;
   margin-bottom: 10px;
-  background: hsl(0deg 0% 83%);
+  background: #fff;
   grid-template-columns: 2fr 1fr 1fr 1fr 3fr;
   background: var(--tartiary-color);
 }
@@ -1715,7 +1731,7 @@ input[type='radio'] {
   font-size: 1.4rem;
   font-weight: 400;
   outline: 0.5px #fff solid;
-  color: hsl(0deg 0% 83%);
+  color: #fff;
   text-transform: uppercase;
   font-weight: bold;
   padding: 0 5px;
@@ -1837,7 +1853,41 @@ input[type='radio'] {
   text-transform: uppercase;
 }
 
-/* //////////////////// */
+/* /////////////////////////////////
+//////////////////////////////// */
+
+/* Resources Page Begins Here.. */
+.section-resources {
+}
+.resources-content-container {
+  grid-column-gap: 10px;
+}
+.resource-content {
+  width: 100%;
+  padding: 5px;
+  background: #fff;
+}
+.resource-content:hover {
+  box-shadow: 0 0 10px 0px rgb(0 0 0 / 19%);
+}
+.resource-content .card-image {
+  height: 200px;
+}
+.resource-content .card-image img {
+  object-fit: cover;
+  height: 100%;
+}
+.resource-content .card-content h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.resource-content .card-content p {
+  font-size: 1.6rem;
+}
+
+/* Resources Page Ends Here... */
+/* //////////////////////////////////
+///////////////////////////////// */
 /* SCHEDULES PAGE */
 
 /* FOOTER */

@@ -12,6 +12,7 @@ router.get(
   authController.protect,
   viewsController.getWelcome
 );
+router.get('/resources', viewsController.getResourcesPage);
 router.get(
   '/dashboard',
   authController.isLoggedIn,
@@ -78,7 +79,7 @@ router.get(
   '/myassignments/:id',
   authController.isLoggedIn,
   authController.protect,
-  viewsController.getMyAssigned
+  viewsController.getMyAssignment
 );
 router.get(
   '/appointments/:id',

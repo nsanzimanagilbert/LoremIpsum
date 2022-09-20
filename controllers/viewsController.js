@@ -39,6 +39,12 @@ exports.getCounsellingPage = catchAsync(async (req, res, next) => {
     counsellors
   });
 });
+
+exports.getResourcesPage = catchAsync(async (req, res, next) => {
+  res.status(200).render('resources', {
+    title: 'Resources'
+  });
+});
 exports.getCounselling = catchAsync(async (req, res, next) => {
   res.status(200).render('counsellingschedule', {
     title: 'Counselling'
@@ -77,19 +83,19 @@ exports.getAllMyAssigned = catchAsync(async (req, res, next) => {
   const schedules = await Schedule.find({
     assignee: req.user.id
   }).sort({ _id: -1 });
-  res.status(200).render('mySchedules', {
+  res.status(200).render('myAssignments', {
     title: 'My Assignments',
     schedules
   });
 });
 
-exports.getMyAssigned = catchAsync(async (req, res, next) => {
-  const schedules = await Schedule.findOne({
+exports.getMyAssignment = catchAsync(async (req, res, next) => {
+  const schedule = await Schedule.findOne({
     _id: req.params.id
   });
-  res.status(200).render('mySchedule', {
+  res.status(200).render('singleSchedule', {
     title: 'My Assignment',
-    schedules
+    schedule
   });
 });
 
