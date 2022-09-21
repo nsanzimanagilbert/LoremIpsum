@@ -109,6 +109,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .flex-c {
   flex-direction: column;
@@ -552,6 +553,7 @@ input:focus {
 }
 .profileViewerBtn {
   justify-content: center;
+  align-items: center;
 }
 .profileViewerBtn i {
   font-size: 2rem;
@@ -1132,16 +1134,21 @@ select,
   background-size: cover;
 }
 .testimonials-section .section-intro {
+  background: #1c284c;
+  height: 100%;
+  padding: 2rem;
 }
 .testimonials-section .section-intro h2 {
   font-size: 1.3rem;
   text-transform: uppercase;
   font-weight: 500;
+  color: #fff;
 }
 .testimonials-section .section-intro p {
   font-size: 3rem;
   word-wrap: break-word;
   margin: 30px 0;
+  color: #fff;
 }
 .btn-testimonials {
   background: var(--primary-color-dark);
@@ -1306,6 +1313,7 @@ select,
   display: inline;
   position: relative;
 }
+
 .home-profileBtn::after {
   content: '';
   position: absolute;
@@ -1866,9 +1874,13 @@ input[type='radio'] {
   width: 100%;
   padding: 5px;
   background: #fff;
+  transition: all 0.7s ease-in-out;
 }
 .resource-content:hover {
   box-shadow: 0 0 10px 0px rgb(0 0 0 / 19%);
+}
+.resource-content:hover .card-image img {
+  border-radius: 0 40px 0 40px;
 }
 .resource-content .card-image {
   height: 200px;
@@ -1877,6 +1889,7 @@ input[type='radio'] {
 .resource-content .card-image img {
   object-fit: cover;
   height: 100%;
+  width: 100%;
 }
 .resource-content .card-content h3 {
   font-size: 2rem;
