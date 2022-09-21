@@ -1,0 +1,38 @@
+extends base
+
+block content
+  main.main
+    section.section.section-resources.section--1.section-welcome--1.flex  
+      .section-content-wrapper 
+        .section-heading.section-heading--service.flex  
+          h2 Therapists 
+
+    section.section.section-resources.section-services  
+      .section-heading.flex.flex-ctr
+        .resource-sort.flex  
+          button.btn.btn-rsrc.sort-btn 
+            span Find A Therapist 
+            <i class='bx bx-search'></i>
+
+      .section-content.resources-content-container.grid.grid-4 
+        each therapist in therapists 
+          .resource-content.resource-content--therapists.card.card-c   
+            .card-image.resource-image  
+              img(src=`../img/users/${therapist.photo}`, alt="")
+            .card-content 
+              h3 
+                span #{therapist.salutation}
+                span 
+                span #{therapist.firstName}
+                span 
+                span #{therapist.lastName}
+              p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, ea.
+              .btn.home-profileBtn.profileViewerBtn.flex.flex-c(data-userid=`${therapist._id}`) 
+                span Therapist profile 
+                span <i class='bx bx-right-arrow-alt' ></i>
+
+        
+             
+
+
+

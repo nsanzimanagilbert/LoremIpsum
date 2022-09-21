@@ -13,6 +13,8 @@ router.get(
   viewsController.getWelcome
 );
 router.get('/resources', viewsController.getResourcesPage);
+router.get('/therapists', viewsController.getTherapistsPage);
+
 router.get(
   '/dashboard',
   authController.isLoggedIn,

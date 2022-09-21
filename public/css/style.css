@@ -1919,6 +1919,17 @@ input[type='radio'] {
 /* Resources Page Ends Here... */
 /* //////////////////////////////////
 ///////////////////////////////// */
+
+/* Therapists Page Begins Here */
+
+.resource-content--therapists {
+}
+.resource-content--therapists .card-image {
+  height: 250px;
+}
+
+/* Therapists Page Ends Here */
+
 /* SCHEDULES PAGE */
 
 /* FOOTER */
@@ -2025,7 +2036,7 @@ footer {
   font-weight: bold;
 }
 .section-before-footer {
-  background: var(--tartiary-color);
+  background: #1c284c;
   color: #fff;
   clip-path: ellipse(75% 100% at center top);
   padding: 10rem 6rem;

@@ -45,6 +45,15 @@ exports.getResourcesPage = catchAsync(async (req, res, next) => {
     title: 'Resources'
   });
 });
+
+exports.getTherapistsPage = catchAsync(async (req, res, next) => {
+  const therapists = await User.find({ role: 'counsellor' });
+  res.status(200).render('therapists', {
+    title: 'Therapists',
+    therapists
+  });
+});
+
 exports.getCounselling = catchAsync(async (req, res, next) => {
   res.status(200).render('counsellingschedule', {
     title: 'Counselling'
