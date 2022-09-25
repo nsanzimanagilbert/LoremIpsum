@@ -412,6 +412,34 @@ if (nextBtn3) {
 // Schedule Counselling session END
 ///////////////////////////////
 
+// Sign up form revealers Start
+///////////////////////////////
+
+const formPart1 = document.querySelector('.form-part--1');
+const formPart2 = document.querySelector('.form-part--2');
+const formPart3 = document.querySelector('.form-part--3');
+
+const formPartBtn1 = document.querySelector('.btn-form-part--1');
+const formPartBtn2 = document.querySelector('.btn-form-part--2');
+
+if (formPartBtn1) {
+  formPartBtn1.addEventListener('click', () => {
+    formPart1.style.transform = 'translateX(-100%)';
+    formPart2.style.transform = 'translateX(0%)';
+  });
+}
+
+if (formPartBtn2) {
+  formPartBtn2.addEventListener('click', () => {
+    formPart1.style.transform = 'translateX(-200%)';
+    formPart2.style.transform = 'translateX(-100%)';
+    formPart3.style.transform = 'translateX(0%)';
+  });
+}
+
+// Sign up form revealers End
+///////////////////////////////
+
 // Complete Schedule
 /////////////////////
 const schCompleteBtn = document.querySelector('.btn-sch--complete');

@@ -599,22 +599,30 @@ input:focus {
 }
 .form-parts-container {
   position: relative;
-  height: 100%;
+  min-height: 400px;
   width: 100%;
   background: #fff;
   flex-direction: column;
+  overflow: hidden;
 }
 .form-part {
-  background: #fff;
+  position: absolute;
   height: 100%;
   width: 100%;
   left: 0;
   top: 0;
+  transition: all 0.5s ease-in;
+  padding: 10px;
+}
+.form-part--2 {
+  transform: translateX(100%);
+}
+.form-part--3 {
+  transform: translateX(200%);
 }
 
 .c-form .form-field {
   width: 100%;
-  height: 100%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;

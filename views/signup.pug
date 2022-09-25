@@ -23,16 +23,25 @@ block content
                   label(for='dateOfBirth') Date of birth
                   input(type="date" required id='dateOfBirth' placeholder='Enter date of birth')
                 .form-field 
-                  .btn.btn-signin Continue 
+                  .btn.btn-form-part.btn-form-part--1 Continue 
               .form-part.form-part--2 
                 .form-field 
-                  label(for="firstName") Email  
-                  input(type="email" required id='loginEmail' placeholder='Enter your first name')
+                  label(for="email") Email  
+                  input(type="email" required id='email' placeholder='Enter your email')
                 .form-field 
-                  label(for='lastName') Phone 
-                  input(type="password" required id='loginPassword' placeholder='Enter your last name')
+                  label(for='phone') Phone 
+                  input(type="text" required id='phone' placeholder='Enter your phone')
                 .form-field 
-                  .btn.btn-signin Continue 
+                  .btn.btn-form-part.btn-form-part--2 Continue 
+              .form-part.form-part--3 
+                .form-field 
+                  label(for="email") Password   
+                  input(type="email" required id='password' placeholder='Enter your password')
+                .form-field 
+                  label(for='passwordConfirm') Repeat password  
+                  input(type="password" required id='passwordConfirm' placeholder='Repeat password')
+                .form-field 
+                  .btn.btn-form-part.btn-form-part--3 Complete Sign up 
       
       
                

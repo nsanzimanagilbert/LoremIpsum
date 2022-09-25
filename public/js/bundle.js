@@ -64097,6 +64097,31 @@ if (nextBtn3) {
   });
 } // Schedule Counselling session END
 ///////////////////////////////
+// Sign up form revealers Start
+///////////////////////////////
+
+
+var formPart1 = document.querySelector('.form-part--1');
+var formPart2 = document.querySelector('.form-part--2');
+var formPart3 = document.querySelector('.form-part--3');
+var formPartBtn1 = document.querySelector('.btn-form-part--1');
+var formPartBtn2 = document.querySelector('.btn-form-part--2');
+
+if (formPartBtn1) {
+  formPartBtn1.addEventListener('click', function () {
+    formPart1.style.transform = 'translateX(-100%)';
+    formPart2.style.transform = 'translateX(0%)';
+  });
+}
+
+if (formPartBtn2) {
+  formPartBtn2.addEventListener('click', function () {
+    formPart1.style.transform = 'translateX(-200%)';
+    formPart2.style.transform = 'translateX(-100%)';
+    formPart3.style.transform = 'translateX(0%)';
+  });
+} // Sign up form revealers End
+///////////////////////////////
 // Complete Schedule
 /////////////////////
 
@@ -64415,7 +64440,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51625" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59949" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
