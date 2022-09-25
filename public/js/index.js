@@ -4,6 +4,7 @@ import axios from 'axios';
 import moment from 'moment';
 import '@babel/polyfill';
 import { login, logout } from './login';
+import { loginUser } from './loginPopup';
 import { updateSettings } from './updateSettings';
 import { hideLoginPopup, showLoginPopup } from './loginPopup';
 import { showOverlay, hideOverlay } from './overlay';
@@ -224,8 +225,11 @@ if (strangerCallerBtn) {
   });
 }
 // getIncomingCallDialog();
+
 // Session End
 ////////////////////
+
+loginUser();
 
 const userNav = document.querySelector('.user');
 if (userNav) {
@@ -260,21 +264,6 @@ if (navTime) {
   navTime.textContent = time;
 }
 
-const signInBtn = document.querySelector('.signin-btn');
-if (signInBtn) {
-  signInBtn.addEventListener('click', () => {
-    showOverlay();
-    showLoginPopup();
-  });
-}
-
-const signUpBtn = document.querySelector('.signup-btn');
-if (signUpBtn) {
-  signUpBtn.addEventListener('click', () => {
-    showOverlay();
-    showSignupPopup();
-  });
-}
 const connectBtn = document.querySelector('.connect-btn');
 if (connectBtn) {
   connectBtn.addEventListener('click', () => {

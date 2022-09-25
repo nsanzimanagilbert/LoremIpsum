@@ -1,0 +1,30 @@
+extends base
+
+block content
+  main.main.signin-page 
+    
+    section.section.section-signin 
+      .section-content.section-content--signin.flex  
+        .section-content.section-content--signin.flex 
+          form.login-form.signin-form.c-form 
+            h2 Sign in to your account
+            .form-field 
+              input(type="email" required id='loginEmail' placeholder='Enter your email address')
+            .form-field 
+              input(type="password" required id='loginPassword' placeholder='Enter your password')
+            .form-field 
+              button.btn.btn-signin Sign in
+            .form-field.form-links 
+              p Forgot password? 
+              .flex.flex-ctr     
+                p Are you new here? 
+                span 
+                a#newAccountLink(href="/signup") Sign up for an account
+      
+      
+               
+        
+             
+
+
+

@@ -11,6 +11,16 @@ exports.getHome = catchAsync(async (req, res, next) => {
     therapists
   });
 });
+exports.getSignin = catchAsync(async (req, res, next) => {
+  res.status(200).render('signin', {
+    title: 'Sign in'
+  });
+});
+exports.getSignup = catchAsync(async (req, res, next) => {
+  res.status(200).render('signup', {
+    title: 'Sign up'
+  });
+});
 
 exports.getWelcome = catchAsync(async (req, res, next) => {
   const counsellors = await User.find({ role: 'counsellor' });

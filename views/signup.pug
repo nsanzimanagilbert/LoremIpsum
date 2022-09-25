@@ -1,0 +1,43 @@
+extends base
+
+block content
+  main.main.signin-page 
+    
+    section.section.section-signin 
+      .section-content.section-content--signin.flex  
+        .section-content.section-content--signin.flex 
+          form.signup-form.c-form
+            h2 Create your account
+            .form-parts-container.flex 
+              .form-part.form-part--1 
+                .form-field 
+                  label(for="firstName") First name 
+                  input(type="text" required id='firstName' placeholder='Enter your first name')
+                .form-field 
+                  label(for='lastName') Last name
+                  input(type="text" required id='lastName' placeholder='Enter your last name')
+                .form-field 
+                  label(for='gender') Gender
+                  input(type="text" required id='gender' placeholder='Enter your last name')
+                .form-field 
+                  label(for='dateOfBirth') Date of birth
+                  input(type="date" required id='dateOfBirth' placeholder='Enter date of birth')
+                .form-field 
+                  .btn.btn-signin Continue 
+              .form-part.form-part--2 
+                .form-field 
+                  label(for="firstName") Email  
+                  input(type="email" required id='loginEmail' placeholder='Enter your first name')
+                .form-field 
+                  label(for='lastName') Phone 
+                  input(type="password" required id='loginPassword' placeholder='Enter your last name')
+                .form-field 
+                  .btn.btn-signin Continue 
+      
+      
+               
+        
+             
+
+
+

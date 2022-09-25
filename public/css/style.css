@@ -109,7 +109,6 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 .flex-c {
   flex-direction: column;
@@ -117,6 +116,9 @@ li {
 
 .flex-ctr {
   justify-content: center;
+}
+.flex-jl {
+  justify-content: left;
 }
 .grid {
   display: grid;
@@ -574,7 +576,10 @@ input:focus {
 #signUpForm {
   width: 100%;
   flex-basis: 100%;
-  overflow: hidden;
+  height: 100%;
+}
+.c-form {
+  min-height: 300px;
 }
 .btn-signup {
   width: 100%;
@@ -582,11 +587,44 @@ input:focus {
   color: #fff;
   text-transform: uppercase;
 }
-.login-form,
-.signup-form {
+.login-form {
   flex-direction: column;
   width: 100%;
   margin: 2rem 0;
+}
+.signup-form {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.form-parts-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  flex-direction: column;
+}
+.form-part {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.c-form .form-field {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.c-form .form-field input {
+  width: 100%;
+}
+.c-form .form-field label {
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 .signup-form .btn {
   width: 100%;
@@ -630,10 +668,12 @@ select,
   padding-left: 33px;
 }
 
-.login-form button,
-.signup-form button {
+.c-form .btn {
   width: 100%;
   padding: 7px 6px;
+  padding: 0.8rem 1rem;
+  font-size: 1.6rem;
+
   text-transform: uppercase;
   font-weight: bold;
   border-radius: 3px;
@@ -648,6 +688,51 @@ select,
   font-weight: bold;
   text-decoration: underline;
 }
+/* Sign in Page Begining */
+.section-signin {
+  background: #c8dfff;
+  padding-top: 2rem;
+}
+.section-content--signin {
+  width: 100%;
+  padding: 2rem 3rem;
+  justify-content: center;
+  flex-direction: column;
+}
+.section-content--signin aside {
+  width: 100%;
+}
+.c-form {
+  padding: 2rem 4rem;
+  background: #fff;
+  border-radius: 10px;
+  max-width: 480px;
+  text-align: center;
+}
+.c-form h2 {
+  margin-bottom: 20px;
+  font-family: 'Epilogue', sans-serif;
+}
+.c-form input {
+  padding: 1.4rem 1rem;
+  border-radius: 3px;
+  border: none;
+  outline: 0.5px #c5c5c5 solid;
+}
+.c-form input:focus {
+  outline: 0.5px #0069d9 solid;
+}
+
+.c-form .form-links {
+  margin-top: -10px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+#newAccountLink {
+  text-decoration: underline;
+  font-weight: bold;
+}
+/* Sign in Page End  */
 /* Overlay  */
 .overlay {
   position: fixed;
@@ -938,6 +1023,7 @@ select,
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .section-content p {
   margin: 1rem 0;
 }
@@ -1005,7 +1091,7 @@ select,
 }
 .section--3 {
   background: rgb(247, 250, 255);
-  background: rgba(200, 223, 255, 0.6);
+  background: #c8dfff;
 }
 .section--2 {
   background: #fff;
