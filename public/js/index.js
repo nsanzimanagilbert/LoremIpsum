@@ -36,6 +36,7 @@ import * as strangerUtils from './strangerUtils';
 
 import io from 'socket.io-client';
 import { DocumentContext } from 'twilio/lib/rest/preview/sync/service/document';
+import { signupFormFunctions } from './Forms/signupform';
 const socket = io('/');
 // import { getIncomingCallDialog } from './elements';
 
@@ -264,13 +265,6 @@ if (navTime) {
   navTime.textContent = time;
 }
 
-const connectBtn = document.querySelector('.connect-btn');
-if (connectBtn) {
-  connectBtn.addEventListener('click', () => {
-    showSignupPopup();
-    showOverlay();
-  });
-}
 const addStaffBtn = document.querySelector('.btn-addStaff');
 if (addStaffBtn) {
   addStaffBtn.addEventListener('click', () => {
@@ -411,34 +405,7 @@ if (nextBtn3) {
 
 // Schedule Counselling session END
 ///////////////////////////////
-
-// Sign up form revealers Start
-///////////////////////////////
-
-const formPart1 = document.querySelector('.form-part--1');
-const formPart2 = document.querySelector('.form-part--2');
-const formPart3 = document.querySelector('.form-part--3');
-
-const formPartBtn1 = document.querySelector('.btn-form-part--1');
-const formPartBtn2 = document.querySelector('.btn-form-part--2');
-
-if (formPartBtn1) {
-  formPartBtn1.addEventListener('click', () => {
-    formPart1.style.transform = 'translateX(-100%)';
-    formPart2.style.transform = 'translateX(0%)';
-  });
-}
-
-if (formPartBtn2) {
-  formPartBtn2.addEventListener('click', () => {
-    formPart1.style.transform = 'translateX(-200%)';
-    formPart2.style.transform = 'translateX(-100%)';
-    formPart3.style.transform = 'translateX(0%)';
-  });
-}
-
-// Sign up form revealers End
-///////////////////////////////
+signupFormFunctions();
 
 // Complete Schedule
 /////////////////////

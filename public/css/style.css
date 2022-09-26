@@ -203,6 +203,7 @@ li {
 .btn {
   cursor: pointer;
 }
+
 .empty-note {
   padding: 20px 0;
 }
@@ -327,8 +328,7 @@ input:focus {
   align-items: stretch;
   grid-auto-rows: max-content;
 }
-.acc-input {
-}
+
 .profile-card {
   padding: 30px 50px;
   margin: 0 auto;
@@ -614,11 +614,20 @@ input:focus {
   transition: all 0.5s ease-in;
   padding: 10px;
 }
+.form-part--1 {
+  transform: translateX(0%);
+}
 .form-part--2 {
   transform: translateX(100%);
 }
 .form-part--3 {
   transform: translateX(200%);
+}
+.form-part--4 {
+  transform: translate(300%);
+}
+.form-part--5 {
+  transform: translate(400%);
 }
 
 .c-form .form-field {
@@ -687,6 +696,10 @@ select,
   border-radius: 3px;
   background: var(--primary-color-dark);
   color: #fff;
+}
+.c-form .btn-inactive {
+  background: #000;
+  cursor: not-allowed;
 }
 .newAccountLink {
   font-size: 1.5rem;
@@ -1038,8 +1051,9 @@ select,
 .connect-btn {
   background: var(--secondary-color-light);
   color: #fff;
-  padding: 15px 25px;
-  font-weight: bold;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  font-weight: 500;
   border-radius: 3px;
 }
 .btn-getstarted {
@@ -1216,12 +1230,7 @@ select,
   font-weight: 600;
   font-size: 24px;
 }
-.c-box:first-child {
-  /* border-top: 20px #db5588 solid; */
-}
-.c-box:nth-child(2) {
-  /* border-top: 20px var(--secondary-color) solid; */
-}
+
 /* TESTIMONIALS SECTION  */
 .testimonials-section {
   background: url('../img/map.png') no-repeat;
@@ -1296,8 +1305,7 @@ select,
   width: 100%;
   justify-content: flex-end;
 }
-.testimonials-section .section-content--testimonials {
-}
+
 .btn-testimonials {
   background: var(--primary-color-dark);
   border-radius: 20px;
@@ -1484,8 +1492,6 @@ select,
 }
 /* SERVICES PAGE */
 
-.services-container {
-}
 .section-services--1 {
   padding-top: 3rem;
 }
@@ -1602,8 +1608,6 @@ select,
   justify-content: flex-start;
 }
 
-.container-user--client {
-}
 .container-user--staff {
   justify-content: space-between;
 }
@@ -1669,8 +1673,6 @@ select,
   margin: 0 auto;
   margin-bottom: 10px;
 }
-.form-section {
-}
 
 .input-wrapper {
   background: #fff;
@@ -1720,6 +1722,8 @@ input[type='radio'] {
 #option-1:checked:checked ~ .option-1,
 #option-2:checked:checked ~ .option-2,
 #option-3:checked:checked ~ .option-3,
+#student:checked:checked ~ .student,
+#notStudent:checked:checked ~ .notStudent,
 #service-1:checked:checked ~ .service-1,
 #service-2:checked:checked ~ .service-2,
 #service-3:checked:checked ~ .service-3,
@@ -1738,6 +1742,8 @@ input[type='radio'] {
 #option-1:checked:checked ~ .option-1 .dot,
 #option-2:checked:checked ~ .option-2 .dot,
 #option-3:checked:checked ~ .option-3 .dot,
+#student:checked:checked ~ .student .dot,
+#notStudent:checked:checked ~ .notStudent .dot,
 #service-1:checked:checked ~ .service-1 .dot,
 #service-2:checked:checked ~ .service-2 .dot,
 #service-3:checked:checked ~ .service-3 .dot,
@@ -1755,6 +1761,8 @@ input[type='radio'] {
 #option-1:checked:checked ~ .option-1 .dot::before,
 #option-2:checked:checked ~ .option-2 .dot::before,
 #option-3:checked:checked ~ .option-3 .dot::before,
+#student:checked:checked ~ .student .dot::before,
+#notStudent:checked:checked ~ .notStudent .dot::before,
 #service-1:checked:checked ~ .service-1 .dot::before,
 #service-2:checked:checked ~ .service-2 .dot::before,
 #service-3:checked:checked ~ .service-3 .dot::before,
@@ -1778,6 +1786,8 @@ input[type='radio'] {
 #option-1:checked:checked ~ .option-1 span,
 #option-2:checked:checked ~ .option-2 span,
 #option-3:checked:checked ~ .option-3 span,
+#student:checked:checked ~ .student span,
+#notStudent:checked:checked ~ .notStudent span,
 #service-1:checked:checked ~ .service-1 span,
 #service-2:checked:checked ~ .service-2 span,
 #service-3:checked:checked ~ .service-3 span,
@@ -2008,7 +2018,6 @@ input[type='radio'] {
   padding: 1rem 2rem;
 }
 .form-schedule .next-btn {
-  display: inline-block;
   float: right;
   text-transform: uppercase;
 }
@@ -2089,8 +2098,6 @@ input[type='radio'] {
 
 /* Therapists Page Begins Here */
 
-.resource-content--therapists {
-}
 .resource-content--therapists .card-image {
   height: 250px;
 }
