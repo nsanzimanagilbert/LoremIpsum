@@ -7,7 +7,14 @@ block content
       .section-content.section-content--signin.flex  
         .section-content.section-content--signin.flex 
           form.signup-form.c-form#signupForm
-            h2 Create your account
+            h2 Create your own account
+            .progress-container
+              .progress-stages.flex   
+                span.stage.stage-1.active-stage
+                span.stage.stage-2
+                span.stage.stage-3
+                span.stage.stage-4
+                span.stage.stage-5
             .form-parts-container.flex 
               .form-part.form-part--1 
                 .form-field 
@@ -18,7 +25,12 @@ block content
                   input(type="text" required id='lastName' placeholder='Enter your last name')
                 .form-field 
                   label(for='gender') Gender
-                  input(type="text" required id='gender' placeholder='Enter your last name')
+                  select#gender(name="gender") 
+                    option(value="") Select Gender 
+                    option(value="Male") Male 
+                    option(value="Female") Female
+                    option(value="Other") Other
+
                 .form-field 
                   label(for='dateOfBirth') Date of birth
                   input(type="date" required id='dateOfBirth' placeholder='Enter date of birth')

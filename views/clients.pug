@@ -17,21 +17,46 @@ html
     .page-wrapper.page-wrapper--users 
         .users-container.users-container--clients
           h2 All Application Clients
+          .user-container-headers.grid.grid-7 
+            h3 Photo 
+            h3 Name 
+            h3 Gender
+            h3 Email 
+            h3 Phone 
+            h3 DOB
+            h3 STUDENT
+
           each client in clients 
-            .container-user.container-user--client.grid.grid-6 
+            .container-user.container-user--client.grid.grid-7
               .user-image.flex  
                 span #{client.firstName.slice(0, 1)}
                 span #{client.lastName.slice(0, 1)}
               .user-desc.user-desc--client 
                 h3 #{client.firstName} #{client.lastName}
+              .user-desc.user-desc--client.flex 
+                if ( client.gender =='Male')
+                  span <i class='bx bx-male'></i>
+                else if (client.gender == 'Female')
+                  span <i class='bx bx-female' ></i>
+                p #{client.gender} 
+
               .user-desc.user-desc--client 
                 p #{client.email}
               .user-desc.user-desc--client 
-                p #{client.gender}
+                p #{client.phone}
               .user-desc.user-desc--client 
                 p #{client.dob}
               .user-desc.user-desc--client 
-                p #{client.phone}
+                if (client.student)
+                  p.student.student-yes  
+                    span Yes 
+                else 
+                  p.student.student-no  
+                    span No 
+
+
+
+              
 
 
         

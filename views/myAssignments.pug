@@ -10,6 +10,10 @@ block content
           h3 Meeting time 
           h3 Meeting type 
           h3 Sent at
+        if (schedules.length === 0)
+          .empty-note.flex.flex-c
+            <i class='bx bx-folder-open'></i> 
+            p You have no assigned appointments
 
 
         each schedule in schedules 

@@ -15,6 +15,13 @@ export const signupFormFunctions = () => {
     const formPartBtn3 = document.querySelector('.btn-form-part--3');
     const formPartBtn4 = document.querySelector('.btn-form-part--4');
 
+    //Form Stages
+    const stage1 = document.querySelector('.stage-1');
+    const stage2 = document.querySelector('.stage-2');
+    const stage3 = document.querySelector('.stage-3');
+    const stage4 = document.querySelector('.stage-4');
+    const stage5 = document.querySelector('.stage-5');
+
     //Form Styles
 
     //   Service Options
@@ -37,6 +44,7 @@ export const signupFormFunctions = () => {
       formPartBtn1.addEventListener('click', () => {
         formPart1.style.transform = 'translateX(-100%)';
         formPart2.style.transform = 'translateX(0%)';
+        stage2.classList.add('active-stage');
       });
     }
 
@@ -46,10 +54,13 @@ export const signupFormFunctions = () => {
           formPart1.style.transform = 'translateX(-200%)';
           formPart2.style.transform = 'translateX(-100%)';
           formPart3.style.transform = 'translateX(0%)';
+          stage3.classList.add('active-stage');
         } else {
           formPart4.style.transform = 'translateX(0%)';
           formPart1.style.transform = 'translateX(-300%)';
           formPart2.style.transform = 'translateX(-200%)';
+          stage3.classList.add('active-stage');
+          stage4.classList.add('active-stage');
         }
       });
     }
@@ -62,6 +73,7 @@ export const signupFormFunctions = () => {
         formPart2.style.transform = 'translateX(-200%)';
         formPart1.style.transform = 'translateX(-300%)';
         formPart5.style.transform = 'translateX(100%)';
+        stage4.classList.add('active-stage');
       });
     }
 
@@ -72,6 +84,7 @@ export const signupFormFunctions = () => {
         formPart2.style.transform = 'translateX(-300%)';
         formPart3.style.transform = 'translateX(-200%)';
         formPart4.style.transform = 'translateX(-100%)';
+        stage5.classList.add('active-stage');
       });
     }
 

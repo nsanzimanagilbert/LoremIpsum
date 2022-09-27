@@ -63232,7 +63232,13 @@ var signupFormFunctions = function signupFormFunctions() {
     var formPartBtn1 = document.querySelector('.btn-form-part--1');
     var formPartBtn2 = document.querySelector('.btn-form-part--2');
     var formPartBtn3 = document.querySelector('.btn-form-part--3');
-    var formPartBtn4 = document.querySelector('.btn-form-part--4'); //Form Styles
+    var formPartBtn4 = document.querySelector('.btn-form-part--4'); //Form Stages
+
+    var stage1 = document.querySelector('.stage-1');
+    var stage2 = document.querySelector('.stage-2');
+    var stage3 = document.querySelector('.stage-3');
+    var stage4 = document.querySelector('.stage-4');
+    var stage5 = document.querySelector('.stage-5'); //Form Styles
     //   Service Options
 
     var serviceStatus;
@@ -63251,6 +63257,7 @@ var signupFormFunctions = function signupFormFunctions() {
       formPartBtn1.addEventListener('click', function () {
         formPart1.style.transform = 'translateX(-100%)';
         formPart2.style.transform = 'translateX(0%)';
+        stage2.classList.add('active-stage');
       });
     }
 
@@ -63260,10 +63267,13 @@ var signupFormFunctions = function signupFormFunctions() {
           formPart1.style.transform = 'translateX(-200%)';
           formPart2.style.transform = 'translateX(-100%)';
           formPart3.style.transform = 'translateX(0%)';
+          stage3.classList.add('active-stage');
         } else {
           formPart4.style.transform = 'translateX(0%)';
           formPart1.style.transform = 'translateX(-300%)';
           formPart2.style.transform = 'translateX(-200%)';
+          stage3.classList.add('active-stage');
+          stage4.classList.add('active-stage');
         }
       });
     }
@@ -63276,6 +63286,7 @@ var signupFormFunctions = function signupFormFunctions() {
         formPart2.style.transform = 'translateX(-200%)';
         formPart1.style.transform = 'translateX(-300%)';
         formPart5.style.transform = 'translateX(100%)';
+        stage4.classList.add('active-stage');
       });
     }
 
@@ -63286,6 +63297,7 @@ var signupFormFunctions = function signupFormFunctions() {
         formPart2.style.transform = 'translateX(-300%)';
         formPart3.style.transform = 'translateX(-200%)';
         formPart4.style.transform = 'translateX(-100%)';
+        stage5.classList.add('active-stage');
       });
     }
 
@@ -63704,7 +63716,7 @@ var getTurnServerCredentials = /*#__PURE__*/function () {
 
 wss.registerSocketEvents(socket);
 getTurnServerCredentials().then(function () {
-  webRTCHandler.getLocalPreview();
+  // webRTCHandler.getLocalPreview();
   console.log('Local preview started...');
 }); // webRTCHandler.getLocalPreview();
 
@@ -64558,7 +64570,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53242" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63570" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
