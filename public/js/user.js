@@ -6,12 +6,15 @@ export const createUser = async (
   firstName,
   lastName,
   gender,
-  age,
+  dob,
   email,
   phone,
   duty,
   role,
   profile,
+  student,
+  institution,
+  course,
   password,
   passwordConfirm
 ) => {
@@ -23,12 +26,15 @@ export const createUser = async (
         firstName,
         lastName,
         gender,
-        age,
+        dob,
         email,
         phone,
         duty,
         role,
         profile,
+        student,
+        institution,
+        course,
         password,
         passwordConfirm
       }

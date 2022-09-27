@@ -6,12 +6,12 @@ block content
     section.section.section-signin 
       .section-content.section-content--signin.flex  
         .section-content.section-content--signin.flex 
-          form.signup-form.c-form
+          form.signup-form.c-form#signupForm
             h2 Create your account
             .form-parts-container.flex 
               .form-part.form-part--1 
                 .form-field 
-                  label(for="firstName") First name 
+                  label(for="firstName") First name
                   input(type="text" required id='firstName' placeholder='Enter your first name')
                 .form-field 
                   label(for='lastName') Last name
@@ -45,7 +45,7 @@ block content
                   label(for="institution") University/Institution  
                   input(type="text" required id='institution' placeholder='Enter your institution')
                 .form-field 
-                  label(for='phone') Course 
+                  label(for='course') Course 
                   input(type="text" required id='course' placeholder='Enter your course')
                 .form-field 
                   .btn.btn-form-part.btn-form-part--3 Continue  
@@ -61,12 +61,12 @@ block content
               .form-part.form-part--5 
                 .form-field 
                   label(for="email") Password   
-                  input(type="email" required id='password' placeholder='Enter your password')
+                  input(type="password" required id='password' placeholder='Enter your password')
                 .form-field 
                   label(for='passwordConfirm') Repeat password  
                   input(type="password" required id='passwordConfirm' placeholder='Repeat password')
                 .form-field 
-                  .btn.btn-form-part.btn-form-part--5 Complete Sign up 
+                  button.btn.btn-form-part.btn-form-part--5 Complete Sign up 
       
       
                

@@ -88,13 +88,16 @@ li {
 }
 
 .main {
-  background: rgba(243, 246, 251, 255);
+  /* background: rgba(243, 246, 251, 255); */
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
   position: relative;
   top: 90px;
   margin-bottom: 90px;
+}
+.main-admin {
+  top: 50px;
 }
 .main-content {
   position: relative;
@@ -683,6 +686,10 @@ select,
   padding: 5px 6px;
   height: 100%;
   padding-left: 33px;
+}
+#staffSignupForm input,
+select {
+  margin-bottom: 10px;
 }
 
 .c-form .btn {
@@ -1559,7 +1566,7 @@ select,
   font-weight: 500;
 }
 .users-container--header .btn-addStaff:hover {
-  background: var(--primary-color);
+  background: #1c284c;
 }
 .users-container h2 {
   margin-bottom: 20px;

@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ['Male', 'Female']
   },
-  age: {
-    type: Number
+  dob: {
+    type: String
   },
   email: {
     type: String,
@@ -69,6 +69,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  student: {
+    type: Boolean,
+    default: false
+  },
+  institution: {
+    type: String,
+    default: ''
+  },
+  course: {
+    type: String,
+    default: ''
+  },
+
   password: {
     type: String,
     required: [true, 'Please provide a password'],

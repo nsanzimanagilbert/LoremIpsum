@@ -3,9 +3,12 @@ extends base
 block content
   main.main
     section.section.section-schedules
-      .noShow         
+      .noShow   
+        -var approver = user.firstName 
+        -var approver2 = user.lastName 
+        -var schApprover = `${approver} ${approver2}`      
         input(type="text" value=`${schedule.id}` id='schId')
-        input(type="text" value=`${user.email}` id='schApprover')
+        input(type="text" value=`${schApprover}` id='schApprover')
 
         
       .schedule-details.maxWd
@@ -33,14 +36,21 @@ block content
                     <i class='bx bx-female'></i> Female
           
               .sender-info--field.grid-2 
-                h3 Age 
-                p #{schedule.sender.age}
+                h3 Date of Birth  
+                p #{schedule.sender.dob}
               .sender-info--field.grid-2 
                 h3 Email 
                 p #{schedule.sender.email}
               .sender-info--field.grid-2 
                 h3 Phone
                 p #{schedule.sender.phone}
+              if (schedule.sender.student)
+                .sender-info--field.grid-2 
+                  h3 Institution
+                  p #{schedule.sender.institution}
+                .sender-info--field.grid-2 
+                  h3 Course
+                  p #{schedule.sender.course}
           .sch-info.card-details.flex 
             .sch-info--heading.card-details--header 
               h2 Appointment details 

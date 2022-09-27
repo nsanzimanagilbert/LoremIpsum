@@ -9,12 +9,12 @@ export const hideStaffSignupPopup = () => {
 // type is 'success' or 'error'
 export const showStaffSignupPopup = () => {
   hideStaffSignupPopup();
-  const markup = `<div class="popup signupPopup staffsignupPopup flex">
+  const markup = `<div class="popup signupPopup staffsignupPopup flex flex-c">
     <div class="close-popup-btn flex btn">
       <i class='bx bx-x'></i> 
     </div>
     <h2> You are about to add a new Staff </h2> 
-    <form class="signup-form flex" id="staffSignupForm">
+    <form class="signup-form flex flex-c" id="staffSignupForm">
       <input type="text" placeholder="First name" id="firstName" required></input>
       <input type="text" placeholder="Last name" id="lastName" required></input>
       <input type="email" placeholder="Email" id="email" required></input>
