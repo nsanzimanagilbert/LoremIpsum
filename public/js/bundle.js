@@ -63704,7 +63704,7 @@ var getTurnServerCredentials = /*#__PURE__*/function () {
 
 wss.registerSocketEvents(socket);
 getTurnServerCredentials().then(function () {
-  // webRTCHandler.getLocalPreview();
+  webRTCHandler.getLocalPreview();
   console.log('Local preview started...');
 }); // webRTCHandler.getLocalPreview();
 

@@ -1157,10 +1157,10 @@ select {
 .front-app-section p {
   margin: 20px 0;
 }
-.front-app-section button {
+.front-app-section a {
   background: var(--primary-color-dark);
   color: #fff;
-  padding: 15px 20px;
+  padding: 10px 20px;
 }
 .front-app-section .std-btn--wht {
   background: #fff;
@@ -1173,7 +1173,7 @@ select {
 .std-btn--wht:hover {
   outline: 2px var(--primary-color-dark) solid;
 }
-.front-app-section button:first-child {
+.front-app-section a:first-child {
   margin-right: 10px;
 }
 .section--4 {
