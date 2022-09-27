@@ -25,6 +25,12 @@ export const showStaffSignupPopup = () => {
         <option value="admin">Admin</option>
 
       </select>
+      <select id="staffGender" required>
+        <option>--Select Gender--</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+
+      </select>
       <input type="password" placeholder="Password" id="password" required></input>
       <input type="password" placeholder="Confirm password" id="passwordConfirm" required></input>
       <button class="btn btn-signup">Create staff</button>
@@ -47,19 +53,32 @@ export const showStaffSignupPopup = () => {
       e.preventDefault();
       const firstName = document.getElementById('firstName').value;
       const lastName = document.getElementById('lastName').value;
+      const gender = document.getElementById('staffGender').value;
+      const dob = null;
+      const student = false;
+      const institution = null;
+      const profile = '';
+      const course = null;
       const email = document.getElementById('email').value;
       const phone = document.getElementById('phone').value;
       const password = document.getElementById('password').value;
       const passwordConfirm = document.getElementById('passwordConfirm').value;
       const role = document.getElementById('staffRole').value;
       const duty = 'staff';
+
       await createUser(
         firstName,
         lastName,
+        gender,
+        dob,
         email,
         phone,
         duty,
         role,
+        profile,
+        student,
+        institution,
+        course,
         password,
         passwordConfirm
       );

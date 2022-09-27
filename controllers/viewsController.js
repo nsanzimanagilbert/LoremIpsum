@@ -4,7 +4,7 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.getHome = catchAsync(async (req, res, next) => {
-  const therapists = await User.find({ role: 'counsellor' });
+  const therapists = await User.find({ showOnHome: true });
 
   res.status(200).render('overview', {
     title: 'Home',
@@ -156,7 +156,7 @@ exports.getAllStaff = catchAsync(async (req, res, next) => {
   });
 });
 exports.getAllClients = catchAsync(async (req, res, next) => {
-  const clients = await User.find({ role: 'user' });
+  const clients = await User.find({ role: 'user' }).sort({ _id: -1 });
   res.status(200).render('clients', {
     title: 'Clients',
     clients

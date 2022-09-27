@@ -18,15 +18,20 @@ html
         .users-container.users-container--clients
           h2 All Application Clients
           each client in clients 
-            .container-user.container-user--client.flex 
+            .container-user.container-user--client.grid.grid-6 
               .user-image.flex  
                 span #{client.firstName.slice(0, 1)}
                 span #{client.lastName.slice(0, 1)}
               .user-desc.user-desc--client 
-                .name.name-client  
-                  h4 #{client.firstName} #{client.lastName}
-                .phone 
-                  p #{client.phone} #{client.email}
+                h3 #{client.firstName} #{client.lastName}
+              .user-desc.user-desc--client 
+                p #{client.email}
+              .user-desc.user-desc--client 
+                p #{client.gender}
+              .user-desc.user-desc--client 
+                p #{client.dob}
+              .user-desc.user-desc--client 
+                p #{client.phone}
 
 
         

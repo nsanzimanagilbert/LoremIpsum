@@ -32079,7 +32079,7 @@ exports.hideStaffSignupPopup = hideStaffSignupPopup;
 
 var showStaffSignupPopup = function showStaffSignupPopup() {
   hideStaffSignupPopup();
-  var markup = "<div class=\"popup signupPopup staffsignupPopup flex flex-c\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> You are about to add a new Staff </h2> \n    <form class=\"signup-form flex flex-c\" id=\"staffSignupForm\">\n      <input type=\"text\" placeholder=\"First name\" id=\"firstName\" required></input>\n      <input type=\"text\" placeholder=\"Last name\" id=\"lastName\" required></input>\n      <input type=\"email\" placeholder=\"Email\" id=\"email\" required></input>\n      <input type=\"text\" placeholder=\"Phone number\" id=\"phone\" required></input>\n      <select id=\"staffRole\" required>\n        <option>--Select Role--</option>\n        <option value=\"counsellor\">Counsellor</option>\n        <option value=\"admin\">Admin</option>\n\n      </select>\n      <input type=\"password\" placeholder=\"Password\" id=\"password\" required></input>\n      <input type=\"password\" placeholder=\"Confirm password\" id=\"passwordConfirm\" required></input>\n      <button class=\"btn btn-signup\">Create staff</button>\n    </form>\n  </div>";
+  var markup = "<div class=\"popup signupPopup staffsignupPopup flex flex-c\">\n    <div class=\"close-popup-btn flex btn\">\n      <i class='bx bx-x'></i> \n    </div>\n    <h2> You are about to add a new Staff </h2> \n    <form class=\"signup-form flex flex-c\" id=\"staffSignupForm\">\n      <input type=\"text\" placeholder=\"First name\" id=\"firstName\" required></input>\n      <input type=\"text\" placeholder=\"Last name\" id=\"lastName\" required></input>\n      <input type=\"email\" placeholder=\"Email\" id=\"email\" required></input>\n      <input type=\"text\" placeholder=\"Phone number\" id=\"phone\" required></input>\n      <select id=\"staffRole\" required>\n        <option>--Select Role--</option>\n        <option value=\"counsellor\">Counsellor</option>\n        <option value=\"admin\">Admin</option>\n\n      </select>\n      <select id=\"staffGender\" required>\n        <option>--Select Gender--</option>\n        <option value=\"Male\">Male</option>\n        <option value=\"Female\">Female</option>\n\n      </select>\n      <input type=\"password\" placeholder=\"Password\" id=\"password\" required></input>\n      <input type=\"password\" placeholder=\"Confirm password\" id=\"passwordConfirm\" required></input>\n      <button class=\"btn btn-signup\">Create staff</button>\n    </form>\n  </div>";
   document.querySelector('body').insertAdjacentHTML('afterbegin', markup); // window.setTimeout(hideAlert, 5000);
 
   var closePopupBtn = document.querySelector('.close-popup-btn');
@@ -32096,7 +32096,7 @@ var showStaffSignupPopup = function showStaffSignupPopup() {
   if (staffsignUpForm) {
     staffsignUpForm.addEventListener('submit', /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-        var firstName, lastName, email, phone, password, passwordConfirm, role, duty;
+        var firstName, lastName, gender, dob, student, institution, profile, course, email, phone, password, passwordConfirm, role, duty;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -32104,16 +32104,22 @@ var showStaffSignupPopup = function showStaffSignupPopup() {
                 e.preventDefault();
                 firstName = document.getElementById('firstName').value;
                 lastName = document.getElementById('lastName').value;
+                gender = document.getElementById('staffGender').value;
+                dob = null;
+                student = false;
+                institution = null;
+                profile = '';
+                course = null;
                 email = document.getElementById('email').value;
                 phone = document.getElementById('phone').value;
                 password = document.getElementById('password').value;
                 passwordConfirm = document.getElementById('passwordConfirm').value;
                 role = document.getElementById('staffRole').value;
                 duty = 'staff';
-                _context.next = 11;
-                return (0, _user.createUser)(firstName, lastName, email, phone, duty, role, password, passwordConfirm);
+                _context.next = 17;
+                return (0, _user.createUser)(firstName, lastName, gender, dob, email, phone, duty, role, profile, student, institution, course, password, passwordConfirm);
 
-              case 11:
+              case 17:
               case "end":
                 return _context.stop();
             }
@@ -64552,7 +64558,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59342" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53242" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

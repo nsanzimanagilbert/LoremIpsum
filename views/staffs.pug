@@ -18,18 +18,28 @@ html
         .users-container.users-container--staff
           .users-container--header.flex  
             h2 All Staff
-            button.btn.btn-addStaff Add Staff 
+            button.btn.btn-addStaff Add New Staff 
+          .user-container-headers.grid.grid-6 
+            h3 Photo 
+            h3 Name 
+            h3 Email
+            h3 Phone 
+            h3 Role 
+            h3 Action
+
           each member in staffs 
-            .container-user.container-user--staff.flex 
+            .container-user.container-user--staff.grid.grid-6 
               .user-image.user-image--staff 
                 img(src=`/img/users/${member.photo}`, alt="")
               .user-desc.user-desc--staff
                 .name.name-staff
-                  h4 #{member.firstName} #{member.lastName}
-                .mail.mail-staff 
-                  p #{member.email} 
-                .role
-                  p #{member.role} 
+                  h4 #{member.salutation} #{member.firstName} #{member.lastName}
+              .user-desc.user-desc--staff
+                p #{member.email}
+              .user-desc.user-desc--staff
+                p #{member.phone}
+              .user-desc.user-desc--staff
+                p #{member.role}
               .user-action 
                 button(data-userid=`${member._id}` class='btn profileViewerBtn profileViewerBtn-staff flex')
                   <i class='bx bxs-user-detail'></i> View
