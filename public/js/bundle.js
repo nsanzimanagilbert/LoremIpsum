@@ -63715,10 +63715,17 @@ var getTurnServerCredentials = /*#__PURE__*/function () {
 }();
 
 wss.registerSocketEvents(socket);
-getTurnServerCredentials().then(function () {
-  // webRTCHandler.getLocalPreview();
-  console.log('Local preview started...');
-}); // webRTCHandler.getLocalPreview();
+var currentLocation = window.location.href.split('/').pop();
+
+if (currentLocation == 'sessions') {
+  getTurnServerCredentials().then(function () {
+    webRTCHandler.getLocalPreview();
+    console.log('Local preview started...');
+  });
+  var allowState = store.getState().allowConnectionsFromStranger;
+  store.setAllowConnectionsFromStrangers(!allowState);
+  strangerUtils.changeStrangerConnectionStatus(!allowState);
+}
 
 var personalCodeCopyBtn = document.getElementById('copyPersonalCodeBtn');
 
@@ -63889,11 +63896,12 @@ if (hangUpChatBtn) {
 var getReadyForCallsBtn = document.getElementById('allow_staff_call_btn');
 
 if (getReadyForCallsBtn) {
-  getReadyForCallsBtn.addEventListener('click', function () {
-    var allowState = store.getState().allowConnectionsFromStranger;
-    store.setAllowConnectionsFromStrangers(!allowState);
-    strangerUtils.changeStrangerConnectionStatus(!allowState);
-  });
+  // getReadyForCallsBtn.addEventListener('click', () => {
+  //   const allowState = store.getState().allowConnectionsFromStranger;
+  //   store.setAllowConnectionsFromStrangers(!allowState);
+  //   strangerUtils.changeStrangerConnectionStatus(!allowState);
+  // });
+  getReadyForCallsBtn.style.display = 'none';
 }
 
 var strangerCallerBtn = document.getElementById('callStranger');
@@ -64570,7 +64578,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63570" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60645" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

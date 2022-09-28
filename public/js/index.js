@@ -46,13 +46,17 @@ const getTurnServerCredentials = async () => {
 };
 
 wss.registerSocketEvents(socket);
+const currentLocation = window.location.href.split('/').pop();
+if (currentLocation == 'sessions') {
+  getTurnServerCredentials().then(() => {
+    webRTCHandler.getLocalPreview();
+    console.log('Local preview started...');
+  });
 
-getTurnServerCredentials().then(() => {
-  // webRTCHandler.getLocalPreview();
-  console.log('Local preview started...');
-});
-
-// webRTCHandler.getLocalPreview();
+  const allowState = store.getState().allowConnectionsFromStranger;
+  store.setAllowConnectionsFromStrangers(!allowState);
+  strangerUtils.changeStrangerConnectionStatus(!allowState);
+}
 const personalCodeCopyBtn = document.getElementById('copyPersonalCodeBtn');
 if (personalCodeCopyBtn) {
   personalCodeCopyBtn.addEventListener('click', () => {
@@ -209,11 +213,12 @@ if (hangUpChatBtn) {
 
 const getReadyForCallsBtn = document.getElementById('allow_staff_call_btn');
 if (getReadyForCallsBtn) {
-  getReadyForCallsBtn.addEventListener('click', () => {
-    const allowState = store.getState().allowConnectionsFromStranger;
-    store.setAllowConnectionsFromStrangers(!allowState);
-    strangerUtils.changeStrangerConnectionStatus(!allowState);
-  });
+  // getReadyForCallsBtn.addEventListener('click', () => {
+  //   const allowState = store.getState().allowConnectionsFromStranger;
+  //   store.setAllowConnectionsFromStrangers(!allowState);
+  //   strangerUtils.changeStrangerConnectionStatus(!allowState);
+  // });
+  getReadyForCallsBtn.style.display = 'none';
 }
 const strangerCallerBtn = document.getElementById('callStranger');
 if (strangerCallerBtn) {
