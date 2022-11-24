@@ -2427,6 +2427,8 @@ canvas {
   color: #fff;
 }
 .control-icons {
+  position: relative;
+  bottom: 50px;
   justify-content: center;
   background: rgba(0, 0, 0, 0.379);
   height: 60px;

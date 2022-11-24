@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const express = require('express');
 const viewsController = require('../controllers/viewsController');
 const authController = require('../controllers/authController');
@@ -26,8 +27,6 @@ router.get(
 );
 router.get(
   '/sessions',
-  authController.isLoggedIn,
-  authController.protect,
   viewsController.getSessions
 );
 router.get(

@@ -40,6 +40,9 @@ import { signupFormFunctions } from './Forms/signupform';
 const socket = io('/');
 // import { getIncomingCallDialog } from './elements';
 
+    webRTCHandler.getLocalPreview();
+
+
 const getTurnServerCredentials = async () => {
   const responseData = await axios.get('/api/v1/get-turn-credentials');
   webRTCHandler.setTURNServers(responseData.data.token.iceServers);

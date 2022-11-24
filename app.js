@@ -79,7 +79,8 @@ app.use('/api/v1/schedules', scheduleRouter);
 
 app.get('/api/v1/get-turn-credentials', (req, res) => {
   const accountsid = 'AC4648f7f18200c9375a10811540d8318f';
-  const authToken = '03b89c56349c77efc43d13ceb3794cb9';
+  const authToken = '987822e86529b8f861577e94de7b8b06';
+  
   const client = twilio(accountsid, authToken);
   client.tokens
     .create()
