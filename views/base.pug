@@ -9,25 +9,21 @@ html
       link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
       link(href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet')
 
-      title MindAnchor | #{title}
+      title DiaCare | #{title}
   
   body
 
     //- conditions
-    if user  
-      -var client = user.role == 'user'
-      -var counsellor = user.role == 'counsellor'
-      -var consultant = user.role == 'consultant'
-      -var admin  = user.role == 'admin'
+    //- if user  
+    //-   -var client = user.role == 'user'
+    //-   -var counsellor = user.role == 'counsellor'
+    //-   -var consultant = user.role == 'consultant'
+    //-   -var admin  = user.role == 'admin'
 
 
-    // HEADER
-    if !user
-      include _header
-    if client    
-      include _headerClient 
-    if (!client && user) 
-      include _headerStaff
+  
+    //- include _headerNew
+   
       
       
 
@@ -37,7 +33,7 @@ html
       h1 This is a placeholder heading
       
     // FOOTER
-    include _footer
+    //- include _footer
     
     //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js')
     //- script(src='/js/mapbox.js')
