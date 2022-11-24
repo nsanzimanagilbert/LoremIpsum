@@ -865,6 +865,9 @@ input:focus {
 .branding-dash img {
   height: 4rem;
 }
+.nav-links{
+  display: none;
+}
 .nav-links ul li a {
   color: var(--secondary-color);
   font-size: 1.7rem;
